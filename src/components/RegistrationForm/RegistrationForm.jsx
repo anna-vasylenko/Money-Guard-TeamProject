@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import * as Yup from 'yup';
 import s from './RegistrationForm.module.css';
 import { useDispatch } from 'react-redux';
-import { registration } from '../../redux/auth/slice';
+// import { registration } from '../../redux/auth/slice';
 
 const RegistrationForm = () => {
   const dispatch = useDispatch();
@@ -63,7 +63,7 @@ const RegistrationForm = () => {
             type="submit"
             className={s.button_reg}
           >
-            Registration
+            Register
           </button>
           <Link to="/login">
             <button type="button">Login</button>
