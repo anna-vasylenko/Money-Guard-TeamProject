@@ -3,12 +3,14 @@ import { Link } from 'react-router-dom';
 import * as Yup from 'yup';
 import s from './RegistrationForm.module.css';
 import { useDispatch } from 'react-redux';
-// import { registration } from '../../redux/auth/slice';
+import { registerThunk } from '../../redux/auth/operations';
 
 const RegistrationForm = () => {
   const dispatch = useDispatch();
   const onSubmit = ({ email, name, password }, { resetForm }) => {
-    dispatch(registration({ email, name, password }));
+    console.log({ email, name, password });
+
+    dispatch(registerThunk({ email, name, password }));
     resetForm();
   };
 
@@ -18,6 +20,7 @@ const RegistrationForm = () => {
         email: '',
         name: '',
         password: '',
+        confirmPassword: '',
       }}
       validationSchema={Yup.object({
         name: Yup.string()
@@ -39,13 +42,14 @@ const RegistrationForm = () => {
         <Form>
           <p>Money Guard</p>
           <div>
-            <Field type="email" name="email" placeholder="E-mail" />
-            <ErrorMessage name="email" component="div" />
-          </div>
-          <div>
             <Field type="text" name="name" placeholder="Name" />
             <ErrorMessage name="name" component="div" />
           </div>
+          <div>
+            <Field type="email" name="email" placeholder="E-mail" />
+            <ErrorMessage name="email" component="div" />
+          </div>
+
           <div>
             <Field type="password" name="password" placeholder="Password" />
             <ErrorMessage name="password" component="div" />
@@ -58,11 +62,7 @@ const RegistrationForm = () => {
             />
             <ErrorMessage name="confirmPassword" component="div" />
           </div>
-          <button
-            disabled={isSubmitting}
-            type="submit"
-            className={s.button_reg}
-          >
+          <button disabled={isSubmitting} type="submit">
             Register
           </button>
           <Link to="/login">
