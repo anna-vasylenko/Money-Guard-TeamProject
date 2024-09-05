@@ -23,6 +23,7 @@
     "react-responsive": "^10.0.0",
     "react-router-dom": "^6.26.1",
     "react-spinners": "^0.14.1",
+    "recharts": "^2.12.7",
     "redux-persist": "^6.0.0",
     "yup": "^1.4.0"
   },
