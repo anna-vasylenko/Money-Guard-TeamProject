@@ -1,1 +1,8 @@
+@import url("./css/styles/variables.css");
+@import url("./css/styles/fonts.css");
 
+body {
+  font-family: var(--font-family);
+  color: var(--white);
+  background-color: var(--text-button);
+}
