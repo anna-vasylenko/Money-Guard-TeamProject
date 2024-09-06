@@ -6,6 +6,10 @@
   color: #f87171;
 }
 
+.editIcon {
+  color: rgba(255, 255, 255, 0.6);
+}
+
 .editBtn {
   color: #9ca3af;
   background: none;
