@@ -6,7 +6,7 @@ const ModalLogOut = ({ closeModal, isOpenModal }) => {
   const dispatch = useDispatch();
 
   const handleClickLogout = () => {
-    dispatch(logoutThunk);
+    dispatch(logoutThunk());
   };
 
   const handleClickCancel = () => {
