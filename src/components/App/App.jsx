@@ -1,4 +1,4 @@
-import { Suspense } from "react";
+import { Suspense, useEffect } from "react";
 import "./App.css";
 import { Navigate, Route, Routes } from "react-router-dom";
 // import Layout from "../Layout/Layout";
@@ -9,8 +9,39 @@ import LoginPage from "../../pages/LoginPage/LoginPage";
 import HomeTab from "../../pages/HomeTab/HomeTab";
 import CurrencyTab from "../../pages/CurrencyTab/CurrencyTab";
 import StatisticsTab from "../../pages/StatisticsTab/StatisticsTab";
+import { useDispatch } from "react-redux";
+// import {
+//   loginThunk,
+//   logoutThunk,
+//   registerThunk,
+// } from "../../redux/auth/operations";
 
 function App() {
+  const dispatch = useDispatch();
+
+  // useEffect(() => {
+  //   dispatch(
+  //     registerThunk({
+  //       username: "Anna",
+  //       email: "zaebalas.sulnooo@dof.fs",
+  //       password: "1111dcdc",
+  //     })
+  //   );
+  // }, [dispatch]);
+
+  // useEffect(() => {
+  //   dispatch(
+  //     loginThunk({
+  //       email: "zaebalas.sulnooo@dof.fs",
+  //       password: "1111dcdc",
+  //     })
+  //   );
+  // }, [dispatch]);
+
+  // useEffect(() => {
+  //   dispatch(logoutThunk());
+  // }, [dispatch]);
+
   return (
     <Suspense fallback={<Loader />}>
       <Routes>
