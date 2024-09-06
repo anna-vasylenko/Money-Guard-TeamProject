@@ -1,0 +1,8 @@
+.btnCloseModal {
+  background-color: transparent;
+  position: absolute;
+  right: 20px;
+  border: 0;
+  display: flex;
+  justify-content: flex-end;
+}

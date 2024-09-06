@@ -1,5 +1,9 @@
+import Currency from "../../components/Currency/Currency";
+import { useMedia } from "../../hooks/useMedia";
+
 const HomeTab = () => {
-  return <div>HomeTab</div>;
+  const { isMobile } = useMedia();
+  return <div>{!isMobile && <Currency />}</div>;
 };
 
 export default HomeTab;
