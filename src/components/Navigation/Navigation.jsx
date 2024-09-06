@@ -26,16 +26,16 @@ const Navigation = () => {
             )}
             {isTablet && <span>Statistics</span>}
           </NavLink>
-          {isMobile && (
-            <li>
-              <NavLink to="/currency">
-                <svg width="18" height="18">
-                  <use href="../../../src/images/symbol-defs.svg#dollar"></use>
-                </svg>
-              </NavLink>
-            </li>
-          )}
         </li>
+        {isMobile && (
+          <li>
+            <NavLink to="/currency">
+              <svg width="18" height="18">
+                <use href="../../../src/images/symbol-defs.svg#dollar"></use>
+              </svg>
+            </NavLink>
+          </li>
+        )}
       </ul>
     </div>
   );
