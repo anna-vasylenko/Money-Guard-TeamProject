@@ -1,0 +1,98 @@
+.container {
+  display: flex;
+  min-width: 320px;
+  list-style-type: none;
+  justify-content: space-between;
+  padding: 12px 0;
+  background: linear-gradient(270deg, #2e1746 3.2%, #2e225f 99.98%);
+}
+.containerExit {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.containerLogo {
+  text-align: center;
+}
+
+.list {
+  padding: 24px;
+  margin: 0 auto;
+  max-width: 800px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  list-style-type: none;
+  display: flex;
+  gap: 40px;
+  justify-content: center;
+}
+
+.item {
+  list-style-type: none;
+}
+
+.navLink {
+  font-family: var(--font-family);
+  text-decoration: none;
+  color: var(--white);
+  font-size: 12.84px;
+  font-weight: 400;
+}
+
+.btn {
+  background-color: transparent;
+  border: 0;
+}
+
+.userName {
+  color: var(--white-60);
+  font-weight: 400;
+  position: relative;
+}
+
+.exitSpan {
+  color: var(--white-60);
+  font-weight: 400;
+  padding-left: 3px;
+}
+
+@media screen and (min-width: 768px) {
+  .btn {
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    font-weight: 400;
+    margin-left: 12px;
+  }
+
+  .userName {
+    margin-left: 12px;
+  }
+
+  .userName::after {
+    content: "";
+    display: inline-block;
+    margin-left: 12px;
+    width: 1px;
+    height: 30px;
+    background-color: var(--white-60);
+    position: absolute;
+    top: 50%;
+    bottom: 50%;
+    transform: translateY(-50%);
+  }
+
+  .navLink > svg {
+    height: 22px;
+    width: 22px;
+  }
+  .logoText {
+    font-size: 17px;
+  }
+
+  .container {
+    padding: 16px 0;
+  }
+}
