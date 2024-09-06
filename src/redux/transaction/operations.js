@@ -66,13 +66,15 @@ export const getPeriodTransactions = createAsyncThunk(
   "transactions/getPeriodTransactions",
   async (period, thunkAPI) => {
     try {
-      console.log(period);
+      // console.log(period);
       const { month, year } = period;
-      console.log(year);
+      // console.log(year);
       if (month || year) {
         const { data } = await axios.get("/api/transactions-summary", {
           params: { month, year },
         });
+        console.log(data);
+
         return data;
       }
     } catch (error) {
