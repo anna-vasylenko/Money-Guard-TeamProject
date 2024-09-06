@@ -1,0 +1,25 @@
+.financeTableContainer {
+  background-color: #44337a;
+  padding: 1rem;
+  border-radius: 0.5rem;
+}
+
+.financeTable {
+  width: 100%;
+  color: white;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+.financeTable th {
+  text-align: left;
+  padding: 0.5rem 1rem;
+}
+
+.financeTable td {
+  padding: 0.5rem 1rem;
+}
+
+.financeTable tbody tr {
+  border-top: 1px solid #553c9a;
+}
