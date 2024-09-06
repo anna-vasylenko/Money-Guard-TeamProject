@@ -1,0 +1,41 @@
+.income {
+  color: #fbbf24;
+}
+
+.expense {
+  color: #f87171;
+}
+
+.editIcon {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.editBtn {
+  color: #9ca3af;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.editBtn:hover {
+  color: white;
+}
+
+.deleteBtn {
+  background-color: #f97316;
+  color: white;
+  padding: 0.25rem 0.75rem;
+  border-radius: 0.25rem;
+  border: none;
+  cursor: pointer;
+}
+
+.deleteBtn:hover {
+  background-color: #ea580c;
+}
+
+.actionBtn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
