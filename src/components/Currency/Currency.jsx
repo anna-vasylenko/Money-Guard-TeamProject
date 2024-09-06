@@ -11,11 +11,11 @@ import {
 const Currency = () => {
   // Дані для графіків
   const data = [
-    { name: "x", value: 10 },
-    { name: "USD", value: 17.55 },
-    { name: "x", value: 10 },
-    { name: "EURO", value: 30.0 },
-    { name: "x", value: 8 },
+    { name: "x", value: 0 },
+    { name: "USD", value: 37.55 },
+    { name: "x", value: 0 },
+    { name: "EURO", value: 20.0 },
+    { name: "x", value: 0 },
   ];
 
   return (
