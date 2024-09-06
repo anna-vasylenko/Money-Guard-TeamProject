@@ -1,3 +1,7 @@
+import { useSelector } from "react-redux";
+import s from "./StatisticsTable.module.css";
+import { getPeriodTransactions } from "../../redux/transaction/operations";
+
 const data = {
   labels: [
     "Main expenses",
@@ -41,9 +45,14 @@ const data = {
 };
 
 const StatisticsTable = () => {
+  const { categoriesSummary, incomeSummary, expenseSummary, periodTotal } =
+    useSelector(getPeriodTransactions);
+  if (categoriesSummary.length === 0) {
+    return <p>Sorry, No transactions for this period</p>;
+  }
   return (
     <div className={s.customLegend}>
-      {data.labels.map((label, index) => (
+      {categoriesSummary.map((category, index) => (
         <div key={index} className={s.legendItem}>
           <span
             className={s.legendColor}
@@ -51,7 +60,7 @@ const StatisticsTable = () => {
               backgroundColor: data.datasets[0].backgroundColor[index],
             }}
           ></span>
-          <span>{label}</span>
+          <span>{}</span>
           <span>
             {data.datasets[0].data[index].toLocaleString(undefined, {
               minimumFractionDigits: 2,
