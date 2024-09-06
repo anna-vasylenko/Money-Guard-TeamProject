@@ -1,0 +1,41 @@
+.doughnutContainer {
+  position: relative;
+  width: 300px;
+  height: 300px;
+  margin: auto;
+}
+
+.doughnutCenter {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 1.5rem;
+  color: white;
+  font-weight: bold;
+  text-align: center;
+}
+
+.customLegend {
+  margin-top: 20px;
+  color: white;
+}
+
+.customLegend table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.customLegend th,
+.customLegend td {
+  text-align: left;
+  padding: 5px;
+  font-size: 0.9rem;
+}
+
+.customLegend .legendColor {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  margin-right: 5px;
+}

@@ -1,5 +1,13 @@
+import Chart from "../../components/Chart/Chart";
+
 const StatisticsTab = () => {
-  return <div>StatisticsTab</div>;
+  return (
+    <div>
+      {" "}
+      <h1>Statistics</h1>
+      <Chart />
+    </div>
+  );
 };
 
 export default StatisticsTab;
