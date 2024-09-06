@@ -12,8 +12,8 @@ const TransactionsItem = ({ transaction }) => {
       </td>
       <td className={s.actionBtn}>
         <button className={s.editBtn}>
-          <svg width="12" height="12">
-            <use href="../../images/symbol-defs.svg#pencil"></use>
+          <svg className={s.editIcon} width="12" height="12" stroke="#fafafa">
+            <use href="../../../src/images/symbol-defs.svg#pencil"></use>
           </svg>
         </button>
         <button className={s.deleteBtn}>Delete</button>
