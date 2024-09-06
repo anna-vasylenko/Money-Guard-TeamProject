@@ -10,37 +10,38 @@ import HomeTab from "../../pages/HomeTab/HomeTab";
 import CurrencyTab from "../../pages/CurrencyTab/CurrencyTab";
 import StatisticsTab from "../../pages/StatisticsTab/StatisticsTab";
 import { useDispatch } from "react-redux";
-// import {
-//   loginThunk,
-//   logoutThunk,
-//   registerThunk,
-// } from "../../redux/auth/operations";
+
+import {
+  loginThunk,
+  logoutThunk,
+  registerThunk,
+} from "../../redux/auth/operations";
 
 function App() {
   const dispatch = useDispatch();
 
-  // useEffect(() => {
-  //   dispatch(
-  //     registerThunk({
-  //       username: "Anna",
-  //       email: "zaebalas.sulnooo@dof.fs",
-  //       password: "1111dcdc",
-  //     })
-  //   );
-  // }, [dispatch]);
+  useEffect(() => {
+    dispatch(
+      registerThunk({
+        username: "Anna",
+        email: "zaebalas.sulnooo@dof.fs",
+        password: "1111dcdc",
+      })
+    );
+  }, [dispatch]);
 
-  // useEffect(() => {
-  //   dispatch(
-  //     loginThunk({
-  //       email: "zaebalas.sulnooo@dof.fs",
-  //       password: "1111dcdc",
-  //     })
-  //   );
-  // }, [dispatch]);
+  useEffect(() => {
+    dispatch(
+      loginThunk({
+        email: "zaebalas.sulnooo@dof.fs",
+        password: "1111dcdc",
+      })
+    );
+  }, [dispatch]);
 
-  // useEffect(() => {
-  //   dispatch(logoutThunk());
-  // }, [dispatch]);
+  useEffect(() => {
+    dispatch(logoutThunk());
+  }, [dispatch]);
 
   return (
     <Suspense fallback={<Loader />}>
