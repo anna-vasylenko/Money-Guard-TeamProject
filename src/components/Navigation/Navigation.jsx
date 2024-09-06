@@ -1,23 +1,40 @@
 import { NavLink } from "react-router-dom";
+import { useMedia } from "../../hooks/useMedia";
+// import s from "./Navigation.module.css";
 
 const Navigation = () => {
+  const { isTablet, isMobile } = useMedia();
   return (
     <div>
       <ul>
         <li>
-          <NavLink to="/">Home</NavLink>
+          <NavLink to="/">
+            {isMobile && (
+              <svg width="18" height="18">
+                <use href="../../../src/images/symbol-defs.svg#home"></use>
+              </svg>
+            )}
+            {isTablet && <span>Home</span>}
+          </NavLink>
         </li>
         <li>
-          <NavLink to="/statistics">Statistics</NavLink>
-        </li>
-        <li>
-          <NavLink to="/currency">Currency</NavLink>
-        </li>
-        <li>
-          <NavLink to="/register">Register</NavLink>
-        </li>
-        <li>
-          <NavLink to="/login">Login</NavLink>
+          <NavLink to="/statistics">
+            {isMobile && (
+              <svg width="18" height="18">
+                <use href="../../../src/images/symbol-defs.svg#statistics"></use>
+              </svg>
+            )}
+            {isTablet && <span>Statistics</span>}
+          </NavLink>
+          {isMobile && (
+            <li>
+              <NavLink to="/currency">
+                <svg width="18" height="18">
+                  <use href="../../../src/images/symbol-defs.svg#dollar"></use>
+                </svg>
+              </NavLink>
+            </li>
+          )}
         </li>
       </ul>
     </div>
