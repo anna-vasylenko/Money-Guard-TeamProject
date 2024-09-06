@@ -7,7 +7,9 @@ import {
   ResponsiveContainer,
   LabelList,
 } from "recharts";
+
 import { fetchCurrencyRates } from "../../helpers/currencyMono";
+import s from "./Currency.module.css";
 
 const Currency = () => {
   const [usdRate, setUsdRate] = useState({ rateBuy: 0, rateSell: 0 });
@@ -25,9 +27,16 @@ const Currency = () => {
           (rate) => rate.currencyCodeA === 978 && rate.currencyCodeB === 980
         );
 
-        if (usd) setUsdRate({ rateBuy: usd.rateBuy, rateSell: usd.rateSell });
+        if (usd)
+          setUsdRate({
+            rateBuy: usd.rateBuy,
+            rateSell: usd.rateSell.toFixed(2),
+          });
         if (euro)
-          setEuroRate({ rateBuy: euro.rateBuy, rateSell: euro.rateSell });
+          setEuroRate({
+            rateBuy: euro.rateBuy,
+            rateSell: euro.rateSell.toFixed(2),
+          });
       }
     };
 
@@ -44,20 +53,20 @@ const Currency = () => {
 
   return (
     <div>
-      <ul>
-        <li>
+      <ul className={s.list}>
+        <li className={s.item}>
           <h3>Currency</h3>
-          <h3>Purchase</h3>
-          <h3>Sale</h3>
-        </li>
-        <li>
           <p>USD</p>
-          <p>{`${usdRate.rateBuy}`}</p>
-          <p>{`${usdRate.rateSell}`}</p>
-        </li>
-        <li>
           <p>EUR</p>
+        </li>
+        <li className={s.item}>
+          <h3>Purchase</h3>
+          <p>{`${usdRate.rateBuy}`}</p>
           <p>{`${euroRate.rateBuy}`}</p>
+        </li>
+        <li className={s.item}>
+          <h3>Sale</h3>
+          <p>{`${usdRate.rateSell}`}</p>
           <p>{`${euroRate.rateSell}`}</p>
         </li>
       </ul>
