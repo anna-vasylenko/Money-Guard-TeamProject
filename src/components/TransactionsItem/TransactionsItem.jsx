@@ -4,12 +4,12 @@ import s from "./TransactionsItem.module.css";
 const TransactionsItem = ({ transaction }) => {
   return (
     <tr>
-      <td>{transaction.date}</td>
+      <td>{transaction.transactionDate}</td>
       <td>{transaction.type}</td>
       <td>{transaction.category}</td>
       <td>{transaction.comment}</td>
-      <td className={transaction.type === "+" ? s.income : s.expense}>
-        {transaction.sum.toFixed(2)}
+      <td className={transaction.type === "INCOME" ? s.income : s.expense}>
+        {transaction.amount}
       </td>
       <td className={s.actionBtn}>
         <button onClick={ModalEditTransaction} className={s.editBtn}>

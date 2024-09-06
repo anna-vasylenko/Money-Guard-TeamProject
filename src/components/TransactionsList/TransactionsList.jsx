@@ -43,6 +43,7 @@ import { selectTransactions } from "../../redux/transaction/selectors";
 
 const TransactionsList = () => {
   const transactions = useSelector(selectTransactions);
+  console.log(transactions);
 
   return (
     <div className={s.financeTableContainer}>
