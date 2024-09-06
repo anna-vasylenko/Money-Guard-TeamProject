@@ -13,22 +13,22 @@ import { useDispatch } from "react-redux";
 
 import {
   loginThunk,
-  logoutThunk,
-  registerThunk,
+  // logoutThunk,
+  // registerThunk,
 } from "../../redux/auth/operations";
 
 function App() {
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(
-      registerThunk({
-        username: "Anna",
-        email: "zaebalas.sulnooo@dof.fs",
-        password: "1111dcdc",
-      })
-    );
-  }, [dispatch]);
+  // useEffect(() => {
+  //   dispatch(
+  //     registerThunk({
+  //       username: "Anna",
+  //       email: "zaebalas.sulnooo@dof.fs",
+  //       password: "1111dcdc",
+  //     })
+  //   );
+  // }, [dispatch]);
 
   useEffect(() => {
     dispatch(
@@ -39,9 +39,9 @@ function App() {
     );
   }, [dispatch]);
 
-  useEffect(() => {
-    dispatch(logoutThunk());
-  }, [dispatch]);
+  // useEffect(() => {
+  //   dispatch(logoutThunk());
+  // }, [dispatch]);
 
   return (
     <Suspense fallback={<Loader />}>
