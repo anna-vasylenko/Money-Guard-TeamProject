@@ -1,5 +1,8 @@
+
 const StatisticsTab = () => {
-  return <div>StatisticsTab</div>;
+  return <div>
+    
+  </div>;
 };
 
 export default StatisticsTab;
