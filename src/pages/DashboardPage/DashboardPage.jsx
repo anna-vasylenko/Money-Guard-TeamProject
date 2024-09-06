@@ -42,10 +42,12 @@ const DashboardPage = () => {
       <button onClick={openEditModal}>Open Edit</button>
       <button onClick={openAddModal}>Open Add</button>
       <Header />
-      <Navigation />
-      <Suspense fallback={<Loader />}>
-        <Outlet />
-      </Suspense>
+      <main>
+        <Navigation />
+        <Suspense fallback={<Loader />}>
+          <Outlet />
+        </Suspense>
+      </main>
       <ModalLogOut closeModal={closeModals} isOpenModal={isLogOutModalOpen} />
       <ModalEditTransaction
         closeModal={closeModals}
