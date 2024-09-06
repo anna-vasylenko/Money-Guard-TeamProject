@@ -9,20 +9,37 @@ import LoginPage from "../../pages/LoginPage/LoginPage";
 import HomeTab from "../../pages/HomeTab/HomeTab";
 import CurrencyTab from "../../pages/CurrencyTab/CurrencyTab";
 import StatisticsTab from "../../pages/StatisticsTab/StatisticsTab";
-// import { useDispatch } from "react-redux";
-// import { logoutThunk, registerThunk } from "../../redux/auth/operations";
+import { useDispatch } from "react-redux";
+// import {
+//   loginThunk,
+//   logoutThunk,
+//   registerThunk,
+// } from "../../redux/auth/operations";
 
 function App() {
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
   // useEffect(() => {
   //   dispatch(
   //     registerThunk({
   //       username: "Anna",
-  //       email: "zaebalas.sulno@dof.fs",
+  //       email: "zaebalas.sulnooo@dof.fs",
   //       password: "1111dcdc",
   //     })
   //   );
+  // }, [dispatch]);
+
+  // useEffect(() => {
+  //   dispatch(
+  //     loginThunk({
+  //       email: "zaebalas.sulnooo@dof.fs",
+  //       password: "1111dcdc",
+  //     })
+  //   );
+  // }, [dispatch]);
+
+  // useEffect(() => {
+  //   dispatch(logoutThunk());
   // }, [dispatch]);
 
   return (
