@@ -1,5 +1,7 @@
+import Currency from "../../components/Currency/Currency";
+
 const CurrencyTab = () => {
-  return <div>CurrencyTab</div>;
+  return <Currency />;
 };
 
 export default CurrencyTab;
