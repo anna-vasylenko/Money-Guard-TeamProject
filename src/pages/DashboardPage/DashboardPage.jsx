@@ -3,28 +3,58 @@ import { Outlet } from "react-router-dom";
 import Loader from "../../components/Loader/Loader";
 import Navigation from "../../components/Navigation/Navigation";
 import Header from "../../components/Header/Header";
-import ModalWrapper from "../../components/ModalWrapper/ModalWrapper";
+import ModalLogOut from "../../components/ModalLogOut/ModalLogOut";
+import ModalEditTransaction from "../../components/ModalEditTransaction/ModalEditTransaction";
+import ModalAddTransaction from "../../components/ModalAddTransaction/ModalAddTransaction";
 
 const DashboardPage = () => {
-  const [isOpenModal, setIsOpenModal] = useState(false);
+  const [isLogOutModalOpen, setIsLogOutModalOpen] = useState(false);
+  const [isEditModalOpen, setIsEditModalOpen] = useState(false);
+  const [isAddModalOpen, setIsAddModalOpen] = useState(false);
 
-  const closeModal = () => {
-    setIsOpenModal(false);
+  const openLogOutModal = () => {
+    setIsLogOutModalOpen(true);
+    setIsEditModalOpen(false);
+    setIsAddModalOpen(false);
   };
 
-  const openModal = () => {
-    setIsOpenModal(true);
+  const openEditModal = () => {
+    setIsEditModalOpen(true);
+    setIsLogOutModalOpen(false);
+    setIsAddModalOpen(false);
+  };
+
+  const openAddModal = () => {
+    setIsAddModalOpen(true);
+    setIsEditModalOpen(false);
+    setIsLogOutModalOpen(false);
+  };
+
+  const closeModals = () => {
+    setIsLogOutModalOpen(false);
+    setIsEditModalOpen(false);
+    setIsAddModalOpen(false);
   };
 
   return (
     <div>
-      <button onClick={openModal}>Open Modal</button>
+      <button onClick={openLogOutModal}>Open LogOut</button>
+      <button onClick={openEditModal}>Open Edit</button>
+      <button onClick={openAddModal}>Open Add</button>
       <Header />
       <Navigation />
       <Suspense fallback={<Loader />}>
         <Outlet />
       </Suspense>
-      <ModalWrapper closeModal={closeModal} isOpenModal={isOpenModal} />
+      <ModalLogOut closeModal={closeModals} isOpenModal={isLogOutModalOpen} />
+      <ModalEditTransaction
+        closeModal={closeModals}
+        isOpenModal={isEditModalOpen}
+      />
+      <ModalAddTransaction
+        closeModal={closeModals}
+        isOpenModal={isAddModalOpen}
+      />
     </div>
   );
 };
