@@ -13,8 +13,8 @@ import { useDispatch } from "react-redux";
 
 import {
   loginThunk,
-  logoutThunk,
-  registerThunk,
+  // logoutThunk,
+  // registerThunk,
 } from "../../redux/auth/operations";
 
 function App() {
