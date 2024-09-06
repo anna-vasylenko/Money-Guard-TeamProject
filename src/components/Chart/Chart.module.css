@@ -3,6 +3,7 @@
   width: 300px;
   height: 300px;
   margin: auto;
+  margin-bottom: 20px;
 }
 
 .doughnutCenter {
@@ -15,27 +16,7 @@
   font-weight: bold;
   text-align: center;
 }
-
-.customLegend {
-  margin-top: 20px;
-  color: white;
-}
-
-.customLegend table {
-  width: 100%;
-  border-collapse: collapse;
-}
-
-.customLegend th,
-.customLegend td {
-  text-align: left;
-  padding: 5px;
-  font-size: 0.9rem;
-}
-
-.customLegend .legendColor {
-  display: inline-block;
-  width: 10px;
-  height: 10px;
-  margin-right: 5px;
+.notice {
+  text-align: center;
+  margin-bottom: 20px;
 }
