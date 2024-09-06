@@ -1,8 +1,10 @@
 import Modal from "react-modal";
+import s from "./ModalWrapper.module.css";
 
 const customStyles = {
   overlay: {
     backgroundColor: "rgba(0, 0, 0, 0.75)",
+    backdropFilter: "blur(3.5px)",
   },
   content: {
     top: "50%",
@@ -12,12 +14,15 @@ const customStyles = {
     marginRight: "-50%",
     transform: "translate(-50%, -50%)",
     padding: 20,
-    width: "auto",
-    height: "auto",
+    width: "540px",
+    height: "589px",
     maxWidth: "90vw",
     maxHeight: "90vh",
     border: "none",
-    backgroundColor: "black",
+    borderRadius: "8px",
+    backgroundColor: "rgba(255, 255, 255, 0.10)",
+    boxShadow: "0px 4px 60px 0px rgba(0, 0, 0, 0.25)",
+    backdropFilter: "blur(50px)",
   },
 };
 
@@ -30,7 +35,11 @@ const ModalWrapper = ({ closeModal, isOpenModal, children }) => {
       onRequestClose={closeModal}
       style={customStyles}
     >
-      <button onClick={closeModal}>close</button>
+      <button className={s.btnCloseModal} onClick={closeModal}>
+        <svg width="18" height="18" stroke="#FBFBFB">
+          <use href="../../../src/images/symbol-defs.svg#close"></use>
+        </svg>
+      </button>
       {children}
     </Modal>
   );
