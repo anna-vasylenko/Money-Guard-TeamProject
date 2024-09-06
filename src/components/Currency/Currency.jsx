@@ -1,5 +1,5 @@
-import { useDispatch } from "react-redux";
-import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+import React, { useEffect, useState } from "react";
 import {
   AreaChart,
   Area,
@@ -7,15 +7,39 @@ import {
   ResponsiveContainer,
   LabelList,
 } from "recharts";
+import { fetchCurrencyRates } from "../../helpers/currencyMono";
 
 const Currency = () => {
-  // Дані для графіків
+  const [usdRate, setUsdRate] = useState({ rateBuy: 0, rateSell: 0 });
+  const [euroRate, setEuroRate] = useState({ reteBuy: 0, rateSell: 0 });
+
+  useEffect(() => {
+    const getCurrencyRates = async () => {
+      const currencyRates = await fetchCurrencyRates();
+
+      if (currencyRates.length > 0) {
+        const usd = currencyRates.find(
+          (rate) => rate.currencyCodeA === 840 && rate.currencyCodeB === 980
+        );
+        const euro = currencyRates.find(
+          (rate) => rate.currencyCodeA === 978 && rate.currencyCodeB === 980
+        );
+
+        if (usd) setUsdRate({ rateBuy: usd.rateBuy, rateSell: usd.rateSell });
+        if (euro)
+          setEuroRate({ rateBuy: euro.rateBuy, rateSell: euro.rateSell });
+      }
+    };
+
+    getCurrencyRates();
+  }, []);
+
   const data = [
-    { name: "x", value: 0 },
-    { name: "USD", value: 37.55 },
-    { name: "x", value: 0 },
-    { name: "EURO", value: 20.0 },
-    { name: "x", value: 0 },
+    { name: "start", value: 8 },
+    { name: "USD", value: usdRate.rateBuy },
+    { name: "midle", value: 10 },
+    { name: "EURO", value: euroRate.rateBuy },
+    { name: "end", value: 25 },
   ];
 
   return (
@@ -28,29 +52,27 @@ const Currency = () => {
         </li>
         <li>
           <p>USD</p>
-          <p>{`${data[1].value}`}</p> {/* Відображення курсу валюти */}
-          <p>{`${data[1].value}`}</p>
+          <p>{`${usdRate.rateBuy}`}</p>
+          <p>{`${usdRate.rateSell}`}</p>
         </li>
         <li>
           <p>EUR</p>
-          <p>{`${data[3].value}`}</p> {/* Відображення курсу валюти */}
-          <p>{`${data[3].value}`}</p>
+          <p>{`${euroRate.rateBuy}`}</p>
+          <p>{`${euroRate.rateSell}`}</p>
         </li>
       </ul>
 
-      {/* Графіки */}
       <div
         style={{
           width: "100%",
           height: "300px",
           backgroundColor: "#2b1a64",
           position: "relative",
-          marginTop: "15px", // Відступ між графіками
+          marginTop: "15px",
         }}
       >
         <ResponsiveContainer width="100%" height="100%">
           <AreaChart data={data} className="custom-chart">
-            {/* Нижній графік, що повторює форму верхньої кривої */}
             <Area
               type="monotone"
               dataKey="value"
@@ -59,7 +81,7 @@ const Currency = () => {
               fillOpacity={1}
               transform="translate(0, 20)"
             />
-            {/* Верхній графік, що відображає курс валют */}
+
             <Area
               type="monotone"
               dataKey="value"
@@ -68,7 +90,6 @@ const Currency = () => {
               fill="none"
               activeDot={{ r: 4, fill: "#ff6f61" }}
             >
-              {/* Використання LabelList для відображення значень */}
               <LabelList
                 dataKey="value"
                 position="top"
