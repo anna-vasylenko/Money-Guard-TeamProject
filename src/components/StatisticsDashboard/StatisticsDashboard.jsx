@@ -10,15 +10,14 @@ const StatisticsDashboard = () => {
   const [selectDate, setSelectDate] = useState({
     year: new Date().getFullYear(),
   });
-
-  console.log(selectDate);
+  // console.log(selectDate);
 
   useEffect(() => {
     dispatch(getPeriodTransactions(selectDate));
   }, [dispatch, selectDate]);
 
-  const Allyear = new Date().getFullYear();
-  const years = Array.from({ length: 10 }, (_, i) => Allyear - i);
+  const allYear = new Date().getFullYear();
+  const years = Array.from({ length: 10 }, (_, i) => allYear - i);
   const yearOption = years.map((year) => ({
     value: year,
     label: year.toString(),
