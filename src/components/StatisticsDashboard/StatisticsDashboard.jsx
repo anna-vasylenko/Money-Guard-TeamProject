@@ -10,6 +10,7 @@ const StatisticsDashboard = () => {
   const [selectDate, setSelectDate] = useState({
     year: new Date().getFullYear(),
   });
+  // console.log(selectDate);
 
   useEffect(() => {
     dispatch(getPeriodTransactions(selectDate));

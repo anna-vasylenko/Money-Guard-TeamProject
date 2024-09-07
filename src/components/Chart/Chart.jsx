@@ -3,57 +3,33 @@ import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import s from "./Chart.module.css";
 import { useSelector } from "react-redux";
 import { selectPeriodTransactions } from "../../redux/transaction/selectors";
+import {
+  backgroundColor,
+  hoverBackgroundColor,
+  options,
+} from "../../helpers/statisticsColors";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
-
-const options = {
-  cutout: "70%",
-  plugins: {
-    legend: {
-      display: false,
-    },
-    tooltip: {
-      enabled: true,
-    },
-  },
-};
 
 const Chart = () => {
   const { categoriesSummary = [], periodTotal = 0 } = useSelector(
     selectPeriodTransactions
   );
-  const categoriesNames = categoriesSummary.map((category) => category.name);
+  const categoriesNames = categoriesSummary.filter(
+    (category) => category.type === "EXPENSE"
+  );
   if (categoriesNames.length === 0) {
-    return <p className={s.notice}>Sorry, No transactions for this period</p>;
+    return <p className={s.notice}>Sorry, No transactions for that period</p>;
   }
+
   const data = {
-    labels: categoriesNames,
+    labels: categoriesNames.map((category) => category.name),
     datasets: [
       {
-        data: categoriesSummary.map((category) => category.total),
-        backgroundColor: [
-          "#F6C23E",
-          "#3DD597",
-          "#FF6384",
-          "#FFCE56",
-          "#36A2EB",
-          "#7D4A89",
-          "#4BC0C0",
-          "#8A2BE2",
-          "#32CD32",
-        ],
+        data: categoriesNames.map((category) => category.total),
+        backgroundColor,
         borderWidth: 0,
-        hoverBackgroundColor: [
-          "#F6C23E",
-          "#3DD597",
-          "#FF6384",
-          "#FFCE56",
-          "#36A2EB",
-          "#7D4A89",
-          "#4BC0C0",
-          "#8A2BE2",
-          "#32CD32",
-        ],
+        hoverBackgroundColor,
       },
     ],
   };
@@ -62,7 +38,7 @@ const Chart = () => {
     <div className={s.doughnutContainer}>
       <Doughnut data={data} options={options} />
       <div className={s.doughnutCenter}>
-        <span> ₴ {periodTotal.toFixed(2)}</span>
+        <span className={s.innerCenter}> ₴ {periodTotal.toFixed(2)}</span>
       </div>
     </div>
   );

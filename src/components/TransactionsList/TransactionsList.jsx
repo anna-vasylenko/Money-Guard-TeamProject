@@ -3,63 +3,27 @@ import TransactionsItem from "../TransactionsItem/TransactionsItem";
 import { useSelector } from "react-redux";
 import { selectTransactions } from "../../redux/transaction/selectors";
 
-// const transactions = [
-//   {
-//     date: "04.01.23",
-//     type: "-",
-//     category: "Other",
-//     comment: "Gift for your wife",
-//     sum: 300.0,
-//   },
-//   {
-//     date: "05.01.23",
-//     type: "+",
-//     category: "Income",
-//     comment: "January bonus",
-//     sum: 8000.0,
-//   },
-//   {
-//     date: "07.01.23",
-//     type: "-",
-//     category: "Car",
-//     comment: "Oil",
-//     sum: 1000.0,
-//   },
-//   {
-//     date: "07.01.23",
-//     type: "-",
-//     category: "Products",
-//     comment: "Vegetables for the week",
-//     sum: 280.0,
-//   },
-//   {
-//     date: "07.01.23",
-//     type: "+",
-//     category: "Income",
-//     comment: "Gift",
-//     sum: 1000.0,
-//   },
-// ];
-
 const TransactionsList = () => {
   const transactions = useSelector(selectTransactions);
-  console.log(transactions);
+  const sortedTransactions = [...transactions].sort(
+    (a, b) => new Date(b.transactionDate) - new Date(a.transactionDate)
+  );
 
   return (
     <div className={s.financeTableContainer}>
       <table className={s.financeTable}>
         <thead className={s.headTab}>
-          <tr>
-            <th>Date</th>
-            <th>Type</th>
-            <th>Category</th>
-            <th>Comment</th>
-            <th>Sum</th>
-            <th></th>
+          <tr className={s.tr}>
+            <th className={s.th}>Date</th>
+            <th className={s.th}>Type</th>
+            <th className={s.th}>Category</th>
+            <th className={s.th}>Comment</th>
+            <th className={s.th}>Sum</th>
+            <th className={s.th}></th>
           </tr>
         </thead>
-        <tbody>
-          {transactions.map((transaction, index) => (
+        <tbody className={s.th}>
+          {sortedTransactions.map((transaction, index) => (
             <TransactionsItem key={index} transaction={transaction} />
           ))}
         </tbody>

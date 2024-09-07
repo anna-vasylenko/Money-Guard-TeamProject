@@ -1,6 +1,7 @@
 import { useSelector } from "react-redux";
 import s from "./StatisticsTable.module.css";
 import { selectPeriodTransactions } from "../../redux/transaction/selectors";
+import { backgroundColor } from "../../helpers/statisticsColors";
 
 const StatisticsTable = () => {
   const {
@@ -9,23 +10,13 @@ const StatisticsTable = () => {
     expenseSummary = 0,
   } = useSelector(selectPeriodTransactions);
 
-  const backgroundColor = [
-    "#F6C23E",
-    "#3DD597",
-    "#FF6384",
-    "#FFCE56",
-    "#36A2EB",
-    "#7D4A89",
-    "#4BC0C0",
-    "#8A2BE2",
-    "#32CD32",
-  ];
+  backgroundColor;
 
   return (
     <div className={s.wrapper}>
       <table className={s.table}>
         <thead className={s.tableHead}>
-          <tr className={s.table_heading}>
+          <tr className={s.tableHeadRow}>
             <th className={s.table_heading}>Category</th>
             <th className={s.table_heading}>Sum</th>
           </tr>
@@ -41,7 +32,7 @@ const StatisticsTable = () => {
                       backgroundColor[index % backgroundColor.length],
                   }}
                 ></span>
-                {category.name}
+                <span>{category.name}</span>
               </td>
               <td className={s.table_data}>{category.total.toFixed(2)}</td>
             </tr>

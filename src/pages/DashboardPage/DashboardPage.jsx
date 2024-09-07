@@ -6,6 +6,10 @@ import Header from "../../components/Header/Header";
 import ModalLogOut from "../../components/ModalLogOut/ModalLogOut";
 import ModalEditTransaction from "../../components/ModalEditTransaction/ModalEditTransaction";
 import ModalAddTransaction from "../../components/ModalAddTransaction/ModalAddTransaction";
+import s from "./DashboardPage.module.css";
+import Balance from "../../components/Balance/Balance";
+import { useMedia } from "../../hooks/useMedia";
+import Currency from "../../components/Currency/Currency";
 
 const DashboardPage = () => {
   const [isLogOutModalOpen, setIsLogOutModalOpen] = useState(false);
@@ -36,17 +40,26 @@ const DashboardPage = () => {
     setIsAddModalOpen(false);
   };
 
+  const { isMobile } = useMedia();
   return (
     <div>
       <button onClick={openLogOutModal}>Open LogOut</button>
       <button onClick={openEditModal}>Open Edit</button>
       <button onClick={openAddModal}>Open Add</button>
       <Header />
-      <main>
-        <Navigation />
-        <Suspense fallback={<Loader />}>
-          <Outlet />
-        </Suspense>
+      <main className={s.main}>
+        <div className={s.navItem}>
+          <div className={s.wrapper}>
+            <Navigation />
+            <Balance />
+          </div>
+          {!isMobile && <Currency />}
+        </div>
+        <div>
+          <Suspense fallback={<Loader />}>
+            <Outlet />
+          </Suspense>
+        </div>
       </main>
       <ModalLogOut closeModal={closeModals} isOpenModal={isLogOutModalOpen} />
       <ModalEditTransaction
