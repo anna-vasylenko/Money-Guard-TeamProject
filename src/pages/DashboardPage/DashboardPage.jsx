@@ -6,6 +6,7 @@ import Header from "../../components/Header/Header";
 import ModalLogOut from "../../components/ModalLogOut/ModalLogOut";
 import ModalEditTransaction from "../../components/ModalEditTransaction/ModalEditTransaction";
 import ModalAddTransaction from "../../components/ModalAddTransaction/ModalAddTransaction";
+import s from "./DashboardPage.module.css";
 
 const DashboardPage = () => {
   const [isLogOutModalOpen, setIsLogOutModalOpen] = useState(false);
@@ -42,11 +43,14 @@ const DashboardPage = () => {
       <button onClick={openEditModal}>Open Edit</button>
       <button onClick={openAddModal}>Open Add</button>
       <Header />
-      <main>
+      <main className={s.navItem}>
         <Navigation />
-        <Suspense fallback={<Loader />}>
-          <Outlet />
-        </Suspense>
+
+        <div>
+          <Suspense fallback={<Loader />}>
+            <Outlet />
+          </Suspense>
+        </div>
       </main>
       <ModalLogOut closeModal={closeModals} isOpenModal={isLogOutModalOpen} />
       <ModalEditTransaction
