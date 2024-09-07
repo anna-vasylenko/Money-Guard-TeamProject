@@ -20,7 +20,6 @@ const RegistrationForm = () => {
         password: '',
         confirmPassword: '',
       }}
-      const
       validationSchema={validationSchemaRegister}
       onSubmit={onSubmit}
     >

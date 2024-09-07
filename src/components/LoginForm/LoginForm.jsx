@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { loginThunk } from '../../redux/auth/operations';
 import { validationSchemaLogin } from '../../helpers/loginSchema';
+import s from './LoginForm.module.css';
 
 const LoginForm = () => {
   const dispatch = useDispatch();
@@ -17,12 +18,11 @@ const LoginForm = () => {
         email: '',
         password: '',
       }}
-      const
       validationSchema={validationSchemaLogin}
       onSubmit={onSubmit}
     >
       {({ isSubmitting }) => (
-        <Form>
+        <Form className={s.form}>
           <p>Money Guard</p>
           <div>
             <Field type="email" name="email" placeholder="E-mail" />
