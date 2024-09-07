@@ -1,0 +1,96 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.table {
+  min-width: 280px;
+  border-collapse: collapse;
+  color: white;
+}
+
+.tableHead {
+  border-radius: 8px;
+  backdrop-filter: blur(100px);
+  box-shadow: 0 4px 60px 0 rgba(0, 0, 0, 0.25);
+  background: rgba(82, 59, 126, 0.6);
+  font-weight: bold;
+  text-align: left;
+}
+
+.table_row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row;
+  border-bottom: 1px solid rgba(128, 128, 128, 0.2);
+}
+
+.table_heading {
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row;
+  font-weight: 600;
+  font-size: 16px;
+  color: #fbfbfb;
+  font-family: "Poppins", sans-serif;
+  text-align: left;
+}
+
+.table_body {
+  background-color: transparent;
+}
+
+.table_data {
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row;
+  font-weight: 400;
+  font-size: 14px;
+  color: #fbfbfb;
+}
+
+.legendColor {
+  width: 24px;
+  height: 24px;
+  display: inline-block;
+  margin-right: 10px;
+  border-radius: 2px;
+}
+
+.bottom_row {
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+
+  font-size: 14px;
+}
+
+.bottom_data {
+  padding: 16px;
+  font-weight: 600;
+  font-size: 14px;
+  color: #fbfbfb;
+}
+
+.expenses_summary {
+  color: #e74c3c;
+  font-weight: bold;
+}
+
+.income_summary {
+  color: #f39c12;
+  font-weight: bold;
+}
+
+.notice {
+  color: white;
+  font-size: 1rem;
+  margin-top: 20px;
+  text-align: center;
+}
