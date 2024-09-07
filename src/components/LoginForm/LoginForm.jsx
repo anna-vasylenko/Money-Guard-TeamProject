@@ -23,21 +23,33 @@ const LoginForm = () => {
     >
       {({ isSubmitting }) => (
         <Form className={s.form}>
-          <p>Money Guard</p>
-          <div>
-            <Field type="email" name="email" placeholder="E-mail" />
+          <p className={s.title}>Money Guard</p>
+          <label className={s.label}>
+            <Field
+              className={s.input}
+              type="email"
+              name="email"
+              placeholder="E-mail"
+            />
             <ErrorMessage name="email" component="div" />
-          </div>
+          </label>
 
-          <div>
-            <Field type="password" name="password" placeholder="Password" />
+          <label className={s.label}>
+            <Field
+              className={s.input}
+              type="password"
+              name="password"
+              placeholder="Password"
+            />
             <ErrorMessage name="password" component="div" />
-          </div>
+          </label>
 
-          <button disabled={isSubmitting} type="submit">
+          <button className={s.but} disabled={isSubmitting} type="submit">
             Login
           </button>
-          <Link to="/register">Register</Link>
+          <Link className={s.link} to="/register">
+            Register
+          </Link>
         </Form>
       )}
     </Formik>
