@@ -1,0 +1,35 @@
+.addBtn {
+  position: fixed;
+  bottom: 44px;
+  right: 44px;
+  width: 60px;
+  height: 60px;
+  border-radius: 44px;
+  background: var(--button-gradient);
+  color: white;
+  font-size: 24px;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+@media screen and (max-width: 768px) {
+  .addBtn {
+    bottom: 20px;
+    right: 20px;
+    width: 60px;
+    height: 60px;
+  }
+}
+
+.addBtn:hover {
+  transform: scale(1.1) rotate(90deg);
+}
+
+.addBtn:active {
+  transform: scale(0.95);
+}

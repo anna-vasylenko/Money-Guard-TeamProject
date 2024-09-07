@@ -4,6 +4,7 @@ import TransactionsList from "../../components/TransactionsList/TransactionsList
 import { useMedia } from "../../hooks/useMedia";
 import { useEffect } from "react";
 import { getTransactions } from "../../redux/transaction/operations";
+import AddButton from "../../components/AddButton/AddButton";
 
 const HomeTab = () => {
   const dispatch = useDispatch();
@@ -15,6 +16,7 @@ const HomeTab = () => {
     <div>
       {!isMobile && <Currency />}
       <TransactionsList />
+      <AddButton />
     </div>
   );
 };
