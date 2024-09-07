@@ -1,4 +1,3 @@
-import { useDispatch, useSelector } from "react-redux";
 import React, { useEffect, useState } from "react";
 import {
   AreaChart,
@@ -44,13 +43,34 @@ const Currency = () => {
   }, []);
 
   const data = [
-    { name: "start", value: 8 },
-    { name: "USD", value: usdRate.rateBuy },
-    { name: "midle", value: 10 },
-    { name: "EURO", value: euroRate.rateBuy },
-    { name: "end", value: 25 },
+    { name: "start", value: 8, label: "" },
+    { name: "USD", value: usdRate.rateBuy, label: usdRate.rateBuy },
+    { name: "midle", value: 10, label: "" },
+    {
+      name: "EURO",
+      value: euroRate.rateBuy,
+      label: euroRate.rateBuy,
+    },
+    { name: "end", value: 25, label: "" },
   ];
 
+  const renderDot = (props) => {
+    const { cx, cy, index } = props;
+    if (data[index].name === "USD" || data[index].name === "EURO") {
+      return (
+        <circle
+          key={`dot-${index}`}
+          cx={cx}
+          cy={cy}
+          r={4}
+          fill="#563EAF"
+          stroke="#ff6f61"
+          strokeWidth={2}
+        />
+      );
+    }
+    return null;
+  };
   return (
     <div>
       <ul className={s.list}>
@@ -98,9 +118,10 @@ const Currency = () => {
               strokeWidth={2}
               fill="none"
               activeDot={{ r: 4, fill: "#ff6f61" }}
+              dot={renderDot}
             >
               <LabelList
-                dataKey="value"
+                dataKey="label"
                 position="top"
                 offset={10}
                 fill="#ff6f61"
