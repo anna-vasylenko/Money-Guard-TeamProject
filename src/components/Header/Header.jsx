@@ -1,6 +1,7 @@
 import { NavLink } from "react-router-dom";
 import s from "../Header/Header.module.css";
 import { useMedia } from "../../hooks/useMedia";
+import { Icons } from "../Icons/Icons";
 // import { useSelector } from "react-redux";
 
 const Header = () => {
@@ -14,9 +15,7 @@ const Header = () => {
         <div className={s.containerLogo}>
           <li>
             <NavLink className={s.navLink} to="/">
-              <svg width="17" height="17">
-                <use href="../../../src/images/logo.svg#logo-Money-Guard"></use>
-              </svg>
+              <Icons name={"logo"} width={17} height={17} />
               <p className={s.logoText}>Money Guard</p>
             </NavLink>
           </li>

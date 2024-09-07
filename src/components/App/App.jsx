@@ -3,12 +3,6 @@ import "./App.css";
 import { useDispatch, useSelector } from "react-redux";
 import { Navigate, Route, Routes } from "react-router-dom";
 import Loader from "../Loader/Loader";
-// import DashboardPage from "../../pages/DashboardPage/DashboardPage";
-// import RegistrationPage from "../../pages/RegistrationPage/RegistrationPage";
-// import LoginPage from "../../pages/LoginPage/LoginPage";
-// import HomeTab from "../../pages/HomeTab/HomeTab";
-// import CurrencyTab from "../../pages/CurrencyTab/CurrencyTab";
-// import StatisticsTab from "../../pages/StatisticsTab/StatisticsTab";
 
 import PrivateRoute from "../../routes/PrivateRoute";
 import RestrictedRoute from "../../routes/RestrictedRoute";
