@@ -2,12 +2,12 @@ import { NavLink } from "react-router-dom";
 import s from "../Header/Header.module.css";
 import { useMedia } from "../../hooks/useMedia";
 import { Icons } from "../Icons/Icons";
-// import { useSelector } from "react-redux";
+import { useSelector } from "react-redux";
+import { selectUser } from "../../redux/auth/selectors";
 
 const Header = () => {
   const { isTablet } = useMedia();
-  // const user = useSelector(selectUser);
-  // user.name;
+  const { username } = useSelector(selectUser);
 
   return (
     <header>
@@ -21,7 +21,7 @@ const Header = () => {
           </li>
         </div>
         <div className={s.containerExit}>
-          <p className={s.userName}>Name</p>
+          <p className={s.userName}>{username}</p>
           <li className={s.itemExit}>
             <button className={s.btn} type="submit">
               <svg fill="var(--white-60)" width="18" height="18">
