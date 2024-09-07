@@ -10,15 +10,15 @@ const StatisticsTable = () => {
   } = useSelector(selectPeriodTransactions);
 
   const backgroundColor = [
-    "#F6C23E",
-    "#3DD597",
-    "#FF6384",
-    "#FFCE56",
-    "#36A2EB",
-    "#7D4A89",
-    "#4BC0C0",
-    "#8A2BE2",
-    "#32CD32",
+    "#00ad84",
+    "#24cca7",
+    "#81e1ff",
+    "#4a56e2",
+    "#6e78e8",
+    "#c5baff",
+    "#fd9498",
+    "#ffd8d0",
+    "#fed057",
   ];
 
   return (

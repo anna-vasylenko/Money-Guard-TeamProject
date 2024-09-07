@@ -24,7 +24,10 @@
   align-items: center;
   justify-content: space-between;
   flex-direction: row;
-  border-bottom: 1px solid rgba(128, 128, 128, 0.2);
+  border-bottom: 2px solid rgba(174, 173, 173, 0.2);
+}
+.table_row:hover {
+  box-shadow: rgba(218, 213, 213, 0.15) 2.4px 2.4px 3.2px;
 }
 
 .table_heading {
@@ -38,6 +41,9 @@
   color: #fbfbfb;
   font-family: "Poppins", sans-serif;
   text-align: left;
+}
+.table_heading:hover {
+  box-shadow: rgba(0, 0, 0, 0.15) 2.4px 2.4px 3.2px;
 }
 
 .table_body {
@@ -61,6 +67,9 @@
   display: inline-block;
   margin-right: 10px;
   border-radius: 2px;
+}
+.legendColor:hover {
+  box-shadow: rgba(0, 0, 0, 0.15) 2.4px 2.4px 3.2px;
 }
 
 .bottom_row {
