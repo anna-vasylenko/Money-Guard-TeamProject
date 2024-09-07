@@ -1,0 +1,14 @@
+.navItem {
+  position: relative;
+}
+
+.navItem::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 0;
+  height: 100%;
+  border-right: 1px solid var(--white-60);
+  filter: var(--drop-shadow);
+}

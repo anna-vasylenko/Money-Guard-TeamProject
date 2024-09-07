@@ -1,116 +1,82 @@
-import { useDispatch, useSelector } from "react-redux";
 import React, { useEffect, useState } from "react";
-import {
-  AreaChart,
-  Area,
-  Tooltip,
-  ResponsiveContainer,
-  LabelList,
-} from "recharts";
-
-import { fetchCurrencyRates } from "../../helpers/currencyMono";
+import { getCurrencyRates } from "../../helpers/currencyMono";
+import CurrencyChart from "./CurrencyChart";
 import s from "./Currency.module.css";
 
 const Currency = () => {
   const [usdRate, setUsdRate] = useState({ rateBuy: 0, rateSell: 0 });
-  const [euroRate, setEuroRate] = useState({ reteBuy: 0, rateSell: 0 });
+  const [euroRate, setEuroRate] = useState({ rateBuy: 0, rateSell: 0 });
 
   useEffect(() => {
-    const getCurrencyRates = async () => {
-      const currencyRates = await fetchCurrencyRates();
+    const fetchRates = async () => {
+      try {
+        const currencyData = await getCurrencyRates();
+        console.log("Currency data:", currencyData);
 
-      if (currencyRates.length > 0) {
-        const usd = currencyRates.find(
-          (rate) => rate.currencyCodeA === 840 && rate.currencyCodeB === 980
-        );
-        const euro = currencyRates.find(
-          (rate) => rate.currencyCodeA === 978 && rate.currencyCodeB === 980
-        );
-
-        if (usd)
-          setUsdRate({
-            rateBuy: usd.rateBuy,
-            rateSell: usd.rateSell.toFixed(2),
-          });
-        if (euro)
-          setEuroRate({
-            rateBuy: euro.rateBuy,
-            rateSell: euro.rateSell.toFixed(2),
-          });
+        if (currencyData.usdRate) setUsdRate(currencyData.usdRate);
+        if (currencyData.euroRate) setEuroRate(currencyData.euroRate);
+      } catch (error) {
+        console.error("Error fetching currency data:", error.message);
       }
     };
 
-    getCurrencyRates();
+    fetchRates();
   }, []);
 
   const data = [
-    { name: "start", value: 8 },
-    { name: "USD", value: usdRate.rateBuy },
-    { name: "midle", value: 10 },
-    { name: "EURO", value: euroRate.rateBuy },
-    { name: "end", value: 25 },
+    { name: "start", value: 8, label: "" },
+    { name: "USD", value: usdRate.rateBuy, label: usdRate.rateBuy },
+    { name: "midle", value: 10, label: "" },
+    { name: "EURO", value: euroRate.rateBuy, label: euroRate.rateBuy },
+    { name: "end", value: 25, label: "" },
   ];
 
   return (
     <div>
-      <ul className={s.list}>
-        <li className={s.item}>
-          <h3>Currency</h3>
-          <p>USD</p>
-          <p>EUR</p>
-        </li>
-        <li className={s.item}>
-          <h3>Purchase</h3>
-          <p>{`${usdRate.rateBuy}`}</p>
-          <p>{`${euroRate.rateBuy}`}</p>
-        </li>
-        <li className={s.item}>
-          <h3>Sale</h3>
-          <p>{`${usdRate.rateSell}`}</p>
-          <p>{`${euroRate.rateSell}`}</p>
-        </li>
-      </ul>
+      <table className={s.tab}>
+        <thead className={s.header}>
+          <tr className={s.tr}>
+            <th>Currency</th>
+            <th>Purchase</th>
+            <th>Sale</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr className={s.tr}>
+            <td>USD</td>
+            <td>{usdRate.rateBuy}</td>
+            <td>{usdRate.rateSell}</td>
+          </tr>
+          <tr className={s.tr}>
+            <td>EUR</td>
+            <td>{euroRate.rateBuy}</td>
+            <td>{euroRate.rateSell}</td>
+          </tr>
+        </tbody>
+      </table>
 
-      <div
-        style={{
-          width: "100%",
-          height: "300px",
-          backgroundColor: "#2b1a64",
-          position: "relative",
-          marginTop: "15px",
-        }}
-      >
-        <ResponsiveContainer width="100%" height="100%">
-          <AreaChart data={data} className="custom-chart">
-            <Area
-              type="monotone"
-              dataKey="value"
-              stroke="none"
-              fill="rgba(255, 255, 255, 0.2)"
-              fillOpacity={1}
-              transform="translate(0, 20)"
-            />
+      {/* <div className={s.wrapper}>
+        <div className={s.headContainer}>
+          <p className={s.currency}>Currency</p>
+          <p className={s.purchase}>Purchase</p>
+          <p className={s.sale}>Sale</p>
+        </div>
+        <div className={s.valWrapper}>
+          <div className={s.valContainer}>
+            <p>USD</p>
+            <p>{usdRate.rateBuy.toFixed(2)}</p>
+            <p>{usdRate.rateSell.toFixed(2)}</p>
+          </div>
+          <div className={s.valContainer}>
+            <p>EUR</p>
+            <p>{euroRate.rateBuy.toFixed(2)}</p>
+            <p>{currency.eur.rateSell.toFixed(2)}</p>
+          </div>
+        </div>
+        <img className={s.image} src={getImage()} alt="stats" />
+      </div> */}
 
-            <Area
-              type="monotone"
-              dataKey="value"
-              stroke="#ff6f61"
-              strokeWidth={2}
-              fill="none"
-              activeDot={{ r: 4, fill: "#ff6f61" }}
-            >
-              <LabelList
-                dataKey="value"
-                position="top"
-                offset={10}
-                fill="#ff6f61"
-                fontSize={14}
-              />
-            </Area>
-            <Tooltip />
-          </AreaChart>
-        </ResponsiveContainer>
-      </div>
+      <CurrencyChart data={data} />
     </div>
   );
 };
