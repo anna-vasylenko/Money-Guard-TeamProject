@@ -24,9 +24,7 @@ const Header = () => {
           <p className={s.userName}>Name</p>
           <li className={s.itemExit}>
             <button className={s.btn} type="submit">
-              <svg fill="var(--white-60)" width="18" height="18">
-                <use href="../../../src/images/symbol-defs.svg#exit"></use>
-              </svg>
+              <Icons name={"exit"} width={18} height={18} />
               {isTablet && <span className={s.exitSpan}>Exit</span>}
             </button>
           </li>
