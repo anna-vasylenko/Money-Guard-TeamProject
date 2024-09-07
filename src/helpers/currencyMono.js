@@ -39,10 +39,10 @@ const cacheCurrencyData = (data) => {
     timestamp: now,
     usdRate: usd
       ? { rateBuy: usd.rateBuy, rateSell: usd.rateSell.toFixed(2) }
-      : { rateBuy: 0, rateSell: 0 },
+      : null,
     euroRate: eur
       ? { rateBuy: eur.rateBuy, rateSell: eur.rateSell.toFixed(2) }
-      : { rateBuy: 0, rateSell: 0 },
+      : null,
   };
 
   console.log("Caching new data:", currencyData);
@@ -51,11 +51,28 @@ const cacheCurrencyData = (data) => {
 };
 
 export const getCurrencyRates = async () => {
-  const cachedData = getCachedCurrencyData();
-  if (cachedData) {
-    return cachedData;
+  let currencyData = getCachedCurrencyData();
+
+  if (currencyData && currencyData.usdRate && currencyData.euroRate) {
+    return currencyData;
   }
 
-  const data = await fetchCurrencyData();
-  return cacheCurrencyData(data);
+  try {
+    const data = await fetchCurrencyData();
+    currencyData = cacheCurrencyData(data);
+    if (!currencyData.usdRate || !currencyData.euroRate) {
+      throw new Error("Incomplete data fetched from API");
+    }
+  } catch (error) {
+    console.error("Error fetching data from API. Retrying...", error.message);
+
+    const data = await fetchCurrencyData();
+    currencyData = cacheCurrencyData(data);
+  }
+
+  if (!currencyData.usdRate || !currencyData.euroRate) {
+    throw new Error("Failed to fetch valid currency data");
+  }
+
+  return currencyData;
 };
