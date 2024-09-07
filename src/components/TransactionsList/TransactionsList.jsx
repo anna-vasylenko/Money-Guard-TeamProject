@@ -13,16 +13,16 @@ const TransactionsList = () => {
     <div className={s.financeTableContainer}>
       <table className={s.financeTable}>
         <thead className={s.headTab}>
-          <tr>
-            <th>Date</th>
-            <th>Type</th>
-            <th>Category</th>
-            <th>Comment</th>
-            <th>Sum</th>
-            <th></th>
+          <tr className={s.tr}>
+            <th className={s.th}>Date</th>
+            <th className={s.th}>Type</th>
+            <th className={s.th}>Category</th>
+            <th className={s.th}>Comment</th>
+            <th className={s.th}>Sum</th>
+            <th className={s.th}></th>
           </tr>
         </thead>
-        <tbody>
+        <tbody className={s.th}>
           {sortedTransactions.map((transaction, index) => (
             <TransactionsItem key={index} transaction={transaction} />
           ))}
