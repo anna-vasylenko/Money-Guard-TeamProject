@@ -22,11 +22,11 @@
   border-radius: 8px;
 }
 
-/* .td {
+.td {
   padding: 12px;
   text-align: left;
   border-bottom: 1px solid rgba(255, 255, 255, 0.41);
-} */
+}
 
 .th {
   background-color: rgba(82, 59, 126, 0.6);
@@ -64,9 +64,9 @@
   padding: 0.5rem 1rem;
 }
 
-/* .financeTable td {
+.financeTable td {
   padding: 0.5rem 1rem;
-} */
+}
 
 .financeTable tbody tr {
   border-top: 1px solid #553c9a;
