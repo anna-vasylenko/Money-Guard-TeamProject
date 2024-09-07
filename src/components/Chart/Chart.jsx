@@ -49,7 +49,7 @@ const Chart = () => {
     (category) => category.type === "EXPENSE"
   );
   if (categoriesNames.length === 0) {
-    return <p className={s.notice}>Sorry, No transactions for this period</p>;
+    return <p className={s.notice}>Sorry, No transactions for that period</p>;
   }
 
   const data = {

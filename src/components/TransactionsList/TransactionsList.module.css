@@ -1,7 +1,43 @@
 .financeTableContainer {
-  padding: 1rem;
-  border-radius: 0.5rem;
+  max-height: 312px;
+  overflow-y: auto;
+  border-radius: 10px;
+  padding: 10px;
   font-family: Poppins;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  color: white;
+}
+
+thead {
+  position: sticky;
+  top: 0;
+  background-color: #rgba(82, 59, 126, 0.6);
+  z-index: 1;
+}
+
+tr:first-child {
+  border-radius: 8px;
+}
+
+th,
+td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.41);
+}
+
+th {
+  background-color: #rgba(82, 59, 126, 0.6);
+  font-weight: bold;
+  border-bottom: none;
+}
+
+tbody tr:hover {
+  background-color: #3d3a4e;
 }
 
 .headTab {
