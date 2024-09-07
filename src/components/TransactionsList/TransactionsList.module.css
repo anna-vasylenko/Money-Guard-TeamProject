@@ -1,0 +1,81 @@
+.financeTableContainer {
+  padding: 1rem;
+  border-radius: 0.5rem;
+  font-family: Poppins;
+}
+
+.headTab {
+  background-color: rgba(82, 59, 126, 0.6);
+  font-family: Poppins;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+.financeTable {
+  color: var(--white, #fbfbfb);
+  font-family: Poppins;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+.financeTable th {
+  text-align: left;
+  padding: 0.5rem 1rem;
+}
+
+.financeTable td {
+  padding: 0.5rem 1rem;
+}
+
+.financeTable tbody tr {
+  border-top: 1px solid #553c9a;
+}
+
+@media screen and (max-width: 768px) {
+  .financeTable,
+  .financeTable tbody,
+  .financeTable tr,
+  .financeTable td {
+    display: block;
+  }
+
+  .financeTable thead {
+    display: none;
+  }
+
+  .financeTable tbody tr {
+    margin-bottom: 1rem;
+    border: 1px solid #553c9a;
+    border-radius: 0.5rem;
+    position: relative;
+    padding-bottom: 3rem;
+  }
+
+  .financeTable td {
+    text-align: right;
+    padding-left: 50%;
+    position: relative;
+  }
+
+  .financeTable td::before {
+    content: attr(data-label);
+    position: absolute;
+    left: 6px;
+    width: 45%;
+    text-align: left;
+    font-weight: bold;
+  }
+
+  .financeTable .action-buttons {
+    position: absolute;
+    bottom: 0.5rem;
+    right: 0.5rem;
+  }
+}
