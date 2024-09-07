@@ -17,8 +17,11 @@
   color: white;
   font-weight: bold;
   text-align: center;
+}
+.innerCenter {
+  width: 200px;
+  height: 200px;
+  box-shadow: rgb(0, 0, 0) 0px 0px 1px 1px inset,
+    rgba(10, 10, 10, 0.5) -1px -1px 0px 0px inset;
   border-radius: 50%;
-  /* padding: 70px 55px; */
-  /* box-shadow: rgb(0, 0, 0) 0px 0px 1px 1px inset,
-    rgba(10, 10, 10, 0.5) -1px -1px 0px 0px inset; */
 }
