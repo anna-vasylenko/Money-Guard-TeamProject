@@ -43,8 +43,6 @@ const Chart = () => {
           "#32CD32",
         ],
         borderWidth: 0,
-        borderShadow: (0, 0, 0, 0.25),
-        borderColor: (0, 0, 0, 0.25),
         hoverBackgroundColor: [
           "#F6C23E",
           "#3DD597",
@@ -62,7 +60,7 @@ const Chart = () => {
 
   return (
     <div className={s.doughnutContainer}>
-      <Doughnut className={s.doughnut} data={data} options={options} />
+      <Doughnut data={data} options={options} />
       <div className={s.doughnutCenter}>
         <span> ₴ {periodTotal.toFixed(2)}</span>
       </div>

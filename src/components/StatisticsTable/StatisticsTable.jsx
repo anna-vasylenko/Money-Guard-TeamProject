@@ -2,6 +2,10 @@ import { useSelector } from "react-redux";
 import s from "./StatisticsTable.module.css";
 import { selectPeriodTransactions } from "../../redux/transaction/selectors";
 
+import { useSelector } from "react-redux";
+import s from "./StatisticsTable.module.css";
+import { selectPeriodTransactions } from "../../redux/transaction/selectors";
+
 const StatisticsTable = () => {
   const {
     categoriesSummary = [],
