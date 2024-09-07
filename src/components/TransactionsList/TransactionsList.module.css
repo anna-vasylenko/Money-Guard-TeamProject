@@ -76,9 +76,9 @@
   .financeTable,
   .financeTable tbody,
   .financeTable tr,
-  /* .financeTable td {
+  .financeTable td {
     display: block;
-  } */
+  }
 
   .financeTable thead {
     display: none;
@@ -92,7 +92,7 @@
     padding-bottom: 3rem;
   }
 
-  /* .financeTable td {
+  .financeTable td {
     text-align: right;
     padding-left: 50%;
     position: relative;
@@ -105,7 +105,7 @@
     width: 45%;
     text-align: left;
     font-weight: bold;
-  } */
+  }
 
   .financeTable .action-buttons {
     position: absolute;
