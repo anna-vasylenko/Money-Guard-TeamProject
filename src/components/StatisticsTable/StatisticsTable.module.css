@@ -1,134 +1,99 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* margin: 20px 0; */
+}
+
 .table {
-  width: 100%;
+  /* Rounded corners */
+  min-width: 280px;
   border-collapse: collapse;
-  margin-bottom: 20px;
+  /* margin-bottom: 20px; */
   color: white;
 }
 
-.table_head {
-  background-color: #444;
+.tableHead {
+  border-radius: 8px;
+  backdrop-filter: blur(100px);
+  box-shadow: 0 4px 60px 0 rgba(0, 0, 0, 0.25);
+  background: rgba(82, 59, 126, 0.6);
+  font-weight: bold;
+  text-align: left;
 }
 
 .table_row {
-  border-bottom: 1px solid #ddd;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row;
+  border-bottom: 1px solid rgba(128, 128, 128, 0.2); /* Subtle row borders */
 }
 
 .table_heading {
-  padding: 10px;
-  font-weight: bold;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row;
+  font-weight: 600;
+  font-size: 16px;
+  color: #fbfbfb;
+  font-family: "Poppins", sans-serif;
   text-align: left;
 }
 
 .table_body {
-  background-color: none;
+  background-color: transparent;
 }
 
 .table_data {
-  padding: 10px;
-  .table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-    background-color: #2b2b3c;
-    border-radius: 8px;
-    overflow: hidden;
-  }
-
-  .table_head {
-    background-color: none;
-    backdrop-filter: blur(100px);
-    box-shadow: 0 4px 60px 0 rgba(0, 0, 0, 0.25);
-    /* background-color: rgba(82, 59, 126, 0.6); */
-  }
-
-  .table_row {
-    border-bottom: 1px solid rgba(82, 59, 126, 0.6);
-  }
-
-  .table_heading {
-    padding: 10px;
-    color: #fff;
-    font-weight: 600;
-    text-align: left;
-    font-size: 0.9rem;
-  }
-
-  .table_body {
-    background-color: #3a3a55;
-  }
-
-  .table_data {
-    padding: 10px;
-    text-align: left;
-    color: #ffffff;
-    font-size: 0.9rem;
-  }
-
-  .legendColor {
-    width: 24px;
-    height: 24px;
-    display: inline-block;
-    margin-right: 10px;
-    border-radius: 2px;
-  }
-
-  .bottom_row {
-    font-weight: bold;
-    font-size: 0.9rem;
-    color: #ffffff;
-  }
-
-  .bottom_data {
-    padding: 10px;
-    font-size: 0.9rem;
-  }
-
-  .expenses_summary {
-    color: #e74c3c;
-    font-weight: bold;
-  }
-
-  .income_summary {
-    color: #f39c12;
-    font-weight: bold;
-  }
-
-  .notice {
-    color: #ffffff;
-    font-size: 1rem;
-    margin-top: 20px;
-    text-align: center;
-  }
-
-  text-align: left;
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row;
+  font-weight: 400;
+  font-size: 14px;
+  color: #fbfbfb;
 }
 
 .legendColor {
-  width: 20px;
-  height: 20px;
+  width: 24px;
+  height: 24px;
   display: inline-block;
-  margin-right: 5px;
+  margin-right: 10px;
+  border-radius: 2px;
 }
 
 .bottom_row {
   font-weight: bold;
-  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+
+  font-size: 14px;
 }
 
 .bottom_data {
-  padding: 10px;
+  padding: 16px;
+  font-weight: 600;
+  font-size: 14px;
+  color: #fbfbfb;
 }
 
 .expenses_summary {
-  color: red;
+  color: #e74c3c; /* Red for expenses */
+  font-weight: bold;
 }
 
 .income_summary {
-  color: green;
+  color: #f39c12; /* Yellow-orange for income */
+  font-weight: bold;
 }
 
 .notice {
   color: white;
   font-size: 1rem;
   margin-top: 20px;
+  text-align: center;
 }

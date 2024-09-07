@@ -1,7 +1,7 @@
 .doughnutContainer {
   position: relative;
-  width: 300px;
-  height: 300px;
+  width: 280px;
+  height: 280px;
   margin: auto;
   margin-bottom: 20px;
 }
@@ -16,7 +16,6 @@
   font-weight: bold;
   text-align: center;
 }
-.notice {
-  text-align: center;
-  margin-bottom: 20px;
+.doughnut canvas {
+  box-shadow: inset 0 0 8px 0 #000;
 }
