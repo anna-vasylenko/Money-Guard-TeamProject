@@ -9,10 +9,6 @@ const StatisticsTable = () => {
     expenseSummary = 0,
   } = useSelector(selectPeriodTransactions);
 
-  // if (categoriesSummary.length === 0) {
-  //   return <p className={s.notice}>Sorry, No transactions for this period</p>;
-  // }
-
   const backgroundColor = [
     "#F6C23E",
     "#3DD597",
@@ -26,10 +22,10 @@ const StatisticsTable = () => {
   ];
 
   return (
-    <>
+    <div className={s.wrapper}>
       <table className={s.table}>
         <thead className={s.tableHead}>
-          <tr className={s.table_row}>
+          <tr className={s.table_heading}>
             <th className={s.table_heading}>Category</th>
             <th className={s.table_heading}>Sum</th>
           </tr>
@@ -68,7 +64,7 @@ const StatisticsTable = () => {
           </tr>
         </tbody>
       </table>
-    </>
+    </div>
   );
 };
 
