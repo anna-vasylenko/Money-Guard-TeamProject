@@ -32,7 +32,7 @@ const StatisticsTable = () => {
                       backgroundColor[index % backgroundColor.length],
                   }}
                 ></span>
-                {category.name}
+                <span>{category.name}</span>
               </td>
               <td className={s.table_data}>{category.total.toFixed(2)}</td>
             </tr>
