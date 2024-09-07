@@ -2,14 +2,11 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  /* margin: 20px 0; */
 }
 
 .table {
-  /* Rounded corners */
   min-width: 280px;
   border-collapse: collapse;
-  /* margin-bottom: 20px; */
   color: white;
 }
 
@@ -27,7 +24,7 @@
   align-items: center;
   justify-content: space-between;
   flex-direction: row;
-  border-bottom: 1px solid rgba(128, 128, 128, 0.2); /* Subtle row borders */
+  border-bottom: 1px solid rgba(128, 128, 128, 0.2);
 }
 
 .table_heading {
@@ -82,12 +79,12 @@
 }
 
 .expenses_summary {
-  color: #e74c3c; /* Red for expenses */
+  color: #e74c3c;
   font-weight: bold;
 }
 
 .income_summary {
-  color: #f39c12; /* Yellow-orange for income */
+  color: #f39c12;
   font-weight: bold;
 }
 
