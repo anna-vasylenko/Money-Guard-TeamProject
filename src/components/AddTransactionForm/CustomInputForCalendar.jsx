@@ -1,6 +1,6 @@
 import { forwardRef } from "react";
 import s from "./CustomInputForCalendar.module.css";
-import { RiCalendar2Fill } from "react-icons/ri";
+import { Icons } from "../Icons/Icons";
 
 const CustomInputForCalendar = forwardRef(({ value, onClick }, ref) => {
   return (
@@ -13,7 +13,7 @@ const CustomInputForCalendar = forwardRef(({ value, onClick }, ref) => {
       className={s.dataInput}
     >
       {value}
-      <RiCalendar2Fill className={s.calendar} />
+      <Icons name={"calendar"} width={18} height={20} />
     </button>
   );
 });

@@ -28,7 +28,6 @@ const AddTransactionForm = ({ closeModal }) => {
 
   const validationSchema = Yup.object().shape({
     type: Yup.string().required("Transaction type is required"),
-    // transactionDate: Yup.date().required("Date is required"),
     comment: Yup.string().required("Comment is required"),
     amount: Yup.number()
       .required("Amount is required")
