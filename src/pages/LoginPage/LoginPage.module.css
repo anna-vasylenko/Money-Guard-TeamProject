@@ -1,1 +1,16 @@
-.loginPage {}
+.loginPage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  background-image: url("../../images/backgroundLogin_tab.webp");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+@media only screen and (min-width: 1280px) {
+  .loginPage {
+    background-image: url("../../images/backgroundLogin_desctop.webp");
+  }
+}

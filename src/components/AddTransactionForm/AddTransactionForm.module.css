@@ -1,5 +1,6 @@
-.wrapper {
-  padding: 30px;
+.modalContainer {
+  /* color: white; */
+  padding: 20px;
 }
 
 input[type="number"]::-webkit-outer-spin-button,
@@ -8,6 +9,115 @@ input[type="number"]::-webkit-inner-spin-button {
   margin: 0;
 }
 
-/* input[type="number"] {
+input[type="number"] {
   -moz-appearance: textfield;
-} */
+}
+
+.title {
+  font-weight: 400;
+  font-size: 24px;
+  text-align: center;
+  color: #fbfbfb;
+  margin-bottom: 40px;
+}
+
+@media only screen and (min-width: 768px) {
+  .title {
+    font-size: 30px;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .select {
+    width: 394px;
+  }
+}
+
+.select :global(.react-select__control) {
+  background-color: rgba(74, 86, 226, 0.1);
+  border: 1px solid var(--white-60);
+  border-radius: 8px;
+  box-shadow: none;
+}
+
+.select :global(.react-select__single-value) {
+  color: var(--white);
+  font-weight: 400;
+}
+
+.select :global(.react-select__menu) {
+  z-index: 2;
+  background: linear-gradient(
+    360deg,
+    rgba(83, 61, 186) 0%,
+    rgba(80, 48, 154) 35.94%,
+    rgba(106, 70, 165) 61.04%,
+    rgba(133, 93, 175) 100%
+  );
+  box-shadow: 0 4px 60px 0 rgba(0, 0, 0, 0.25);
+  border-radius: 8px;
+  margin-top: 0px;
+  overflow: hidden;
+
+  scrollbar-width: thin;
+  scrollbar-color: #ff868d #ff868d;
+}
+
+.select :global(.react-select__option) {
+  background-color: var(--form-color);
+}
+
+.select :global(.react-select__option:hover) {
+  color: var(--dashboard-text);
+}
+
+.select :global(.react-select__dropdown-indicator) {
+  color: var(--white);
+}
+
+&::-webkit-scrollbar {
+  width: 8px;
+  background-color: #51338a;
+}
+
+.btnAdd,
+.btnCancel {
+  width: 280px;
+  height: 50px;
+  border-radius: 20px;
+  border: none;
+  font-weight: 400;
+  font-size: 18px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.btnAdd {
+  box-shadow: 1px 9px 15px 0 rgba(0, 0, 0, 0.2);
+  background: linear-gradient(
+    167deg,
+    #ffc727 0%,
+    #9e40ba 61.46%,
+    #7000ff 90.54%
+  );
+  color: #fbfbfb;
+}
+
+@media only screen and (min-width: 768px) {
+  .btnAdd {
+    width: 300px;
+  }
+}
+
+.btnCancel {
+  box-shadow: 1px 9px 15px 0 rgba(0, 0, 0, 0.2);
+  background: #fbfbfb;
+  color: #623f8b;
+}
+
+@media only screen and (min-width: 768px) {
+  .btnCancel {
+    width: 300px;
+  }
+}
