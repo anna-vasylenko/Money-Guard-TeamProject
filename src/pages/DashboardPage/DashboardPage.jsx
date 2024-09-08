@@ -33,6 +33,7 @@ const DashboardPage = () => {
             </div>
             {!isMobile && <Currency />}
           </div>
+
           <div>
             <Suspense fallback={<Loader />}>
               <Outlet />
