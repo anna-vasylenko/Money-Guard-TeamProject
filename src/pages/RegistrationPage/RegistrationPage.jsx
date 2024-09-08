@@ -3,6 +3,7 @@ import RegistrationForm from '../../components/RegistrationForm/RegistrationForm
 import { useDispatch } from 'react-redux';
 import { registerThunk } from '../../redux/auth/operations.js';
 // import { toast } from 'react-toastify';
+import s from './RegistrationPage.module.css'
 
 const initialValues = {
   username: '',
@@ -26,12 +27,14 @@ const RegistrationPage = () => {
   };
 
   return (
-    <RegistrationForm
-      type="register"
-      title="Registration"
-      onSubmit={handleSubmit}
-      initialValues={initialValues}
-    />
+    <div className={ s.pageRegister}>
+      <RegistrationForm
+        type="register"
+        title="Registration"
+        onSubmit={handleSubmit}
+        initialValues={initialValues}
+      />
+    </div>
   );
 };
 
