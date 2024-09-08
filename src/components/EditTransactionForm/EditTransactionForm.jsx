@@ -33,18 +33,14 @@ const EditTransactionForm = () => {
   };
 
   const handleSubmit = (values, options) => {
-    dispatch(
-      updateTransaction({
-        transactionDate: startDate.toISOString(),
-        // type: transaction.type,
-        // categoryId: transaction.categoryId,
-        comment: values.comment,
-        amount: values.amount,
-      })
-    );
-    console.log(initialValues.amount);
-
-    options.resetForm();
+    // dispatch(
+    //   updateTransaction({
+    //     transactionDate: startDate.toISOString(),
+    //     comment: values.comment,
+    //     amount: values.amount,
+    //   })
+    // );
+    // options.resetForm();
     dispatch(closeModal());
   };
 
@@ -92,7 +88,12 @@ const EditTransactionForm = () => {
           </div>
 
           <label className={s.label}>
-            <Field type="text" name="comment" className={s.input} />
+            <Field
+              type="text"
+              name="comment"
+              placeholder="comment"
+              className={s.input}
+            />
             <ErrorMessage
               name="comment"
               component="span"

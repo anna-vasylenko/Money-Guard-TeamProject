@@ -23,8 +23,8 @@ const TransactionsList = () => {
           </tr>
         </thead>
         <tbody className={s.th}>
-          {sortedTransactions.map((transaction, index) => (
-            <TransactionsItem key={index} transaction={transaction} />
+          {sortedTransactions.map((transaction) => (
+            <TransactionsItem key={transaction.id} transaction={transaction} />
           ))}
         </tbody>
       </table>
