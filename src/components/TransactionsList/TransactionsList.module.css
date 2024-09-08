@@ -45,31 +45,7 @@
   background-color: #3d3a4e;
 }
 
-.headTab {
-  background-color: rgba(82, 59, 126, 1);
-  border-radius: 8px;
-  font-family: Poppins;
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: normal;
-}
-
-.financeTable {
-  color: var(--white, #fbfbfb);
-  font-family: Poppins;
-  font-weight: 600;
-  width: 100%;
-  border-collapse: separate;
-  border-spacing: 0;
-}
-
-.headTab.tr.thSum {
-  padding: 12px;
-  text-align: right;
-}
-
-.financeTable th {
+.date {
   text-align: left;
   padding: 16px;
   padding-left: 20px;
@@ -88,16 +64,8 @@
 .date {
   border-radius: 8px 0 0 8px;
 }
-
 .actions {
   border-radius: 0 8px 8px 0;
-}
-
-.financeTable td {
-  border-bottom: 1px solid rgba(255, 255, 255, 0.41);
-  padding: 16px;
-  font-weight: 400;
-  font-size: 14px;
 }
 
 @media screen and (max-width: 768px) {
