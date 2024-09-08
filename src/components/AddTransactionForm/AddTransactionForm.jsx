@@ -8,8 +8,9 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { addTransaction } from "../../redux/transaction/operations";
 import CustomInputForCalendar from "./CustomInputForCalendar";
+import { closeModal } from "../../redux/modal/slice";
 
-const AddTransactionForm = ({ closeModal }) => {
+const AddTransactionForm = () => {
   const [startDate, setStartDate] = useState(new Date());
 
   const dispatch = useDispatch();
@@ -45,10 +46,11 @@ const AddTransactionForm = ({ closeModal }) => {
     };
     dispatch(addTransaction(newTransaction));
     options.resetForm();
+    handleClickCancel();
   };
 
   const handleClickCancel = () => {
-    closeModal();
+    dispatch(closeModal());
   };
 
   return (
@@ -56,6 +58,7 @@ const AddTransactionForm = ({ closeModal }) => {
       <h2>Add transaction</h2>
       <span>Income</span>
       <span>Expense</span>
+
       <Formik
         initialValues={initialValues}
         onSubmit={handleSubmit}
@@ -97,7 +100,7 @@ const AddTransactionForm = ({ closeModal }) => {
           <button className={s.btn} type="submit">
             Add
           </button>
-          <button className={s.btn} type="submit" onClick={handleClickCancel}>
+          <button className={s.btn} type="button" onClick={handleClickCancel}>
             Cancel
           </button>
         </Form>

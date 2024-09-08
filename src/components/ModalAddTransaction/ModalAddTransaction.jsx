@@ -1,10 +1,15 @@
+import { useSelector } from "react-redux";
+import { selectIsAddModalOpen } from "../../redux/modal/selectors";
 import AddTransactionForm from "../AddTransactionForm/AddTransactionForm";
 import ModalWrapper from "../ModalWrapper/ModalWrapper";
+import AddExpenseTransactionForm from "../AddExpenseTransactionForm/AddExpenseTransactionForm";
 
-const ModalAddTransaction = ({ closeModal, isOpenModal }) => {
+const ModalAddTransaction = () => {
+  const isAddModalOpen = useSelector(selectIsAddModalOpen);
   return (
-    <ModalWrapper closeModal={closeModal} isOpenModal={isOpenModal}>
-      <AddTransactionForm closeModal={closeModal} />
+    <ModalWrapper isOpenModal={isAddModalOpen}>
+      <AddTransactionForm />
+      <AddExpenseTransactionForm />
     </ModalWrapper>
   );
 };
