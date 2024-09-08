@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import DatePicker from "react-datepicker";
@@ -17,8 +17,8 @@ import { getTransactionCategoryID } from "../../helpers/transactionCategory";
 const AddTransactionForm = () => {
   const [startDate, setStartDate] = useState(new Date());
   const [transactionType, setTransactionType] = useState(false);
-  const data = useSelector(selectCategories);
-  // const [incomeCategory, setIncomeCategory] = useState(null);
+  const categories = useSelector(selectCategories);
+  const [incomeCategory, setIncomeCategory] = useState(null);
   const [selectCategory, setSelectCategory] = useState(null);
 
   console.log(selectCategory);
@@ -27,33 +27,96 @@ const AddTransactionForm = () => {
 
   const dispatch = useDispatch();
 
+  // const initialValues = {
+  //   transactionDate: new Date(),
+  //   comment: "vvvvvvvvvvvvv",
+  //   amount: 10,
+  //   categoryId: "063f1132-ba5d-42b4-951d-44011ca46262",
+  //   type: "INCOME",
+  // };
+
   const initialValues = {
-    startDate: new Date(),
+    transactionDate: new Date(),
     comment: "",
     amount: "",
+    categoryId: "",
+    // type: "",
+    selectedCategory: null,
   };
+
+  // const transactionTypeee = (transactionType) => {
+  //   let type = "";
+  //   if (transactionType) {
+  //     type = "INCOME";
+  //   } else {
+  //     type = "EXPENSE";
+  //   }
+
+  //   return type;
+  // };
+
+  // transactionTypeee(transactionType);
+
+  useEffect(() => {
+    if (categories.length > 0) {
+      const defaultCategory = categories.find(
+        (category) => category.type === "INCOME"
+      );
+      setIncomeCategory(defaultCategory ? defaultCategory.id : null);
+    }
+  }, [categories]);
+
+  const categoryOptions = categories
+    .filter(
+      (category) => category.type === (transactionType ? "INCOME" : "EXPENSE")
+    )
+    .map((category) => ({
+      value: category.id,
+      label: category.name,
+    }));
 
   const handleSubmit = (values, options) => {
     const newTransaction = {
-      comment: values.comment,
-      amount: values.amount,
-      // amount: transactionType
-      //   ? parseFloat(values.amount)
-      //   : -parseFloat(values.amount),
-      transactionDate: startDate.toISOString(),
+      ...values,
       type: transactionType ? "INCOME" : "EXPENSE",
-      categoryId: getTransactionCategoryID(transactionType, selectCategory),
+      transactionDate: startDate.toISOString(),
+      // comment: values.comment,
+      amount: transactionType
+        ? parseFloat(values.amount)
+        : -parseFloat(values.amount),
+      categoryId: transactionType ? incomeCategory : selectCategory,
     };
+
+    console.log(transactionType ? "INCOME" : "EXPENSE");
+
+    // const newTransaction = {
+    //   comment: values.comment,
+    //   amount: values.amount,
+    // amount: transactionType
+    //   ? parseFloat(values.amount)
+    //   : -parseFloat(values.amount),
+    //   transactionDate: startDate.toISOString(),
+    //   type: transactionType ? "INCOME" : "EXPENSE",
+    //   categoryId: getTransactionCategoryID(transactionType, selectCategory),
+    // };
     // console.log(newTransaction);
-    dispatch(addTransaction(newTransaction));
-    options.resetForm();
+    dispatch(addTransaction(newTransaction))
+      .unwrap()
+      .then(() => dispatch(closeModal()))
+      .catch((error) => {
+        console.log(error);
+
+        // toast.error(error);
+        options.setSubmitting(false);
+      });
+    // options.resetForm())
     handleClickCancel();
   };
 
-  const categories = data.map((category) => ({
-    value: category.id,
-    label: category.name,
-  }));
+  // const categories = data.map((category) => ({
+  //   value: category.id,
+  //   label: category.name,
+  // }));
 
   const handleCategoryName = (selectedCategory) => {
     setSelectCategory(selectedCategory.value);
@@ -75,7 +138,7 @@ const AddTransactionForm = () => {
               className={s.select}
               // value={selectCategory}
               placeholder="Select a category"
-              options={categories}
+              options={categoryOptions}
               onChange={handleCategoryName}
               classNamePrefix="react-select"
             />
