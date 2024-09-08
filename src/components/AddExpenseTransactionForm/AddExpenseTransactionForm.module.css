@@ -1,3 +1,72 @@
+/* .toggleContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #4a148c;
+}
+
+.toggleSwitch {
+  width: 80px;
+  height: 40px;
+  flex-shrink: 0;
+  position: relative;
+
+  border-radius: 30px;
+  background: var(--white, #fbfbfb);
+  cursor: pointer;
+}
+
+.toggleSlider {
+  position: absolute;
+  top: -2;
+  left: -15;
+  width: 44px;
+  height: 44px;
+  border-radius: 9999px;
+  transition: all 0.3s ease-in-out;
+}
+
+.toggleSwitch.income .toggleSlider {
+  transform: translateX(0);
+  background-color: #fbbf24;
+}
+
+.toggleSwitch.expense .toggleSlider {
+  transform: translateX(58px);
+  background-color: #f87171;
+}
+
+.toggleSymbol {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  color: white;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.toggleLabels {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 1rem;
+}
+
+.toggleLabels span {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #9ca3af;
+  transition: color 0.3s ease-in-out;
+}
+
+.toggleLabels span.active {
+  color: #1f2937;
+} */
+
 .select {
   width: 280px;
 }
