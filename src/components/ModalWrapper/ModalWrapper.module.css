@@ -17,3 +17,11 @@
   width: 454px;
   height: 454px;
 }
+
+.modalContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
