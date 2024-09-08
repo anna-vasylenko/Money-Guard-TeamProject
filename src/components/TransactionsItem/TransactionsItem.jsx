@@ -13,21 +13,21 @@ const formatDate = (dateString) => {
 };
 
 const TransactionsItem = ({ transaction }) => {
+  const dispatch = useDispatch();
   const sum = Math.abs(transaction.amount);
   const categories = useSelector(selectCategories);
   const category = getTransactionCategory(transaction.categoryId, categories);
-  const dispatch = useDispatch();
   const handleClick = () => {
     dispatch(openEditModal());
     dispatch(setCurrentTransaction({ transaction }));
   };
 
   return (
-    <tr className={s.tableSection}>
-      <td className={s.date}>{formatDate(transaction.transactionDate)}</td>
-      <td className={s.type}>{transaction.type === "INCOME" ? "+" : "-"}</td>
-      <td className={s.category}>{category}</td>
-      <td className={s.comment}>{transaction.comment}</td>
+    <tr>
+      <td>{formatDate(transaction.transactionDate)}</td>
+      <td>{transaction.type === "INCOME" ? "+" : "-"}</td>
+      <td>{category}</td>
+      <td>{transaction.comment}</td>
       <td className={transaction.type === "INCOME" ? s.income : s.expense}>
         {sum}
       </td>
