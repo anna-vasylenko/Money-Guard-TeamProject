@@ -11,7 +11,6 @@ const Currency = () => {
     const fetchRates = async () => {
       try {
         const currencyData = await getCurrencyRates();
-        console.log("Currency data:", currencyData);
 
         if (currencyData.usdRate) setUsdRate(currencyData.usdRate);
         if (currencyData.euroRate) setEuroRate(currencyData.euroRate);

@@ -20,7 +20,6 @@ const fetchCurrencyData = async () => {
 const getCachedCurrencyData = () => {
   const cachedData = JSON.parse(localStorage.getItem(CURRENCY_CACHE_KEY));
   if (cachedData && Date.now() - cachedData.timestamp < 3600000) {
-    console.log("Using cached data:", cachedData);
     return cachedData;
   }
   return null;

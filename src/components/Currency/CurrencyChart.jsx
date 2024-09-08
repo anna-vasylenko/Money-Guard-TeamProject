@@ -48,13 +48,20 @@ const CurrencyChart = ({ data }) => {
     <div className={s.graph}>
       <ResponsiveContainer width="100%" height="100%">
         <AreaChart data={data} className="custom-chart">
+          <defs>
+            <linearGradient id="colorGradient" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stopColor="#ffffff" stopOpacity={0.4} />
+
+              <stop offset="100%" stopColor="#ffffff" stopOpacity={-1.0} />
+            </linearGradient>
+          </defs>
           <Area
             type="monotone"
             dataKey="currency"
             stroke="none"
-            fill="rgba(255, 255, 255, 0.2)"
+            fill="url(#colorGradient)"
             fillOpacity={1}
-            transform="translate(0, 15)"
+            transform="translate(0, 10)"
           />
 
           <Area
@@ -72,7 +79,7 @@ const CurrencyChart = ({ data }) => {
               position="top"
               offset={10}
               fill="#ff6f61"
-              fontSize={14}
+              fontSize={12}
             />
           </Area>
           <Tooltip />
