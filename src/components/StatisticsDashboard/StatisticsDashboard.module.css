@@ -31,7 +31,7 @@
 
 @media only screen and (min-width: 1280px) {
   .select {
-    width: 182px;
+    width: 181px;
   }
 }
 
@@ -44,11 +44,11 @@
 
 .select :global(.react-select__single-value) {
   color: var(--white);
-  font-weight: 400;
 }
 
 .select :global(.react-select__menu) {
   z-index: 2;
+  max-height: 157px;
   background: linear-gradient(
     360deg,
     rgba(83, 61, 186) 0%,

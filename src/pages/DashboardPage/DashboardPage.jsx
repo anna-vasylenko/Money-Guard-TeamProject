@@ -15,7 +15,7 @@ const DashboardPage = () => {
   const { isMobile } = useMedia();
 
   return (
-    <div>
+    <div className={s.container}>
       <Header />
       <main className={s.main}>
         <div className={s.navItem}>
@@ -31,6 +31,12 @@ const DashboardPage = () => {
           </Suspense>
         </div>
       </main>
+      <div className={s.ellipse16}></div>
+      <div className={s.ellipse18}></div>
+      <div className={s.ellipse14}></div>
+      <div className={s.ellipse17}></div>
+      <div className={s.ellipse15}></div>
+      <div className={s.ellipse19}></div>
       <ModalLogOut />
       <ModalEditTransaction />
       <ModalAddTransaction />

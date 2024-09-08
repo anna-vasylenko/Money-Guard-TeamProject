@@ -3,14 +3,9 @@
   align-items: center;
   justify-content: center;
 }
-.wrapper {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+
 .table {
-  min-width: 280px;
-  min-width: 280px;
+  width: 280px;
   border-collapse: collapse;
   color: white;
 }
@@ -39,8 +34,7 @@
   align-items: center;
   justify-content: space-between;
   flex-direction: row;
-  /* border-bottom: 1px solid rgba(128, 128, 128, 0.2); */
-  border-bottom: 2px solid rgba(174, 173, 173, 0.2);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.41);
 }
 .table_row:hover {
   box-shadow: rgba(218, 213, 213, 0.15) 2.4px 2.4px 3.2px;
@@ -61,9 +55,9 @@
 
 .table_body {
   background-color: transparent;
-  background-color: transparent;
 }
 .table_data {
+  font-family: Poppins;
   padding: 16px;
   display: flex;
   align-items: center;
@@ -71,24 +65,13 @@
   flex-direction: row;
   font-weight: 400;
   font-size: 14px;
-  color: #fbfbfb;
+  color: var(--white);
 }
 .legendColor {
   width: 24px;
   height: 24px;
   display: inline-block;
-  margin-right: 10px;
-  border-radius: 2px;
-}
-.legendColor:hover {
-  box-shadow: rgba(0, 0, 0, 0.15) 2.4px 2.4px 3.2px;
-}
-
-.legendColor {
-  width: 24px;
-  height: 24px;
-  display: inline-block;
-  margin-right: 10px;
+  margin-right: 16px;
   border-radius: 2px;
 }
 .legendColor:hover {
@@ -96,49 +79,51 @@
 }
 
 .bottom_row {
-  font-weight: bold;
   display: flex;
   justify-content: space-between;
-  font-size: 14px;
 }
-.bottom_data {
-  padding: 16px;
-  font-weight: 600;
-  font-size: 14px;
-  color: #fbfbfb;
-}
-.expenses_summary {
-  color: #e74c3c;
-  font-weight: bold;
-}
-.income_summary {
-  color: #f39c12;
-  font-weight: bold;
-}
-.bottom_row {
-  font-weight: bold;
+
+.bottomTop {
   display: flex;
   justify-content: space-between;
-  font-size: 14px;
+  margin-top: 16px;
 }
 .bottom_data {
-  padding: 16px;
-  font-weight: 600;
+  padding: 0 16px;
+  margin-bottom: 19px;
+  color: var(--white);
+  font-family: Poppins;
   font-size: 14px;
-  color: #fbfbfb;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
 }
+
 .expenses_summary {
-  color: #e74c3c;
-  font-weight: bold;
+  color: var(--dashboard-text);
+  font-family: var(--font-family);
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
 }
+
 .income_summary {
-  color: #f39c12;
-  font-weight: bold;
+  color: var(--yellow);
+  font-family: var(--font-family);
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
 }
-.notice {
-  color: white;
-  font-size: 1rem;
-  margin-top: 20px;
-  text-align: center;
-  text-align: center;
+
+@media only screen and (min-width: 768px) {
+  .table {
+    width: 336px;
+  }
+}
+@media only screen and (min-width: 1280px) {
+  .table {
+    width: 395px;
+  }
 }
