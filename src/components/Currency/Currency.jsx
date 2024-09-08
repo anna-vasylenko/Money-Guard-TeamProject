@@ -50,7 +50,7 @@ const Currency = () => {
           <tr className={s.tr}>
             <td style={{ paddingLeft: "2px" }}>EUR</td>
             <td style={{ paddingLeft: "8px" }}>{euroRate.rateBuy}</td>
-            <td style={{ paddingLeft: "2px" }}>{euroRate.rateSell}</td>
+            <td style={{ paddingLeft: "5px" }}>{euroRate.rateSell}</td>
           </tr>
         </tbody>
       </table>

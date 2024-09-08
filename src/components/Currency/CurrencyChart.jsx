@@ -45,7 +45,7 @@ const CurrencyChart = ({ data }) => {
   };
 
   return (
-    <div className={s.graphik}>
+    <div className={s.graph}>
       <ResponsiveContainer width="100%" height="100%">
         <AreaChart data={data} className="custom-chart">
           <Area

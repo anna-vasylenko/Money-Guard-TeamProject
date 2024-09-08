@@ -47,11 +47,19 @@ const DashboardPage = () => {
       <button onClick={openEditModal}>Open Edit</button>
       <button onClick={openAddModal}>Open Add</button>
       <Header />
-      <main>
-        <Navigation />
-        <Suspense fallback={<Loader />}>
-          <Outlet />
-        </Suspense>
+      <main className={s.main}>
+        <div className={s.navItem}>
+          <div className={s.wrapper}>
+            <Navigation />
+            <Balance />
+          </div>
+          {!isMobile && <Currency />}
+        </div>
+        <div>
+          <Suspense fallback={<Loader />}>
+            <Outlet />
+          </Suspense>
+        </div>
       </main>
       <ModalLogOut closeModal={closeModals} isOpenModal={isLogOutModalOpen} />
       <ModalEditTransaction
