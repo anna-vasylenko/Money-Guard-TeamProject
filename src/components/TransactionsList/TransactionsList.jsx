@@ -18,7 +18,7 @@ const TransactionsList = () => {
             <th className={s.th}>Type</th>
             <th className={s.th}>Category</th>
             <th className={s.th}>Comment</th>
-            <th className={s.th}>Sum</th>
+            <th className={s.thSum}>Sum</th>
             <th className={s.th}></th>
           </tr>
         </thead>
