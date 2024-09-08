@@ -42,6 +42,7 @@ const transactionsSlice = createSlice({
         state.items = state.items.filter((item) => item.id !== action.payload);
         state.currentTransaction = null;
       })
+
       .addCase(updateTransaction.fulfilled, (state, action) => {
         state.items = state.items.map((item) =>
           item.id === state.currentTransaction.id ? action.payload : item
