@@ -2,14 +2,37 @@ td.income {
   color: #fbbf24;
   font-weight: 600;
   text-align: right;
+  padding-right: 15px;
 }
 
 td.expense {
   color: #f87171;
   font-weight: 600;
   text-align: right;
+  padding-right: 15px;
 }
-
+.date {
+  text-align: left;
+  padding-left: 20px;
+}
+.type {
+  text-align: left;
+  padding-left: 32px;
+}
+.category {
+  text-align: left;
+  padding-left: 16px;
+}
+.comment {
+  text-align: left;
+  padding-left: 16px;
+}
+.actionBtn {
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
 .comment:first-letter {
   text-transform: capitalize;
 }
@@ -21,13 +44,6 @@ td.expense {
 
 .textEdit {
   display: none;
-}
-
-@media screen and (max-width: 768px) {
-  .textEdit {
-    display: contents;
-    font-size: 16px;
-  }
 }
 .editBtn {
   color: #9ca3af;
@@ -56,8 +72,9 @@ td.expense {
   background-color: #ea580c;
 }
 
-.actionBtn {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
+@media screen and (max-width: 768px) {
+  .textEdit {
+    display: contents;
+    font-size: 16px;
+  }
 }
