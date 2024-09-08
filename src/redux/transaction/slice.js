@@ -44,7 +44,7 @@ const transactionsSlice = createSlice({
       })
       .addCase(updateTransaction.fulfilled, (state, action) => {
         state.items = state.items.map((item) =>
-          item.id === state.currentTransaction.id ? { ...action.payload } : item
+          item.id === state.currentTransaction.id ? action.payload : item
         );
         state.currentContact = null;
       })
