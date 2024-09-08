@@ -1,10 +1,10 @@
-import { Formik, Field, Form, ErrorMessage } from 'formik';
-import { Link } from 'react-router-dom';
-import s from './RegistrationForm.module.css';
-import { useDispatch } from 'react-redux';
-import { registerThunk } from '../../redux/auth/operations';
-import { validationSchemaRegister } from '../../helpers/registrationSchema';
-import PasswordStrengthBar from 'react-password-strength-bar';
+import { Formik, Field, Form, ErrorMessage } from "formik";
+import { Link } from "react-router-dom";
+import s from "./RegistrationForm.module.css";
+import { useDispatch } from "react-redux";
+import { registerThunk } from "../../redux/auth/operations";
+import { validationSchemaRegister } from "../../helpers/registrationSchema";
+import PasswordStrengthBar from "react-password-strength-bar";
 
 const RegistrationForm = () => {
   const dispatch = useDispatch();
@@ -16,10 +16,10 @@ const RegistrationForm = () => {
   return (
     <Formik
       initialValues={{
-        email: '',
-        username: '',
-        password: '',
-        confirmPassword: '',
+        email: "",
+        username: "",
+        password: "",
+        confirmPassword: "",
       }}
       validationSchema={validationSchemaRegister}
       onSubmit={onSubmit}

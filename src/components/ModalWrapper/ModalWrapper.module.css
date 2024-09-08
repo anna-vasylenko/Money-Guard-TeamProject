@@ -2,7 +2,16 @@
   background-color: transparent;
   position: absolute;
   right: 20px;
+  top: 20px;
   border: 0;
   display: flex;
   justify-content: flex-end;
+}
+
+.modalEllipse {
+  border-radius: 454px;
+  background-color: rgba(47, 21, 176, 0.7);
+  filter: blur(100px);
+  width: 454px;
+  height: 454px;
 }
