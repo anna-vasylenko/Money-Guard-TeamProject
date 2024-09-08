@@ -1,9 +1,10 @@
-import { Formik, Field, Form, ErrorMessage } from 'formik';
-import { Link } from 'react-router-dom';
-// import s from './RegistrationForm.module.css';
-import { useDispatch } from 'react-redux';
-import { registerThunk } from '../../redux/auth/operations';
-import { validationSchemaRegister } from '../../helpers/registrationSchema';
+import { Formik, Field, Form, ErrorMessage } from "formik";
+import { Link } from "react-router-dom";
+import s from "./RegistrationForm.module.css";
+import { useDispatch } from "react-redux";
+import { registerThunk } from "../../redux/auth/operations";
+import { validationSchemaRegister } from "../../helpers/registrationSchema";
+import PasswordStrengthBar from "react-password-strength-bar";
 
 const RegistrationForm = () => {
   const dispatch = useDispatch();
@@ -15,43 +16,65 @@ const RegistrationForm = () => {
   return (
     <Formik
       initialValues={{
-        email: '',
-        username: '',
-        password: '',
-        confirmPassword: '',
+        email: "",
+        username: "",
+        password: "",
+        confirmPassword: "",
       }}
-      const
       validationSchema={validationSchemaRegister}
       onSubmit={onSubmit}
     >
-      {({ isSubmitting }) => (
-        <Form>
-          <p>Money Guard</p>
-          <div>
-            <Field type="text" name="username" placeholder="Name" />
-            <ErrorMessage name="username" component="div" />
-          </div>
-          <div>
-            <Field type="email" name="email" placeholder="E-mail" />
-            <ErrorMessage name="email" component="div" />
-          </div>
+      {({ isSubmitting, values }) => (
+        <Form className={s.form}>
+          <p className={s.title}>Money Guard</p>
+          <label className={s.label}>
+            <Field
+              type="text"
+              name="username"
+              placeholder="Name"
+              className={s.input}
+            />
+            <ErrorMessage name="username" component="div" className={s.error} />
+          </label>
+          <label className={s.label}>
+            <Field
+              type="email"
+              name="email"
+              placeholder="E-mail"
+              className={s.input}
+            />
+            <ErrorMessage name="email" component="div" className={s.error} />
+          </label>
+          <label className={s.label}>
+            <Field
+              type="password"
+              name="password"
+              placeholder="Password"
+              className={s.input}
+            />
 
-          <div>
-            <Field type="password" name="password" placeholder="Password" />
-            <ErrorMessage name="password" component="div" />
-          </div>
-          <div>
+            <ErrorMessage name="password" component="div" className={s.error} />
+          </label>
+          <label className={s.label}>
             <Field
               type="password"
               name="confirmPassword"
               placeholder="Confirm Password"
+              className={s.input}
             />
-            <ErrorMessage name="confirmPassword" component="div" />
-          </div>
-          <button disabled={isSubmitting} type="submit">
+            <PasswordStrengthBar password={values.password} />
+            <ErrorMessage
+              name="confirmPassword"
+              component="div"
+              className={s.error}
+            />
+          </label>
+          <button className={s.but} disabled={isSubmitting} type="submit">
             Register
           </button>
-          <Link to="/login">Login</Link>
+          <Link to="/login" className={s.link}>
+            Login
+          </Link>
         </Form>
       )}
     </Formik>

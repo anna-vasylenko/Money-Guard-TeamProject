@@ -1,5 +1,6 @@
 import axios from "axios";
 import { createAsyncThunk } from "@reduxjs/toolkit";
+import { getBalanceThunk } from "../auth/operations";
 
 export const getTransactions = createAsyncThunk(
   "transactions/getAll",
@@ -32,6 +33,7 @@ export const deleteTransaction = createAsyncThunk(
   async (id, thunkAPI) => {
     try {
       const { data } = await axios.delete(`/api/transactions/${id}`);
+      thunkAPI.dispatch(getBalanceThunk());
       return data.id;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -49,17 +51,17 @@ export const deleteTransaction = createAsyncThunk(
 
 export const updateTransaction = createAsyncThunk(
   "transactions/updateTransaction",
-  async ({ transactionDate, comment, amount, id }, thunkApi) => {
+  async ({ transactionDate, comment, amount, id }, thunkAPI) => {
     try {
       const { data } = await axios.patch(`/api/transactions/${id}`, {
         transactionDate,
         comment,
         amount,
       });
-
+      thunkAPI.dispatch(getBalanceThunk());
       return data;
     } catch (error) {
-      return thunkApi.rejectWithValue(error.message);
+      return thunkAPI.rejectWithValue(error.message);
     }
   }
 );
@@ -68,9 +70,7 @@ export const getPeriodTransactions = createAsyncThunk(
   "transactions/getPeriodTransactions",
   async (period, thunkAPI) => {
     try {
-      // console.log(period);
       const { month, year } = period;
-      // console.log(year);
       if (month || year) {
         const { data } = await axios.get("/api/transactions-summary", {
           params: { month, year },
