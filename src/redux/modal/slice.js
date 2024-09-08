@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { logoutThunk } from "../auth/operations";
 
 const initialState = {
   isLogOutModalOpen: false,
@@ -23,6 +24,11 @@ const modalSlice = createSlice({
     closeModal() {
       return initialState;
     },
+  },
+  extraReducers: (builder) => {
+    builder.addCase(logoutThunk.fulfilled, () => {
+      return initialState;
+    });
   },
 });
 
