@@ -1,34 +1,54 @@
 import { NavLink } from "react-router-dom";
 import { useMedia } from "../../hooks/useMedia";
 import { Icons } from "../Icons/Icons";
-// import s from "./Navigation.module.css";
+import s from "../Navigation/Navigation.module.css";
+import clsx from "clsx";
 
 const Navigation = () => {
   const { isMobile } = useMedia();
+  const buildLinkClass = ({ isActive }) => {
+    return clsx(s.item, isActive && s.linkActive);
+  };
   return (
-    <div>
-      <ul>
+    <nav>
+      <ul className={s.list}>
         <li>
-          <NavLink to="/">
-            <Icons name={"home"} width={18} height={18} />
-            {!isMobile && <span>Home</span>}
+          <NavLink className={buildLinkClass} to="/">
+            <div className={s.wrapper}>
+              <Icons className={s.icon} name={"home"} width={24} height={24} />
+            </div>
+            {!isMobile && <span className={s.navText}>Home</span>}
           </NavLink>
         </li>
         <li>
-          <NavLink to="/statistics">
-            <Icons name={"statistics"} width={18} height={18} />
-            {!isMobile && <span>Statistics</span>}
+          <NavLink className={buildLinkClass} to="/statistics">
+            <div className={s.wrapper}>
+              <Icons
+                className={s.icon}
+                name={"statistics"}
+                width={24}
+                height={24}
+              />
+            </div>
+            {!isMobile && <span className={s.navText}>Statistics</span>}
           </NavLink>
         </li>
         {isMobile && (
           <li>
-            <NavLink to="/currency">
-              <Icons name={"dollar"} width={18} height={18} />
+            <NavLink className={buildLinkClass} to="/currency">
+              <div className={s.wrapper}>
+                <Icons
+                  className={s.icon}
+                  name={"dollar"}
+                  width={24}
+                  height={24}
+                />
+              </div>
             </NavLink>
           </li>
         )}
       </ul>
-    </div>
+    </nav>
   );
 };
 

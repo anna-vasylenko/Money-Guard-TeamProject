@@ -11,7 +11,9 @@ const StatisticsTable = () => {
   } = useSelector(selectPeriodTransactions);
 
   backgroundColor;
-
+  const expCategoriesSummary = categoriesSummary.filter(
+    (category) => category.type === "EXPENSE"
+  );
   return (
     <div className={s.wrapper}>
       <table className={s.table}>
@@ -22,7 +24,7 @@ const StatisticsTable = () => {
           </tr>
         </thead>
         <tbody className={s.table_body}>
-          {categoriesSummary.map((category, index) => (
+          {expCategoriesSummary.map((category, index) => (
             <tr key={index} className={s.table_row}>
               <td className={s.table_data}>
                 <span
@@ -32,12 +34,12 @@ const StatisticsTable = () => {
                       backgroundColor[index % backgroundColor.length],
                   }}
                 ></span>
-                <span>{category.name}</span>
+                {category.name}
               </td>
               <td className={s.table_data}>{category.total.toFixed(2)}</td>
             </tr>
           ))}
-          <tr className={s.bottom_row}>
+          <tr className={s.bottomTop}>
             <td className={s.bottom_data}>Expenses:</td>
             <td className={s.bottom_data}>
               <span className={s.expenses_summary}>

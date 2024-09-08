@@ -1,4 +1,4 @@
-import { Suspense } from "react";
+import { Suspense, useEffect } from "react";
 import { Outlet } from "react-router-dom";
 import { useMedia } from "../../hooks/useMedia";
 import Loader from "../../components/Loader/Loader";
@@ -10,30 +10,45 @@ import ModalAddTransaction from "../../components/ModalAddTransaction/ModalAddTr
 import s from "./DashboardPage.module.css";
 import Balance from "../../components/Balance/Balance";
 import Currency from "../../components/Currency/Currency";
+import { getTransactions } from "../../redux/transaction/operations";
+import { useDispatch } from "react-redux";
 
 const DashboardPage = () => {
+  const dispatch = useDispatch();
   const { isMobile } = useMedia();
+
+  useEffect(() => {
+    dispatch(getTransactions());
+  }, [dispatch]);
 
   return (
     <div>
       <Header />
-      <main className={s.main}>
-        <div className={s.navItem}>
-          <div className={s.wrapper}>
-            <Navigation />
-            <Balance />
+      <div className={s.container}>
+        <main className={s.main}>
+          <div className={s.navItem}>
+            <div className={s.wrapper}>
+              <Navigation />
+              <Balance />
+            </div>
+            {!isMobile && <Currency />}
           </div>
-          {!isMobile && <Currency />}
-        </div>
-        <div>
-          <Suspense fallback={<Loader />}>
-            <Outlet />
-          </Suspense>
-        </div>
-      </main>
-      <ModalLogOut />
-      <ModalEditTransaction />
-      <ModalAddTransaction />
+          <div>
+            <Suspense fallback={<Loader />}>
+              <Outlet />
+            </Suspense>
+          </div>
+        </main>
+        <div className={s.ellipse16}></div>
+        <div className={s.ellipse18}></div>
+        <div className={s.ellipse14}></div>
+        <div className={s.ellipse17}></div>
+        <div className={s.ellipse15}></div>
+        <div className={s.ellipse19}></div>
+        <ModalLogOut />
+        <ModalEditTransaction />
+        <ModalAddTransaction />
+      </div>
     </div>
   );
 };
