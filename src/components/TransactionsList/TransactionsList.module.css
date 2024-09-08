@@ -1,9 +1,11 @@
 .financeTableContainer {
-  max-height: 312px;
+  display: flex;
+  padding: 46px 16px 287px 69px;
+  height: 90vh;
   overflow-y: auto;
   border-radius: 10px;
   padding: 10px;
-  font-family: Poppins;
+  font-family: var(--font-family);
 }
 
 .table {
@@ -15,21 +17,9 @@
 .headTab {
   position: sticky;
   top: 0;
-  background-color: rgba(82, 59, 126, 0.6);
 }
-
-.tr:first-child {
-  border-radius: 8px;
-}
-
-/* .td {
-  padding: 12px;
-  text-align: left;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.41);
-} */
 
 .th {
-  background-color: rgba(82, 59, 126, 0.6);
   font-weight: bold;
   border-bottom: none;
 }
@@ -39,7 +29,8 @@
 }
 
 .headTab {
-  background-color: rgba(82, 59, 126, 0.6);
+  background-color: rgba(82, 59, 126, 1);
+  border-radius: 8px;
   font-family: Poppins;
   font-size: 16px;
   font-style: normal;
@@ -50,13 +41,15 @@
 .financeTable {
   color: var(--white, #fbfbfb);
   font-family: Poppins;
-  font-size: 16px;
-  font-style: normal;
   font-weight: 600;
-  line-height: normal;
   width: 100%;
   border-collapse: separate;
   border-spacing: 0;
+}
+
+.headTab.tr.thSum {
+  padding: 12px;
+  text-align: right;
 }
 
 .financeTable th {
@@ -64,12 +57,11 @@
   padding: 0.5rem 1rem;
 }
 
-/* .financeTable td {
-  padding: 0.5rem 1rem;
-} */
-
-.financeTable tbody tr {
-  border-top: 1px solid #553c9a;
+.financeTable td {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.41);
+  padding: 16px;
+  font-weight: 400;
+  font-size: 14px;
 }
 
 @media screen and (max-width: 768px) {
@@ -80,8 +72,14 @@
     display: block;
   }
 
+  .financeTableContainer {
+    max-height: 100%;
+  }
+
   .financeTable thead {
-    display: none;
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
   }
 
   .financeTable tbody tr {

@@ -26,7 +26,7 @@
 }
 
 .icon {
-  fill: #734aef;
+  fill: #3c2580;
   stroke: transparent;
 }
 
@@ -37,7 +37,8 @@
   }
   .list {
     flex-direction: column;
-    padding: 40px 243px 28px 32px;
+    padding-top: 40px;
+    padding-bottom: 28px;
   }
   .item {
     display: flex;
