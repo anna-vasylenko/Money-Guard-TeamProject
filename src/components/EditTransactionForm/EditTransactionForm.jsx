@@ -16,39 +16,36 @@ import { useState } from "react";
 import { editValidationSchema } from "../../helpers/editValidationSchema";
 import { Icons } from "../Icons/Icons";
 
-// const initialValues = {
-//   transactionDate: "",
-//   type: "INCOME",
-//   categoryId: "063f1132-ba5d-42b4-951d-44011ca46262",
-//   comment: "",
-//   amount: "",
-// };
-
 const validationSchema = editValidationSchema;
 
 const EditTransactionForm = () => {
   const dispatch = useDispatch();
   const { transaction } = useSelector(selectCurrentTransaction);
   const categories = useSelector(selectCategories);
-  const [startDate, setStartDate] = useState(transaction.transactionDate);
+  const [startDate, setStartDate] = useState(
+    new Date(transaction.transactionDate)
+  );
 
   const initialValues = {
     amount: Math.abs(transaction.amount),
     comment: transaction.comment,
-    category: getTransactionsCategories(transaction.categoryId, categories),
+    categoryId: getTransactionsCategories(transaction.categoryId, categories),
   };
 
   const handleSubmit = (values, options) => {
     dispatch(
       updateTransaction({
         transactionDate: startDate.toISOString(),
-        type: "INCOME",
-        categoryId: transaction.categoryId,
+        // type: transaction.type,
+        // categoryId: transaction.categoryId,
         comment: values.comment,
         amount: values.amount,
       })
     );
+    console.log(initialValues.amount);
+
     options.resetForm();
+    dispatch(closeModal());
   };
 
   const handleClickButton = () => {
@@ -70,7 +67,13 @@ const EditTransactionForm = () => {
       >
         <Form className={s.form}>
           <label className={s.label}>
-            <Field type="text" name="amount" className={s.input} />
+            <Field
+              type="number"
+              name="amount"
+              min="1"
+              placeholder="0.00"
+              className={s.input}
+            />
             <ErrorMessage
               name="amount"
               component="span"
@@ -97,7 +100,7 @@ const EditTransactionForm = () => {
             />
           </label>
 
-          <button type="submit" className={s.button} onClick={handleSubmit}>
+          <button type="submit" className={s.button}>
             Save
           </button>
           <button
