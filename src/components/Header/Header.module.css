@@ -3,7 +3,7 @@
   min-width: 320px;
   list-style-type: none;
   justify-content: space-between;
-  padding: 12px 0;
+  padding: 12px 20px;
   background: linear-gradient(270deg, #2e1746 3.2%, #2e225f 99.98%);
 }
 .containerExit {
@@ -93,6 +93,12 @@
   }
 
   .container {
-    padding: 16px 0;
+    padding: 16px 28px 16px 32px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .container {
+    padding: 16px 28px 16px 16px;
   }
 }
