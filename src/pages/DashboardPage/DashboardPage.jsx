@@ -15,7 +15,7 @@ const DashboardPage = () => {
   const { isMobile } = useMedia();
 
   return (
-    <div>
+    <div className={s.container}>
       <Header />
       <main className={s.main}>
         <div className={s.navItem}>
