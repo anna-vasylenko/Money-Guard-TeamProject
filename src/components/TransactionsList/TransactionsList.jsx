@@ -2,7 +2,7 @@ import s from "./TransactionsList.module.css";
 import TransactionsItem from "../TransactionsItem/TransactionsItem";
 import { useSelector } from "react-redux";
 import { selectTransactions } from "../../redux/transaction/selectors";
-import { useMedia } from "../../hooks/useMedia";
+// import { useMedia } from "../../hooks/useMedia";
 
 const TransactionsList = () => {
   const transactions = useSelector(selectTransactions);
@@ -10,7 +10,7 @@ const TransactionsList = () => {
     (a, b) => new Date(b.transactionDate) - new Date(a.transactionDate)
   );
 
-  const { isMobile } = useMedia();
+  // const { isMobile } = useMedia();
 
   return (
     <div className={s.financeTableContainer}>
