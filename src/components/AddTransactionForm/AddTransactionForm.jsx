@@ -12,12 +12,18 @@ import s from "./AddTransactionForm.module.css";
 import { selectCategories } from "../../redux/transaction/selectors";
 // import { Icons } from "../Icons/Icons";
 import ToggleModal from "../ToggleModal/ToggleModal";
+import { getTransactionCategoryID } from "../../helpers/transactionCategory";
 
 const AddTransactionForm = () => {
   const [startDate, setStartDate] = useState(new Date());
   const [transactionType, setTransactionType] = useState(false);
   const data = useSelector(selectCategories);
-  const [incomeCategory, setIncomeCategory] = useState(null);
+  // const [incomeCategory, setIncomeCategory] = useState(null);
+  const [selectCategory, setSelectCategory] = useState(null);
+
+  console.log(selectCategory);
+
+  console.log(getTransactionCategoryID(transactionType, selectCategory));
 
   const dispatch = useDispatch();
 
@@ -29,24 +35,29 @@ const AddTransactionForm = () => {
 
   const handleSubmit = (values, options) => {
     const newTransaction = {
-      // ...values,
+      comment: values.comment,
+      amount: values.amount,
+      // amount: transactionType
+      //   ? parseFloat(values.amount)
+      //   : -parseFloat(values.amount),
       transactionDate: startDate.toISOString(),
       type: transactionType ? "INCOME" : "EXPENSE",
-      categoryId: transactionType ? incomeCategory : selectCategory.value,
+      categoryId: getTransactionCategoryID(transactionType, selectCategory),
     };
-    console.log(newTransaction);
+    // console.log(newTransaction);
     dispatch(addTransaction(newTransaction));
     options.resetForm();
     handleClickCancel();
   };
+
   const categories = data.map((category) => ({
     value: category.id,
     label: category.name,
   }));
 
-  const handleCategoryName = (selectCategory) => {
-    initialValues.categoryId = selectCategory.value;
-    console.log(initialValues.categoryId);
+  const handleCategoryName = (selectedCategory) => {
+    setSelectCategory(selectedCategory.value);
+    // console.log(selectedCategory.value);
   };
 
   const handleClickCancel = () => {
@@ -62,10 +73,10 @@ const AddTransactionForm = () => {
           <div className={s.selectWrapper}>
             <Select
               className={s.select}
+              // value={selectCategory}
               placeholder="Select a category"
               options={categories}
               onChange={handleCategoryName}
-              // defaultValue={categories[0]}
               classNamePrefix="react-select"
             />
           </div>
