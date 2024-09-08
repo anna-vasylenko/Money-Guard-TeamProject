@@ -6,8 +6,33 @@
   margin-bottom: 20px;
 }
 
+@media only screen and (min-width: 768px) {
+  .boxSelect {
+    flex-direction: row;
+    gap: 16px;
+  }
+}
+
+@media only screen and (min-width: 1280px) {
+  .boxSelect {
+    gap: 32px;
+  }
+}
+
 .select {
   width: 280px;
+}
+
+@media only screen and (min-width: 768px) {
+  .select {
+    width: 160px;
+  }
+}
+
+@media only screen and (min-width: 1280px) {
+  .select {
+    width: 181px;
+  }
 }
 
 .select :global(.react-select__control) {
@@ -19,10 +44,11 @@
 
 .select :global(.react-select__single-value) {
   color: var(--white);
-  font-weight: 400;
 }
 
 .select :global(.react-select__menu) {
+  z-index: 2;
+  max-height: 157px;
   background: linear-gradient(
     360deg,
     rgba(83, 61, 186) 0%,

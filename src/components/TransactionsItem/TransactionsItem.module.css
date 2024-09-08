@@ -1,0 +1,63 @@
+td.income {
+  color: #fbbf24;
+  font-weight: 600;
+  text-align: right;
+}
+
+td.expense {
+  color: #f87171;
+  font-weight: 600;
+  text-align: right;
+}
+
+.comment:first-letter {
+  text-transform: capitalize;
+}
+
+.editIcon {
+  fill: transparent;
+  stroke: rgba(255, 255, 255, 0.6);
+}
+
+.textEdit {
+  display: none;
+}
+
+@media screen and (max-width: 768px) {
+  .textEdit {
+    display: contents;
+    font-size: 16px;
+  }
+}
+.editBtn {
+  color: #9ca3af;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.editBtn:hover {
+  color: white;
+}
+
+.deleteBtn {
+  width: 69px;
+  height: 29px;
+  border-radius: 20px;
+  background: var(--button-gradient);
+  color: white;
+  padding: 4px 12px;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.deleteBtn:hover {
+  background-color: #ea580c;
+}
+
+.actionBtn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}

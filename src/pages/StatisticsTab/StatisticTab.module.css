@@ -1,0 +1,31 @@
+.header {
+  font-weight: 400;
+  font-size: 30px;
+  text-align: left;
+  color: #fbfbfb;
+  font-family: "Poppins", sans-serif;
+}
+
+@media only screen and (min-width: 768px) {
+  .statisticsWrapper {
+    display: flex;
+    justify-content: center;
+    padding-top: 20px;
+    margin: 0;
+  }
+}
+
+@media only screen and (min-width: 1280px) {
+  .header {
+    padding-left: 15px;
+    margin-bottom: 20px;
+  }
+
+  .doughnutWrapper {
+    padding-left: 69px;
+    padding-top: 32px;
+  }
+  .tableWrapper {
+    padding-top: 69px;
+  }
+}

@@ -1,43 +1,54 @@
 import { NavLink } from "react-router-dom";
 import { useMedia } from "../../hooks/useMedia";
-// import s from "./Navigation.module.css";
+import { Icons } from "../Icons/Icons";
+import s from "../Navigation/Navigation.module.css";
+import clsx from "clsx";
 
 const Navigation = () => {
-  const { isTablet, isMobile } = useMedia();
+  const { isMobile } = useMedia();
+  const buildLinkClass = ({ isActive }) => {
+    return clsx(s.item, isActive && s.linkActive);
+  };
   return (
-    <div>
-      <ul>
+    <nav>
+      <ul className={s.list}>
         <li>
-          <NavLink to="/">
-            {isMobile && (
-              <svg width="18" height="18">
-                <use href="../../../src/images/symbol-defs.svg#home"></use>
-              </svg>
-            )}
-            {isTablet && <span>Home</span>}
+          <NavLink className={buildLinkClass} to="/">
+            <div className={s.wrapper}>
+              <Icons className={s.icon} name={"home"} width={24} height={24} />
+            </div>
+            {!isMobile && <span className={s.navText}>Home</span>}
           </NavLink>
         </li>
         <li>
-          <NavLink to="/statistics">
-            {isMobile && (
-              <svg width="18" height="18">
-                <use href="../../../src/images/symbol-defs.svg#statistics"></use>
-              </svg>
-            )}
-            {isTablet && <span>Statistics</span>}
+          <NavLink className={buildLinkClass} to="/statistics">
+            <div className={s.wrapper}>
+              <Icons
+                className={s.icon}
+                name={"statistics"}
+                width={24}
+                height={24}
+              />
+            </div>
+            {!isMobile && <span className={s.navText}>Statistics</span>}
           </NavLink>
-          {isMobile && (
-            <li>
-              <NavLink to="/currency">
-                <svg width="18" height="18">
-                  <use href="../../../src/images/symbol-defs.svg#dollar"></use>
-                </svg>
-              </NavLink>
-            </li>
-          )}
         </li>
+        {isMobile && (
+          <li>
+            <NavLink className={buildLinkClass} to="/currency">
+              <div className={s.wrapper}>
+                <Icons
+                  className={s.icon}
+                  name={"dollar"}
+                  width={24}
+                  height={24}
+                />
+              </div>
+            </NavLink>
+          </li>
+        )}
       </ul>
-    </div>
+    </nav>
   );
 };
 

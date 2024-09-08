@@ -1,0 +1,113 @@
+.financeTableContainer {
+  display: flex;
+  padding: 46px 16px 287px 69px;
+  height: 90vh;
+  overflow-y: auto;
+  border-radius: 10px;
+  padding: 10px;
+  font-family: var(--font-family);
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  color: white;
+}
+
+.headTab {
+  position: sticky;
+  top: 0;
+}
+
+.th {
+  font-weight: bold;
+  border-bottom: none;
+}
+
+.tbody tr:hover {
+  background-color: #3d3a4e;
+}
+
+.headTab {
+  background-color: rgba(82, 59, 126, 1);
+  border-radius: 8px;
+  font-family: Poppins;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+.financeTable {
+  color: var(--white, #fbfbfb);
+  font-family: Poppins;
+  font-weight: 600;
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+.headTab.tr.thSum {
+  padding: 12px;
+  text-align: right;
+}
+
+.financeTable th {
+  text-align: left;
+  padding: 0.5rem 1rem;
+}
+
+.financeTable td {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.41);
+  padding: 16px;
+  font-weight: 400;
+  font-size: 14px;
+}
+
+@media screen and (max-width: 768px) {
+  .financeTable,
+  .financeTable tbody,
+  .financeTable tr,
+  .financeTable td {
+    display: block;
+  }
+
+  .financeTableContainer {
+    max-height: 100%;
+  }
+
+  .financeTable thead {
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+  }
+
+  .financeTable tbody tr {
+    margin-bottom: 1rem;
+    border: 1px solid #553c9a;
+    border-radius: 0.5rem;
+    position: relative;
+    padding-bottom: 3rem;
+  }
+
+  .financeTable td {
+    text-align: right;
+    padding-left: 50%;
+    position: relative;
+  }
+
+  .financeTable td::before {
+    content: attr(data-label);
+    position: absolute;
+    left: 6px;
+    width: 45%;
+    text-align: left;
+    font-weight: bold;
+  }
+
+  .financeTable .action-buttons {
+    position: absolute;
+    bottom: 0.5rem;
+    right: 0.5rem;
+  }
+}

@@ -1,13 +1,19 @@
 import Chart from "../../components/Chart/Chart";
 import StatisticsDashboard from "../../components/StatisticsDashboard/StatisticsDashboard";
 import StatisticsTable from "../../components/StatisticsTable/StatisticsTable";
+import s from "./StatisticTab.module.css";
 
 const StatisticsTab = () => {
   return (
-    <div>
-      <Chart />
-      <StatisticsDashboard />
-      <StatisticsTable />
+    <div className={s.statisticsWrapper}>
+      <div className={s.doughnutWrapper}>
+        <h1 className={s.header}>Statistics</h1>
+        <Chart />
+      </div>
+      <div className={s.tableWrapper}>
+        <StatisticsDashboard />
+        <StatisticsTable />
+      </div>
     </div>
   );
 };

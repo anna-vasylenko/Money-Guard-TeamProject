@@ -42,11 +42,12 @@ const transactionsSlice = createSlice({
         state.items = state.items.filter((item) => item.id !== action.payload);
         state.currentTransaction = null;
       })
+
       .addCase(updateTransaction.fulfilled, (state, action) => {
         state.items = state.items.map((item) =>
-          item.id === state.currentTransaction.id ? { ...action.payload } : item
+          item.id === state.currentTransaction.id ? action.payload : item
         );
-        state.currentContact = null;
+        state.currentTransaction = null;
       })
       .addCase(getPeriodTransactions.fulfilled, (state, action) => {
         state.periodTransactions = action.payload;

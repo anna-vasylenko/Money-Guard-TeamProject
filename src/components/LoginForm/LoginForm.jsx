@@ -1,9 +1,9 @@
-import { Formik, Field, Form, ErrorMessage } from 'formik';
-import { Link } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-import { loginThunk } from '../../redux/auth/operations';
-import { validationSchemaLogin } from '../../helpers/loginSchema';
-import s from './LoginForm.module.css';
+import { Formik, Field, Form, ErrorMessage } from "formik";
+import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { loginThunk } from "../../redux/auth/operations";
+import { validationSchemaLogin } from "../../helpers/loginSchema";
+import s from "./LoginForm.module.css";
 
 const LoginForm = () => {
   const dispatch = useDispatch();
@@ -15,8 +15,8 @@ const LoginForm = () => {
   return (
     <Formik
       initialValues={{
-        email: '',
-        password: '',
+        email: "",
+        password: "",
       }}
       validationSchema={validationSchemaLogin}
       onSubmit={onSubmit}

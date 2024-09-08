@@ -1,12 +1,15 @@
 import { NavLink } from "react-router-dom";
 import s from "../Header/Header.module.css";
 import { useMedia } from "../../hooks/useMedia";
-// import { useSelector } from "react-redux";
+import { Icons } from "../Icons/Icons";
+import { useDispatch, useSelector } from "react-redux";
+import { selectUser } from "../../redux/auth/selectors";
+import { openLogOutModal } from "../../redux/modal/slice";
 
 const Header = () => {
   const { isTablet } = useMedia();
-  // const user = useSelector(selectUser);
-  // user.name;
+  const { username } = useSelector(selectUser);
+  const dispatch = useDispatch();
 
   return (
     <header>
@@ -14,17 +17,21 @@ const Header = () => {
         <div className={s.containerLogo}>
           <li>
             <NavLink className={s.navLink} to="/">
-              <svg width="17" height="17">
-                <use href="../../../src/images/logo.svg#logo-Money-Guard"></use>
-              </svg>
+              <Icons name={"logo"} width={17} height={17} />
               <p className={s.logoText}>Money Guard</p>
             </NavLink>
           </li>
         </div>
         <div className={s.containerExit}>
-          <p className={s.userName}>Name</p>
+          <p className={s.userName}>{username}</p>
           <li className={s.itemExit}>
-            <button className={s.btn} type="submit">
+            <button
+              className={s.btn}
+              onClick={() => {
+                dispatch(openLogOutModal());
+              }}
+              type="submit"
+            >
               <svg fill="var(--white-60)" width="18" height="18">
                 <use href="../../../src/images/symbol-defs.svg#exit"></use>
               </svg>
