@@ -7,6 +7,8 @@ export const getTransactions = createAsyncThunk(
   async (_, thunkAPI) => {
     try {
       const { data } = await axios.get("/api/transactions");
+      console.log(data);
+
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -88,6 +90,8 @@ export const getTransactionsCategories = createAsyncThunk(
   async (_, thunkAPI) => {
     try {
       const { data } = await axios.get("/api/transaction-categories");
+      console.log(data);
+
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
