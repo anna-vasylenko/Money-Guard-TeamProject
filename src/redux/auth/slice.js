@@ -1,5 +1,6 @@
 import { createSlice, isAnyOf } from "@reduxjs/toolkit";
 import {
+  getBalanceThunk,
   loginThunk,
   logoutThunk,
   refreshUserThunk,
@@ -49,6 +50,9 @@ const authSlice = createSlice({
       })
       .addCase(refreshUserThunk.rejected, (state) => {
         state.isRefreshing = false;
+      })
+      .addCase(getBalanceThunk.fulfilled, (state, action) => {
+        state.user.balance = action.payload;
       })
       .addMatcher(
         isAnyOf(registerThunk.rejected, loginThunk.rejected),

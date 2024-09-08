@@ -68,3 +68,15 @@ export const refreshUserThunk = createAsyncThunk(
     }
   }
 );
+
+export const getBalanceThunk = createAsyncThunk(
+  "auth/getBalance",
+  async (_, thunkAPI) => {
+    try {
+      const { data } = await axios.get("/api/users/current");
+      return data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);

@@ -1,8 +1,11 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { logoutThunk } from "../../redux/auth/operations";
 import ModalWrapper from "../ModalWrapper/ModalWrapper";
+import { closeModal } from "../../redux/modal/slice";
+import { selectIsLogOutModalOpen } from "../../redux/modal/selectors";
 
-const ModalLogOut = ({ closeModal, isOpenModal }) => {
+const ModalLogOut = () => {
+  const isLogOutModalOpen = useSelector(selectIsLogOutModalOpen);
   const dispatch = useDispatch();
 
   const handleClickLogout = () => {
@@ -10,11 +13,11 @@ const ModalLogOut = ({ closeModal, isOpenModal }) => {
   };
 
   const handleClickCancel = () => {
-    closeModal();
+    dispatch(closeModal());
   };
 
   return (
-    <ModalWrapper closeModal={closeModal} isOpenModal={isOpenModal}>
+    <ModalWrapper isOpenModal={isLogOutModalOpen}>
       <div>
         <p>Are you sure you want to log out?</p>
         <button type="button" onClick={handleClickLogout}>
