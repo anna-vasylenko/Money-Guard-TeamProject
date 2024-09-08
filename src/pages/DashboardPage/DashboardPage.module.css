@@ -21,6 +21,7 @@
   }
   .navItem {
     display: flex;
+    justify-content: space-between;
   }
 }
 
@@ -35,10 +36,9 @@
   .navItem {
     display: flex;
     flex-direction: column;
-  }
-  .navItem {
     position: relative;
   }
+
   .navItem::after {
     content: "";
     position: absolute;
