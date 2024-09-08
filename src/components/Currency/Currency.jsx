@@ -33,23 +33,23 @@ const Currency = () => {
   return (
     <div className={s.wrapper}>
       <table className={s.tab}>
-        <thead className={s.header}>
-          <tr className={s.tr}>
-            <th>Currency</th>
-            <th>Purchase</th>
-            <th>Sale</th>
+        <thead>
+          <tr className={(s.tr, s.header)}>
+            <th className={s.item}>Currency</th>
+            <th className={s.item}>Purchase</th>
+            <th className={s.item}>Sale</th>
           </tr>
         </thead>
         <tbody>
           <tr className={s.tr}>
-            <td>USD</td>
-            <td>{usdRate.rateBuy}</td>
-            <td>{usdRate.rateSell}</td>
+            <td className={s.item}>USD</td>
+            <td className={s.item}>{usdRate.rateBuy}</td>
+            <td className={s.item}>{usdRate.rateSell}</td>
           </tr>
           <tr className={s.tr}>
-            <td style={{ paddingLeft: "2px" }}>EUR</td>
-            <td style={{ paddingLeft: "8px" }}>{euroRate.rateBuy}</td>
-            <td style={{ paddingLeft: "5px" }}>{euroRate.rateSell}</td>
+            <td className={s.item}>EUR</td>
+            <td className={s.item}>{euroRate.rateBuy}</td>
+            <td className={s.item}>{euroRate.rateSell}</td>
           </tr>
         </tbody>
       </table>
