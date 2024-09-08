@@ -1,4 +1,4 @@
-import { Suspense } from "react";
+import { Suspense, useEffect } from "react";
 import { Outlet } from "react-router-dom";
 import { useMedia } from "../../hooks/useMedia";
 import Loader from "../../components/Loader/Loader";
@@ -10,9 +10,16 @@ import ModalAddTransaction from "../../components/ModalAddTransaction/ModalAddTr
 import s from "./DashboardPage.module.css";
 import Balance from "../../components/Balance/Balance";
 import Currency from "../../components/Currency/Currency";
+import { getTransactions } from "../../redux/transaction/operations";
+import { useDispatch } from "react-redux";
 
 const DashboardPage = () => {
+  const dispatch = useDispatch();
   const { isMobile } = useMedia();
+
+  useEffect(() => {
+    dispatch(getTransactions());
+  }, [dispatch]);
 
   return (
     <div className={s.container}>
