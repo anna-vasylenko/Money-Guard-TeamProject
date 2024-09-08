@@ -38,13 +38,13 @@ const DashboardPage = () => {
               <Outlet />
             </Suspense>
           </div>
+          <div className={s.ellipse16}></div>
+          <div className={s.ellipse18}></div>
+          <div className={s.ellipse14}></div>
+          <div className={s.ellipse17}></div>
+          <div className={s.ellipse15}></div>
+          <div className={s.ellipse19}></div>
         </main>
-        <div className={s.ellipse16}></div>
-        <div className={s.ellipse18}></div>
-        <div className={s.ellipse14}></div>
-        <div className={s.ellipse17}></div>
-        <div className={s.ellipse15}></div>
-        <div className={s.ellipse19}></div>
         <ModalLogOut />
         <ModalEditTransaction />
         <ModalAddTransaction />

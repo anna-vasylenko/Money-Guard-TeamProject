@@ -39,6 +39,7 @@
     flex-direction: column;
     padding-top: 40px;
     padding-bottom: 28px;
+    gap: 14px;
   }
   .item {
     display: flex;

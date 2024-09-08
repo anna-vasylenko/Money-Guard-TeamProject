@@ -3,6 +3,7 @@ import { logoutThunk } from "../../redux/auth/operations";
 import ModalWrapper from "../ModalWrapper/ModalWrapper";
 import { closeModal } from "../../redux/modal/slice";
 import { selectIsLogOutModalOpen } from "../../redux/modal/selectors";
+import s from "./ModalLogOut.module.css";
 
 const ModalLogOut = () => {
   const isLogOutModalOpen = useSelector(selectIsLogOutModalOpen);
@@ -18,12 +19,20 @@ const ModalLogOut = () => {
 
   return (
     <ModalWrapper isOpenModal={isLogOutModalOpen}>
-      <div>
-        <p>Are you sure you want to log out?</p>
-        <button type="button" onClick={handleClickLogout}>
+      <div className={s.modal}>
+        <p className={s.text}>Are you sure you want to log out?</p>
+        <button
+          className={s.buttonLogOut}
+          type="button"
+          onClick={handleClickLogout}
+        >
           logout
         </button>
-        <button type="button" onClick={handleClickCancel}>
+        <button
+          className={s.buttonCalcel}
+          type="button"
+          onClick={handleClickCancel}
+        >
           cancel
         </button>
       </div>
