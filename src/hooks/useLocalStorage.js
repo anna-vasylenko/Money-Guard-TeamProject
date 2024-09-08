@@ -7,6 +7,10 @@ export const useLocalStorage = (key, defaultValue) => {
       currentValue =
         JSON.parse(window.localStorage.getItem(key)) ?? defaultValue;
     } catch (error) {
+      console.error(
+        `Error reading from localStorage with key "${key}":`,
+        error
+      );
       currentValue = defaultValue;
     }
     return currentValue;

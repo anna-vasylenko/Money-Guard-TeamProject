@@ -9,6 +9,7 @@ const HomeTab = () => {
   useEffect(() => {
     dispatch(getTransactions());
   }, [dispatch]);
+
   return (
     <div>
       <TransactionsList />
