@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux";
-import { openEditModal } from "../../redux/modal/slice";
+import { openAddModal } from "../../redux/modal/slice";
 import { Icons } from "../Icons/Icons";
 import s from "./AddButton.module.css";
 
@@ -10,7 +10,7 @@ const AddButton = () => {
     <button
       className={s.addBtn}
       onClick={() => {
-        dispatch(openEditModal());
+        dispatch(openAddModal());
       }}
     >
       <Icons className={s.plusIcon} name={"plus"} width={20} height={20} />
