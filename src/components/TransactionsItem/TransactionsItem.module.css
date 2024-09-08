@@ -1,15 +1,34 @@
-.income {
+td.income {
   color: #fbbf24;
+  font-weight: 600;
+  text-align: right;
 }
 
-.expense {
+td.expense {
   color: #f87171;
+  font-weight: 600;
+  text-align: right;
+}
+
+.comment:first-letter {
+  text-transform: capitalize;
 }
 
 .editIcon {
-  color: rgba(255, 255, 255, 0.6);
+  fill: transparent;
+  stroke: rgba(255, 255, 255, 0.6);
 }
 
+.textEdit {
+  display: none;
+}
+
+@media screen and (max-width: 768px) {
+  .textEdit {
+    display: contents;
+    font-size: 16px;
+  }
+}
 .editBtn {
   color: #9ca3af;
   background: none;
@@ -22,12 +41,15 @@
 }
 
 .deleteBtn {
-  background-color: #f97316;
+  width: 69px;
+  height: 29px;
+  border-radius: 20px;
+  background: var(--button-gradient);
   color: white;
-  padding: 0.25rem 0.75rem;
-  border-radius: 0.25rem;
+  padding: 4px 12px;
   border: none;
   cursor: pointer;
+  font-size: 14px;
 }
 
 .deleteBtn:hover {
