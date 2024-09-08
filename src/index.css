@@ -55,5 +55,5 @@ body {
   font-family: var(--font-family);
   font-weight: 400;
   color: var(--white);
-  background-color: var(--text-button);
+  background-color: #101010;
 }
