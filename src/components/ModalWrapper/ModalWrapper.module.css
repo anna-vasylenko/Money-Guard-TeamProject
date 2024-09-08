@@ -9,6 +9,7 @@
 }
 
 .modalEllipse {
+  position: absolute;
   border-radius: 454px;
   background-color: rgba(47, 21, 176, 0.7);
   filter: blur(100px);
