@@ -14,6 +14,7 @@ const formatDate = (dateString) => {
 
 const TransactionsItem = ({ transaction }) => {
   const dispatch = useDispatch();
+  const sum = Math.abs(transaction.amount);
   const categories = useSelector(selectCategories);
 
   const handleClick = () => {
@@ -28,13 +29,14 @@ const TransactionsItem = ({ transaction }) => {
       <td>{formatDate(transaction.transactionDate)}</td>
       <td>{transaction.type === "INCOME" ? "+" : "-"}</td>
       <td>{category}</td>
-      <td>{transaction.comment}</td>
+      <td className={s.comment}>{transaction.comment}</td>
       <td className={transaction.type === "INCOME" ? s.income : s.expense}>
-        {transaction.amount}
+        {sum}
       </td>
       <td className={s.actionBtn}>
         <button type={"submit"} onClick={handleClick} className={s.editBtn}>
           <Icons className={s.editIcon} name={"pencil"} />
+          <p className={s.textEdit}>Edit</p>
         </button>
         <button
           className={s.deleteBtn}
