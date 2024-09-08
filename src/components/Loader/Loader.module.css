@@ -6,8 +6,8 @@
 }
 
 .dollarSpinner {
-  width: 64px;
-  height: 64px;
+  width: 88px;
+  height: 88px;
   animation: swingHorizontal 2s ease-in-out infinite;
   color: #ffb627;
   transform-origin: center;
