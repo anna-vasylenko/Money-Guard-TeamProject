@@ -1,6 +1,7 @@
+import { useDispatch } from "react-redux";
 import { Icons } from "../Icons/Icons";
-import ModalEditTransaction from "../ModalEditTransaction/ModalEditTransaction";
 import s from "./TransactionsItem.module.css";
+import { openEditModal } from "../../redux/modal/slice";
 
 const formatDate = (dateString) => {
   const options = { day: "2-digit", month: "2-digit", year: "2-digit" };
@@ -8,6 +9,7 @@ const formatDate = (dateString) => {
 };
 
 const TransactionsItem = ({ transaction }) => {
+  const dispatch = useDispatch();
   return (
     <tr>
       <td>{formatDate(transaction.transactionDate)}</td>
@@ -18,7 +20,12 @@ const TransactionsItem = ({ transaction }) => {
         {transaction.amount}
       </td>
       <td className={s.actionBtn}>
-        <button onClick={ModalEditTransaction} className={s.editBtn}>
+        <button
+          onClick={() => {
+            dispatch(openEditModal());
+          }}
+          className={s.editBtn}
+        >
           <Icons className={s.editIcon} name={"pencil"} />
         </button>
         <button className={s.deleteBtn}>Delete</button>
