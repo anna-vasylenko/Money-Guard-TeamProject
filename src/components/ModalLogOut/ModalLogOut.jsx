@@ -8,7 +8,7 @@ import { Icons } from "../Icons/Icons";
 import { useMedia } from "../../hooks/useMedia";
 
 const ModalLogOut = () => {
-  const { isMobile } = useMedia;
+  const { isMobile } = useMedia();
   const isLogOutModalOpen = useSelector(selectIsLogOutModalOpen);
   const dispatch = useDispatch();
 
