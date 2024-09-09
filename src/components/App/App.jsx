@@ -26,12 +26,12 @@ const StatisticsTab = lazy(() =>
 
 function App() {
   const dispatch = useDispatch();
-
+  const { isMobile } = useMedia();
   const isRefresh = useSelector(selectIsRefreshing);
+
   useEffect(() => {
     dispatch(refreshUserThunk());
   }, [dispatch]);
-  const { isMobile } = useMedia();
 
   useEffect(() => {
     dispatch(getTransactionsCategories());
@@ -44,34 +44,21 @@ function App() {
       <Routes>
         <Route
           path="/"
-          element={
-            <PrivateRoute>
-              <DashboardPage />
-            </PrivateRoute>
-          }
+          element={<PrivateRoute component={<DashboardPage />} />}
         >
           <Route index element={<HomeTab />} />
-          {isMobile && <Route path="/currency" element={<CurrencyTab />} />}
 
-          <Route path="/statistics" element={<StatisticsTab />} />
+          <Route path="statistics" element={<StatisticsTab />} />
+          <Route path="currency" element={isMobile && <CurrencyTab />} />
         </Route>
-
         <Route
-          path="register"
-          element={
-            <RestrictedRoute>
-              <RegistrationPage />
-            </RestrictedRoute>
-          }
+          path="/register"
+          element={<RestrictedRoute component={<RegistrationPage />} />}
         />
 
         <Route
-          path="login"
-          element={
-            <RestrictedRoute>
-              <LoginPage />
-            </RestrictedRoute>
-          }
+          path="/login"
+          element={<RestrictedRoute component={<LoginPage />} />}
         />
 
         <Route path="*" element={<Navigate to="/" />} />

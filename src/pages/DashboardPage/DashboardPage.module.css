@@ -32,6 +32,8 @@
   }
   .main {
     flex-direction: row;
+    justify-content: space-between;
+    padding-right: 16px;
   }
   .navItem {
     display: flex;
