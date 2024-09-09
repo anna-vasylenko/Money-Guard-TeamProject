@@ -1,15 +1,16 @@
-import RegistrationForm from '../../components/RegistrationForm/RegistrationForm.jsx';
+import RegistrationForm from "../../components/RegistrationForm/RegistrationForm.jsx";
 // import s from './RegistrationPage.module.css';
-import { useDispatch } from 'react-redux';
-import { registerThunk } from '../../redux/auth/operations.js';
+import { useDispatch } from "react-redux";
+import { registerThunk } from "../../redux/auth/operations.js";
 // import { toast } from 'react-toastify';
-import s from './RegistrationPage.module.css'
+import s from "./RegistrationPage.module.css";
+import { Toaster } from "react-hot-toast";
 
 const initialValues = {
-  username: '',
-  password: '',
-  email: '',
-  confirmPassword: '',
+  username: "",
+  password: "",
+  email: "",
+  confirmPassword: "",
 };
 const RegistrationPage = () => {
   const dispatch = useDispatch();
@@ -27,13 +28,14 @@ const RegistrationPage = () => {
   };
 
   return (
-    <div className={ s.pageRegister}>
+    <div className={s.pageRegister}>
       <RegistrationForm
         type="register"
         title="Registration"
         onSubmit={handleSubmit}
         initialValues={initialValues}
       />
+      <Toaster />
     </div>
   );
 };

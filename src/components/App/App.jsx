@@ -9,7 +9,6 @@ import RestrictedRoute from "../../routes/RestrictedRoute";
 import { selectIsRefreshing } from "../../redux/auth/selectors";
 import { refreshUserThunk } from "../../redux/auth/operations";
 import { useMedia } from "../../hooks/useMedia";
-import { getTransactionsCategories } from "../../redux/transaction/operations";
 
 const DashboardPage = lazy(() =>
   import("../../pages/DashboardPage/DashboardPage")
@@ -31,10 +30,6 @@ function App() {
 
   useEffect(() => {
     dispatch(refreshUserThunk());
-  }, [dispatch]);
-
-  useEffect(() => {
-    dispatch(getTransactionsCategories());
   }, [dispatch]);
 
   return isRefresh ? (
