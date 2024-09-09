@@ -29,9 +29,10 @@
   box-shadow: (--button-shadow);
   background: var(--button-gradient);
   border: none;
+  color: var(--white);
 }
 
-.buttonCalcel {
+.buttonCancel {
   font-family: var(--font-family);
   font-weight: 400;
   font-size: 18px;
@@ -52,12 +53,16 @@
     font-family: var(--font-family);
     font-weight: 400;
     font-size: 26px;
-    margin-bottom: 52px;
+    margin-bottom: 32px;
   }
   .text {
     width: 300px;
     margin-bottom: 32px;
   }
+  .logoWrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
 }
-
-@media screen and (min-width: 1280px);

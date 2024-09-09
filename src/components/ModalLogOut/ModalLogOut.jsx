@@ -5,8 +5,10 @@ import { closeModal } from "../../redux/modal/slice";
 import { selectIsLogOutModalOpen } from "../../redux/modal/selectors";
 import s from "./ModalLogOut.module.css";
 import { Icons } from "../Icons/Icons";
+import { useMedia } from "../../hooks/useMedia";
 
 const ModalLogOut = () => {
+  const { isMobile } = useMedia;
   const isLogOutModalOpen = useSelector(selectIsLogOutModalOpen);
   const dispatch = useDispatch();
 
@@ -21,8 +23,12 @@ const ModalLogOut = () => {
   return (
     <ModalWrapper isOpenModal={isLogOutModalOpen}>
       <div className={s.modal}>
-        <Icons name={"logo"} width={36} height={36} />
-        <p className={s.logoText}>Money Guard</p>
+        {!isMobile && (
+          <div className={s.logoWrapper}>
+            <Icons name={"logo"} width={36} height={36} />
+            <p className={s.logoText}>Money Guard</p>
+          </div>
+        )}
         <p className={s.text}>Are you sure you want to log out?</p>
         <button
           className={s.buttonLogOut}
@@ -32,7 +38,7 @@ const ModalLogOut = () => {
           logout
         </button>
         <button
-          className={s.buttonCalcel}
+          className={s.buttonCancel}
           type="button"
           onClick={handleClickCancel}
         >
