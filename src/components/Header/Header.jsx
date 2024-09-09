@@ -5,14 +5,29 @@ import { Icons } from "../Icons/Icons";
 import { useDispatch, useSelector } from "react-redux";
 import { selectUser } from "../../redux/auth/selectors";
 import { openLogOutModal } from "../../redux/modal/slice";
+import {
+  selectIsAddModalOpen,
+  selectIsEditModalOpen,
+  selectIsLogOutModalOpen,
+} from "../../redux/modal/selectors";
+import clsx from "clsx";
 
 const Header = () => {
-  const { isTablet } = useMedia();
+  const { isTablet, isMobile } = useMedia();
   const { username } = useSelector(selectUser);
+  const isLogOutModalOpen = useSelector(selectIsLogOutModalOpen);
+  const isEditModalOpen = useSelector(selectIsEditModalOpen);
+  const isAddModalOpen = useSelector(selectIsAddModalOpen);
   const dispatch = useDispatch();
 
   return (
-    <header>
+    <header
+      className={clsx(
+        (isLogOutModalOpen || isEditModalOpen || isAddModalOpen) &&
+          isMobile &&
+          s.headerMobileOpen
+      )}
+    >
       <div className={s.container}>
         <div className={s.containerLogo}>
           <li>
@@ -32,9 +47,12 @@ const Header = () => {
               }}
               type="submit"
             >
-              <svg fill="var(--white-60)" width="18" height="18">
-                <use href="../../../src/images/symbol-defs.svg#exit"></use>
-              </svg>
+              <Icons
+                name={"exit"}
+                width={18}
+                height={18}
+                className={s.iconExit}
+              />
               {isTablet && <span className={s.exitSpan}>Exit</span>}
             </button>
           </li>

@@ -1,6 +1,15 @@
 .modalContainer {
   /* color: white; */
-  padding: 20px;
+  padding: 20px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+@media only screen and (min-width: 768px) {
+  .modalContainer {
+    padding: 20px 53px;
+  }
 }
 
 input[type="number"]::-webkit-outer-spin-button,
@@ -17,14 +26,18 @@ input[type="number"] {
   font-weight: 400;
   font-size: 24px;
   text-align: center;
-  color: #fbfbfb;
-  margin-bottom: 40px;
+  color: var(--white);
 }
 
 @media only screen and (min-width: 768px) {
   .title {
     font-size: 30px;
   }
+}
+
+.select {
+  width: 280px;
+  margin: 0 auto;
 }
 
 @media only screen and (min-width: 768px) {
@@ -76,48 +89,140 @@ input[type="number"] {
 }
 
 &::-webkit-scrollbar {
-  width: 8px;
-  background-color: #51338a;
+  /* width: 8px;
+  background-color: #51338a; */
+  width: 6px;
+  height: 150px;
+  flex-shrink: 0;
+  border-radius: 12px;
+  background-color: #bfb4dd;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.amountDateInputWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+@media only screen and (min-width: 768px) {
+  .amountDateInputWrapper {
+    flex-direction: row;
+    gap: 32px;
+  }
+}
+
+.amountInput {
+  width: 280px;
+  padding: 0 20px 8px;
+  margin: 0 auto;
+  background-color: transparent;
+  border: none;
+  color: var(--white-60);
+  font-weight: 600;
+  border-bottom: 2px solid var(--white-40);
+  &::placeholder {
+    font-weight: 600;
+    font-size: 18px;
+    color: var(--white-60);
+  }
+  &:focus {
+    outline: none;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .amountInput {
+    width: 181px;
+  }
+}
+
+.commentInput {
+  width: 280px;
+  padding: 0 20px 32px;
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+  resize: none;
+  background-color: transparent;
+  border: none;
+  color: var(--white-60);
+  font-weight: 600;
+  border-bottom: 2px solid var(--white-40);
+  &:focus {
+    outline: none;
+  }
+  &::placeholder {
+    width: 92px;
+    height: 27px;
+    font-weight: 400;
+    font-size: 18px;
+    color: var(--white-60);
+    padding: 0;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .commentInput {
+    width: 394px;
+    padding: 0 8px 0px;
+  }
+}
+
+.buttonsWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
 }
 
 .btnAdd,
 .btnCancel {
   width: 280px;
-  height: 50px;
+  padding: 12px 0;
   border-radius: 20px;
   border: none;
-  font-weight: 400;
   font-size: 18px;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   text-align: center;
+  background-position: left center;
+  transition: var(--transition);
+  background-size: 200%;
 }
 
 .btnAdd {
   box-shadow: 1px 9px 15px 0 rgba(0, 0, 0, 0.2);
-  background: linear-gradient(
-    167deg,
-    #ffc727 0%,
-    #9e40ba 61.46%,
-    #7000ff 90.54%
-  );
-  color: #fbfbfb;
-}
-
-@media only screen and (min-width: 768px) {
-  .btnAdd {
-    width: 300px;
-  }
+  background: var(--button-gradient);
+  color: var(--white);
 }
 
 .btnCancel {
   box-shadow: 1px 9px 15px 0 rgba(0, 0, 0, 0.2);
-  background: #fbfbfb;
-  color: #623f8b;
+  background: var(--white);
+  color: var(--text-button);
 }
 
 @media only screen and (min-width: 768px) {
+  .btnAdd,
   .btnCancel {
     width: 300px;
   }
+}
+
+.btnAdd:hover,
+.btnAdd:focus {
+  background-position: right center;
+  transform: var(--scale);
+}
+.btnCancel:hover,
+.btnCancel:focus {
+  background-position: right center;
+  transform: var(--scale);
 }

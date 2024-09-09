@@ -26,10 +26,19 @@
   border-radius: 20px;
   width: 280px;
   height: 50px;
-  box-shadow: (--button-shadow);
+  box-shadow: var(--button-shadow);
   background: var(--button-gradient);
   border: none;
   color: var(--white);
+  background-position: left center;
+  transition: var(--transition);
+  background-size: 200%;
+}
+
+.buttonLogOut:hover,
+.buttonLogOut:focus {
+  background-position: right center;
+  transform: var(--scale);
 }
 
 .buttonCancel {
@@ -46,6 +55,16 @@
   background: var(--white);
   border: none;
   color: var(--text-button);
+  background-size: 200%;
+  transition: var(--transition);
+  background-position: left center;
+}
+
+.buttonCancel:hover,
+.buttonCancel:focus {
+  background-size: 20%;
+  background-position: right center;
+  transform: var(--scale);
 }
 
 @media screen and (min-width: 768px) {

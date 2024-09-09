@@ -21,6 +21,7 @@ export const addTransaction = createAsyncThunk(
   async (transaction, thunkAPI) => {
     try {
       const { data } = await axios.post("/api/transactions", transaction);
+      thunkAPI.dispatch(getBalanceThunk());
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);

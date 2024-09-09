@@ -1,0 +1,29 @@
+.calendarWrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.dateIconInput {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 280px;
+  padding: 0 20px 8px;
+  background-color: transparent;
+  color: var(--white);
+  border: none;
+  border-bottom: 2px solid var(--white-40);
+  font-size: 18px;
+  cursor: pointer;
+}
+
+@media only screen and (min-width: 768px) {
+  .dateIconInput {
+    width: 181px;
+  }
+}
+
+.dateIcon {
+  fill: #734aef;
+  stroke: #734aef;
+}
