@@ -48,6 +48,9 @@
   .header {
     padding: 16px 0;
   }
+  .wrapper {
+    height: 395px;
+  }
 
   .item {
     padding: 16px 25px;
