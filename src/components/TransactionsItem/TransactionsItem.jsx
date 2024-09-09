@@ -6,6 +6,7 @@ import { setCurrentTransaction } from "../../redux/transaction/slice";
 import { deleteTransaction } from "../../redux/transaction/operations";
 import { getTransactionCategory } from "../../helpers/transactionCategory";
 import { selectCategories } from "../../redux/transaction/selectors";
+import { useMedia } from "../../hooks/useMedia";
 
 const formatDate = (dateString) => {
   const options = { day: "2-digit", month: "2-digit", year: "2-digit" };
@@ -22,7 +23,9 @@ const TransactionsItem = ({ transaction }) => {
     dispatch(setCurrentTransaction({ transaction }));
   };
 
-  return (
+  const { isMobile } = useMedia();
+
+  return !isMobile ? (
     <tr className={s.tableSection}>
       <td className={s.date}>{formatDate(transaction.transactionDate)}</td>
       <td className={s.type}>{transaction.type === "INCOME" ? "+" : "-"}</td>
@@ -32,8 +35,8 @@ const TransactionsItem = ({ transaction }) => {
         {sum}
       </td>
       <td className={s.actionBtn}>
-        <button type={"submit"} onClick={handleClick} className={s.editBtn}>
-          <Icons className={s.editIcon} name={"pencil"} />
+        <button type="submit" onClick={handleClick} className={s.editBtn}>
+          <Icons className={s.editIcon} name="pencil" />
           <p className={s.textEdit}>Edit</p>
         </button>
         <button
@@ -43,6 +46,47 @@ const TransactionsItem = ({ transaction }) => {
           }}
         >
           Delete
+        </button>
+      </td>
+    </tr>
+  ) : (
+    <tr
+      className={
+        transaction.type === "INCOME" ? s.tableSection : s.tableSectionExp
+      }
+    >
+      <td className={s.date}>
+        <span className={s.spanDate}>Date</span>
+        {formatDate(transaction.transactionDate)}
+      </td>
+      <td className={s.type}>
+        <span className={s.spanType}>Type</span>
+        {transaction.type === "INCOME" ? "+" : "-"}
+      </td>
+      <td className={s.category}>
+        <span className={s.spanCategory}>Category</span>
+        {category}
+      </td>
+      <td className={s.comment}>
+        <span className={s.spanComment}>Comment</span>
+        {transaction.comment}
+      </td>
+      <td className={transaction.type === "INCOME" ? s.income : s.expense}>
+        <span className={s.spanSum}>Sum</span>
+        {sum}
+      </td>
+      <td className={s.actionBtn}>
+        <button
+          className={s.deleteBtn}
+          onClick={() => {
+            dispatch(deleteTransaction(transaction.id));
+          }}
+        >
+          Delete
+        </button>
+        <button type="submit" onClick={handleClick} className={s.editBtn}>
+          <Icons className={s.editIcon} name="pencil" />
+          <span className={s.textEdit}>Edit</span>
         </button>
       </td>
     </tr>

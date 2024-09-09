@@ -1,7 +1,7 @@
 .financeTableContainer {
   display: flex;
   padding: 46px 16px 287px 69px;
-  height: 500px;
+  max-height: 500px;
   overflow-y: auto;
   border-radius: 10px;
   padding: 10px;
@@ -68,16 +68,25 @@
   border-radius: 0 8px 8px 0;
 }
 
+.nonActions {
+  border-radius: 0 8px 8px 0;
+}
+
+.invisAction {
+  display: none;
+}
+
 @media screen and (max-width: 768px) {
+  .financeTableContainer {
+    max-height: 60vh;
+    overflow-y: scroll;
+  }
+
   .financeTable,
   .financeTable tbody,
   .financeTable tr,
   .financeTable td {
     display: block;
-  }
-
-  .financeTableContainer {
-    max-height: 100%;
   }
 
   .financeTable thead {
@@ -87,17 +96,25 @@
   }
 
   .financeTable tbody tr {
-    margin-bottom: 1rem;
-    border: 1px solid #553c9a;
+    background: rgba(82, 59, 126, 0.6);
+    margin-bottom: 8px;
     border-radius: 0.5rem;
     position: relative;
-    padding-bottom: 3rem;
   }
 
   .financeTable td {
+    font-size: 16px;
     text-align: right;
     padding-left: 50%;
     position: relative;
+  }
+
+  .financeTable td:last-child {
+    border-bottom: none;
+  }
+
+  .financeTable .actionBtn {
+    border-bottom: none;
   }
 
   .financeTable td::before {
