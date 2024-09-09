@@ -32,9 +32,12 @@ const Header = () => {
               }}
               type="submit"
             >
-              <svg fill="var(--white-60)" width="18" height="18">
-                <use href="../../../src/images/symbol-defs.svg#exit"></use>
-              </svg>
+              <Icons
+                name={"exit"}
+                width={18}
+                height={18}
+                className={s.iconExit}
+              />
               {isTablet && <span className={s.exitSpan}>Exit</span>}
             </button>
           </li>

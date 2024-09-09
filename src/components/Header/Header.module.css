@@ -15,6 +15,10 @@
   gap: 8px;
 }
 
+.iconExit {
+  fill: var(--white-60);
+  stroke: none;
+}
 .containerLogo {
   text-align: center;
 }
