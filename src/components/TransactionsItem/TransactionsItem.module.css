@@ -37,11 +37,7 @@ td.expense {
   padding-left: 32px;
 }
 
-.category {
-  text-align: left;
-  padding-left: 16px;
-}
-
+.category,
 .comment {
   text-align: left;
   padding-left: 16px;
@@ -59,6 +55,7 @@ td.expense {
 }
 
 .editIcon {
+  transition: var(--transition);
   fill: transparent;
   stroke: rgba(255, 255, 255, 0.6);
 }
@@ -71,32 +68,62 @@ td.expense {
   background: none;
   border: none;
   cursor: pointer;
+  transition: var(--transition);
 }
 
-.editBtn:hover {
-  color: white;
+.editIcon:hover,
+.editIcon:focus {
+  scale: 1.5;
+  stroke: var(--white);
 }
 
 .deleteBtn {
   width: 69px;
   height: 29px;
   border-radius: 20px;
+  background-position: left center;
   background: var(--button-gradient);
-  color: white;
+  color: var(--white);
   padding: 4px 12px;
   border: none;
   cursor: pointer;
   font-size: 14px;
+  box-shadow: var(--button-shadow);
+  transition: var(--transition);
+  background-size: 200%;
 }
 
-.deleteBtn:hover {
-  background-color: #ea580c;
+.deleteBtn:hover,
+.deleteBtn:focus {
+  background-position: right center;
+  transform: var(--scale);
 }
 
 @media screen and (max-width: 768px) {
   .textEdit {
     display: contents;
     font-size: 16px;
+  }
+  .textEdit:hover {
+    transform: var(--scale);
+    color: var(--white);
+  }
+
+  .editIcon:hover,
+  .editIcon:focus {
+    scale: 1;
+    stroke: rgba(255, 255, 255, 0.6);
+  }
+
+  .editBtn:hover,
+  .editBtn:focus {
+    transform: var(--scale);
+    color: var(--white);
+  }
+
+  .deleteBtn:hover {
+    background-position: right center;
+    transform: var(--scale);
   }
 
   .tableSection::before {
@@ -156,10 +183,7 @@ td.expense {
     padding-left: 16px;
   }
 
-  .income {
-    justify-content: space-between;
-  }
-
+  .income,
   .expense {
     justify-content: space-between;
   }
