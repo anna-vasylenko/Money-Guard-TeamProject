@@ -37,10 +37,10 @@ const cacheCurrencyData = (data) => {
   const currencyData = {
     timestamp: now,
     usdRate: usd
-      ? { rateBuy: usd.rateBuy, rateSell: usd.rateSell.toFixed(2) }
+      ? { rateBuy: usd.rateBuy.toFixed(2), rateSell: usd.rateSell.toFixed(2) }
       : null,
     euroRate: eur
-      ? { rateBuy: eur.rateBuy, rateSell: eur.rateSell.toFixed(2) }
+      ? { rateBuy: eur.rateBuy.toFixed(2), rateSell: eur.rateSell.toFixed(2) }
       : null,
   };
 
