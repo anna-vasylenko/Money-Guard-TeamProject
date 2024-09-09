@@ -1,5 +1,4 @@
 .modalContainer {
-  /* color: white; */
   padding: 20px 0;
   display: flex;
   flex-direction: column;
@@ -47,10 +46,29 @@ input[type="number"] {
 }
 
 .select :global(.react-select__control) {
-  background-color: rgba(74, 86, 226, 0.1);
-  border: 1px solid var(--white-60);
-  border-radius: 8px;
+  background-color: transparent;
+  border-radius: 0px;
+  border: none;
+  padding: 0 20px 8px;
+  border-bottom: 2px solid var(--white-40);
+  transition: var(--transition);
+}
+
+@media only screen and (min-width: 768px) {
+  .select :global(.react-select__control) {
+    padding: 0 8px 8px;
+  }
+}
+
+.select :global(.react-select__control--is-focused) {
   box-shadow: none;
+  border-bottom: 2px solid var(--white-40);
+}
+
+.select :global(.react-select__placeholder) {
+  color: var(--white-60);
+  font-size: 18px;
+  transition: var(--transition);
 }
 
 .select :global(.react-select__single-value) {
@@ -68,12 +86,12 @@ input[type="number"] {
     rgba(133, 93, 175) 100%
   );
   box-shadow: 0 4px 60px 0 rgba(0, 0, 0, 0.25);
-  border-radius: 8px;
+  /* border-radius: 8px; */
   margin-top: 0px;
   overflow: hidden;
 
-  scrollbar-width: thin;
-  scrollbar-color: #ff868d #ff868d;
+  scrollbar-width: 2px;
+  scrollbar-color: #bfb4dd #bfb4dd;
 }
 
 .select :global(.react-select__option) {
@@ -85,26 +103,23 @@ input[type="number"] {
 }
 
 .select :global(.react-select__dropdown-indicator) {
+  border: none;
   color: var(--white);
 }
 
-&::-webkit-scrollbar {
-  /* width: 8px;
-  background-color: #51338a; */
-  width: 6px;
-  height: 150px;
-  flex-shrink: 0;
-  border-radius: 12px;
-  background-color: #bfb4dd;
+.select :global(.react-select__indicator-separator) {
+  display: none;
 }
 
-.wrapper {
+.wrapperForm {
   display: flex;
   flex-direction: column;
   gap: 40px;
 }
 
 .amountDateInputWrapper {
+  width: 100%;
+  max-height: 99px;
   display: flex;
   flex-direction: column;
   gap: 40px;
@@ -112,7 +127,9 @@ input[type="number"] {
 
 @media only screen and (min-width: 768px) {
   .amountDateInputWrapper {
+    max-width: 394px;
     flex-direction: row;
+    align-items: end;
     gap: 32px;
   }
 }
@@ -126,13 +143,16 @@ input[type="number"] {
   color: var(--white-60);
   font-weight: 600;
   border-bottom: 2px solid var(--white-40);
+  transition: var(--transition);
   &::placeholder {
     font-weight: 600;
     font-size: 18px;
     color: var(--white-60);
   }
-  &:focus {
+  &:focus,
+  &:hover {
     outline: none;
+    border-bottom: 2px solid var(--white-60);
   }
 }
 
@@ -140,6 +160,11 @@ input[type="number"] {
   .amountInput {
     width: 181px;
   }
+}
+
+.errorForAmount {
+  position: fixed;
+  margin-top: 3px;
 }
 
 .commentInput {
@@ -154,8 +179,12 @@ input[type="number"] {
   color: var(--white-60);
   font-weight: 600;
   border-bottom: 2px solid var(--white-40);
-  &:focus {
+  overflow: hidden;
+  transition: var(--transition);
+  &:focus,
+  &:hover {
     outline: none;
+    border-bottom: 2px solid var(--white-60);
   }
   &::placeholder {
     width: 92px;
@@ -172,6 +201,11 @@ input[type="number"] {
     width: 394px;
     padding: 0 8px 0px;
   }
+}
+
+.errorForComment {
+  position: fixed;
+  margin-top: 3px;
 }
 
 .buttonsWrapper {
@@ -192,19 +226,24 @@ input[type="number"] {
   letter-spacing: 0.1em;
   text-transform: uppercase;
   text-align: center;
+  box-shadow: 1px 9px 15px 0 rgba(0, 0, 0, 0.2);
   background-position: left center;
   transition: var(--transition);
-  background-size: 200%;
+  &:hover,
+  &:focus {
+    background-size: 200%;
+    background-position: right center;
+    transform: var(--scale);
+    outline: none;
+  }
 }
 
 .btnAdd {
-  box-shadow: 1px 9px 15px 0 rgba(0, 0, 0, 0.2);
   background: var(--button-gradient);
   color: var(--white);
 }
 
 .btnCancel {
-  box-shadow: 1px 9px 15px 0 rgba(0, 0, 0, 0.2);
   background: var(--white);
   color: var(--text-button);
 }
@@ -214,15 +253,4 @@ input[type="number"] {
   .btnCancel {
     width: 300px;
   }
-}
-
-.btnAdd:hover,
-.btnAdd:focus {
-  background-position: right center;
-  transform: var(--scale);
-}
-.btnCancel:hover,
-.btnCancel:focus {
-  background-position: right center;
-  transform: var(--scale);
 }
