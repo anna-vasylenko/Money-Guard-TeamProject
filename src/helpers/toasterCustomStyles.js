@@ -1,4 +1,4 @@
-export const toastStyles = {
+export const toasterCustomStyles = {
   autoClose: 2000,
   hideProgressBar: false,
   closeOnClick: true,
@@ -9,7 +9,7 @@ export const toastStyles = {
     backgroundColor: " #fbfbfb",
     color: "#623f8b",
     fontSize: "16px",
-    padding: "10px",
+    padding: "10px 40px",
     fontFamily: "Poppins, sans-serif",
     borderRadius: "8px",
   },
@@ -22,4 +22,5 @@ export const toastContainerStyles = {
   color: "white",
   fontFamily: "Poppins, sans-serif",
   borderRadius: "8px",
+  width: "400px",
 };
