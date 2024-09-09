@@ -45,6 +45,15 @@
   font-weight: 400;
   font-size: 18px;
   letter-spacing: 0.1em;
+  background-position: left center;
+  transition: var(--transition);
+  background-size: 200%;
+}
+
+.link:hover,
+.link:focus {
+  background-position: right center;
+  transform: var(--scale);
 }
 
 .but {
@@ -60,7 +69,17 @@
   border: none;
   text-transform: uppercase;
   letter-spacing: 0.1em;
+  background-position: left center;
+  transition: var(--transition);
+  background-size: 200%;
 }
+
+.but:hover,
+.but:focus {
+  background-position: right center;
+  transform: var(--scale);
+}
+
 
 .button_log {
   border-radius: 20px;
