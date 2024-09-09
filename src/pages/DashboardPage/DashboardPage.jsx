@@ -9,9 +9,13 @@ import ModalAddTransaction from "../../components/ModalAddTransaction/ModalAddTr
 import s from "./DashboardPage.module.css";
 import Balance from "../../components/Balance/Balance";
 import Currency from "../../components/Currency/Currency";
-import { getTransactions } from "../../redux/transaction/operations";
+import {
+  getTransactions,
+  getTransactionsCategories,
+} from "../../redux/transaction/operations";
 import { useDispatch } from "react-redux";
 import LoaderDashboard from "../../components/LoaderDashboard/LoaderDashboard";
+import { Toaster } from "react-hot-toast";
 
 const DashboardPage = () => {
   const dispatch = useDispatch();
@@ -19,6 +23,10 @@ const DashboardPage = () => {
 
   useEffect(() => {
     dispatch(getTransactions());
+  }, [dispatch]);
+
+  useEffect(() => {
+    dispatch(getTransactionsCategories());
   }, [dispatch]);
 
   return (
@@ -49,6 +57,7 @@ const DashboardPage = () => {
         <ModalLogOut />
         <ModalEditTransaction />
         <ModalAddTransaction />
+        <Toaster />
       </div>
     </div>
   );

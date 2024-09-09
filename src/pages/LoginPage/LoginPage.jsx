@@ -1,3 +1,4 @@
+import { Toaster } from "react-hot-toast";
 import LoginForm from "../../components/LoginForm/LoginForm";
 import { loginThunk } from "../../redux/auth/operations";
 import s from "./LoginPage.module.css";
@@ -22,6 +23,7 @@ const LoginPage = () => {
   return (
     <div className={s.loginPage}>
       <LoginForm onSubmit={handleSubmit} initialValues={initialValues} />
+      <Toaster />
     </div>
   );
 };

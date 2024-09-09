@@ -1,6 +1,6 @@
 .financeTableContainer {
   display: flex;
-  padding: 46px 16px 287px 69px;
+  width: 715px;
   max-height: 500px;
   overflow-y: auto;
   border-radius: 10px;
@@ -78,6 +78,9 @@
 
 @media screen and (max-width: 768px) {
   .financeTableContainer {
+    margin: 0 auto;
+    width: 280px;
+    padding: 0;
     max-height: 60vh;
     overflow-y: scroll;
   }

@@ -1,16 +1,20 @@
 import axios from "axios";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { getBalanceThunk } from "../auth/operations";
+import toast from "react-hot-toast";
+import { toasterCustomStyles } from "../../helpers/toasterCustomStyles";
 
 export const getTransactions = createAsyncThunk(
   "transactions/getAll",
   async (_, thunkAPI) => {
     try {
       const { data } = await axios.get("/api/transactions");
-      console.log(data);
-
       return data;
     } catch (error) {
+      toast.error(
+        "Unable to load your transactions at the moment. Please try again later.",
+        toasterCustomStyles
+      );
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -24,6 +28,10 @@ export const addTransaction = createAsyncThunk(
       thunkAPI.dispatch(getBalanceThunk());
       return data;
     } catch (error) {
+      toast.error(
+        "There was an issue adding your transaction. Please check the details and try again.",
+        toasterCustomStyles
+      );
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -38,6 +46,10 @@ export const deleteTransaction = createAsyncThunk(
       thunkAPI.dispatch(getTransactions());
       return data.id;
     } catch (error) {
+      toast.error(
+        "Failed to delete the transaction. Please refresh the page and try again.",
+        toasterCustomStyles
+      );
       return thunkAPI.rejectWithValue(error.message);
     }
   },
@@ -63,6 +75,10 @@ export const updateTransaction = createAsyncThunk(
       thunkAPI.dispatch(getBalanceThunk());
       return data;
     } catch (error) {
+      toast.error(
+        "Unable to update the transaction. Please check the details and try again.",
+        toasterCustomStyles
+      );
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -77,8 +93,6 @@ export const getPeriodTransactions = createAsyncThunk(
         const { data } = await axios.get("/api/transactions-summary", {
           params: { month, year },
         });
-        console.log(data);
-
         return data;
       }
     } catch (error) {
@@ -92,8 +106,6 @@ export const getTransactionsCategories = createAsyncThunk(
   async (_, thunkAPI) => {
     try {
       const { data } = await axios.get("/api/transaction-categories");
-      console.log(data);
-
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);

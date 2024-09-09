@@ -79,6 +79,6 @@
 
 @media screen and (min-width: 1280px) {
   .list {
-    padding: 40px 339px 28px 16px;
+    padding-left: 16px;
   }
 }
