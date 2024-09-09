@@ -1,0 +1,108 @@
+.modal {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.text {
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 18px;
+  text-align: center;
+  color: #fff;
+  width: 214px;
+  margin-bottom: 20px;
+}
+
+.buttonLogOut {
+  font-family: var(--second-family);
+  font-weight: 400;
+  font-size: 18px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-align: center;
+  border-radius: 20px;
+  width: 280px;
+  height: 50px;
+  box-shadow: var(--button-shadow);
+  background: var(--button-gradient);
+  border: none;
+  color: var(--white);
+  background-position: left center;
+  transition: var(--transition);
+  background-size: 200%;
+}
+
+.buttonLogOut:hover,
+.buttonLogOut:focus {
+  background-position: right center;
+  transform: var(--scale);
+}
+
+.buttonCancel {
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 18px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-align: center;
+  border-radius: 20px;
+  width: 280px;
+  height: 50px;
+  box-shadow: (--button-shadow);
+  background: var(--white);
+  border: none;
+  color: var(--text-button);
+  background-size: 200%;
+  transition: var(--transition);
+  background-position: left center;
+}
+
+.buttonCancel:hover,
+.buttonCancel:focus {
+  background-size: 20%;
+  background-position: right center;
+  transform: var(--scale);
+}
+
+@media screen and (min-width: 768px) {
+  .logoText {
+    font-family: var(--font-family);
+    font-weight: 400;
+    font-size: 26px;
+    margin-bottom: 32px;
+  }
+  .text {
+    width: 300px;
+    margin-bottom: 32px;
+  }
+  .logoWrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.button {
+  background: linear-gradient(
+      15deg,
+      #880088,
+      #aa2068,
+      #cc3f47,
+      #de6f3d,
+      #f09f33,
+      #de6f3d,
+      #cc3f47,
+      #aa2068,
+      #880088
+    )
+    no-repeat;
+  background-size: 300%;
+  color: #fff;
+  border: none;
+  background-position: left center;
+  transition: background 0.3s ease;
+}

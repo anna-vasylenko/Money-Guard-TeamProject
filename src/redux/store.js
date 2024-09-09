@@ -15,7 +15,7 @@ import storage from "redux-persist/lib/storage";
 import { modalReducer } from "./modal/slice";
 
 const persistConfig = {
-  key: "transaction",
+  key: "auth",
   version: 1,
   storage,
   whitelist: ["token"],
