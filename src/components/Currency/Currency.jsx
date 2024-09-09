@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { getCurrencyRates } from "../../helpers/currencyMono";
 import CurrencyChart from "./CurrencyChart";
 import s from "./Currency.module.css";
