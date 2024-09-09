@@ -15,6 +15,7 @@ const formatDate = (dateString) => {
 
 const TransactionsItem = ({ transaction }) => {
   const sum = Math.abs(transaction.amount);
+  const formSum = new Intl.NumberFormat().format(sum);
   const categories = useSelector(selectCategories);
   const category = getTransactionCategory(transaction.categoryId, categories);
   const dispatch = useDispatch();
@@ -32,7 +33,7 @@ const TransactionsItem = ({ transaction }) => {
       <td className={s.category}>{category}</td>
       <td className={s.comment}>{transaction.comment}</td>
       <td className={transaction.type === "INCOME" ? s.income : s.expense}>
-        {sum}
+        {formSum}
       </td>
       <td className={s.actionBtn}>
         <button type="submit" onClick={handleClick} className={s.editBtn}>
