@@ -29,7 +29,7 @@ const DashboardPage = () => {
           <div className={s.navItem}>
             <div className={s.wrapper}>
               <Navigation />
-              <Balance />
+              {!isMobile && <Balance />}
             </div>
             {!isMobile && <Currency />}
           </div>
