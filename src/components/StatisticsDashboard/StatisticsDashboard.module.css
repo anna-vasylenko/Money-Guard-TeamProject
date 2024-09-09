@@ -48,7 +48,6 @@
 
 .select :global(.react-select__menu) {
   z-index: 2;
-  max-height: 157px;
   background: linear-gradient(
     360deg,
     rgba(83, 61, 186) 0%,
