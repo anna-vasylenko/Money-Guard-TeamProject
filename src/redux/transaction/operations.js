@@ -60,6 +60,7 @@ export const updateTransaction = createAsyncThunk(
         amount,
       });
       thunkAPI.dispatch(getBalanceThunk());
+      thunkAPI.dispatch(getTransactions());
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
