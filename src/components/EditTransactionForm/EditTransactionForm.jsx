@@ -1,5 +1,6 @@
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css"; // Import datepicker CSS
 import s from "./EditTransactionForm.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { updateTransaction } from "../../redux/transaction/operations";
@@ -11,8 +12,8 @@ import { closeModal } from "../../redux/modal/slice";
 import { useState } from "react";
 import { editValidationSchema } from "../../helpers/editValidationSchema";
 import { Icons } from "../Icons/Icons";
-
-const validationSchema = editValidationSchema;
+import Loader from "../Loader/Loader";
+import CustomIconForCalendar from "../AddTransactionForm/CustomIconForCalendar";
 
 const EditTransactionForm = () => {
   const dispatch = useDispatch();
@@ -21,33 +22,36 @@ const EditTransactionForm = () => {
   const [startDate, setStartDate] = useState(
     new Date(transaction.transactionDate)
   );
-  const [transactionType, setTransactionType] = useState(
-    transaction.type || "Expense"
-  );
+  const [isLoading, setIsLoading] = useState(false);
   const [backendError, setBackendError] = useState(null);
 
   const initialValues = {
     amount: Math.abs(transaction.amount),
     comment: transaction.comment,
-    categoryId: transaction.categoryId || "",
   };
 
   const handleSubmit = async (values, options) => {
+    const fetchData = {
+      transactionDate: startDate.toISOString(),
+      comment: values.comment,
+      amount:
+        parseFloat(values.amount) * (transaction.type === "EXPENSE" ? -1 : 1),
+      type: transaction.type,
+      categoryId: transaction.categoryId,
+      id: transaction.id,
+    };
+
     try {
-      await dispatch(
-        updateTransaction({
-          transactionDate: startDate.toISOString(),
-          comment: values.comment,
-          amount: values.amount,
-          type: transactionType,
-          categoryId: values.categoryId,
-          id: transaction.id,
-        })
-      ).unwrap();
+      setIsLoading(true);
+      setBackendError(null);
+      await dispatch(updateTransaction(fetchData)).unwrap();
       options.resetForm();
       dispatch(closeModal());
     } catch (error) {
-      setBackendError(error);
+      console.error("Error updating transaction:", error);
+      setBackendError(error.message);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -55,97 +59,93 @@ const EditTransactionForm = () => {
     dispatch(closeModal());
   };
 
-  const handleTypeChange = (type, setFieldValue) => {
-    setTransactionType(type);
-    if (type === "Income") {
-      setFieldValue("categoryId", ""); // Clear categoryId when switching to Income
-    }
-  };
+  // Get the current category name for display
+  const currentCategory = categories.find(
+    (category) => category.id === transaction.categoryId
+  )?.name;
 
-  return (
-    <div className={s.modal}>
-      <h2>Edit transaction</h2>
-      <Formik
-        initialValues={initialValues}
-        onSubmit={handleSubmit}
-        validationSchema={validationSchema}
-      >
-        {({ isSubmitting, values, setFieldValue }) => (
+  return isLoading ? (
+    <Loader />
+  ) : (
+    <>
+      <div className={s.backdrop} onClick={handleClickButton}></div>
+      <div className={s.modal}>
+        <div className={s.header}>
+          <h2 className={s.title}>Edit transaction</h2>
+          <p>
+            <span
+              className={s.toggle}
+              style={{
+                color:
+                  transaction.type === "INCOME" ? "var(--yellow)" : "#E0E0E0",
+              }}
+            >
+              Income
+            </span>
+            /
+            <span
+              className={s.toggle}
+              style={{
+                color:
+                  transaction.type === "EXPENSE" ? "var(--yellow)" : "#E0E0E0",
+              }}
+            >
+              Expense
+            </span>
+          </p>
+        </div>
+        <p className={s.categoryLabel}>
+          {transaction.type === "EXPENSE" ? currentCategory : ""}
+        </p>
+        {backendError && <div className={s.error}>{backendError}</div>}
+        <Formik
+          initialValues={initialValues}
+          onSubmit={handleSubmit}
+          validationSchema={editValidationSchema}
+        >
           <Form className={s.form}>
-            <div className={s.typeToggle}>
-              <span
-                className={transactionType === "Income" ? s.active : ""}
-                onClick={() => handleTypeChange("Income", setFieldValue)}
-              >
-                Income
-              </span>
-              /
-              <span
-                className={transactionType === "Expense" ? s.active : ""}
-                onClick={() => handleTypeChange("Expense", setFieldValue)}
-              >
-                Expense
-              </span>
-            </div>
-
-            {transactionType === "Expense" && (
+            <div className={s.twoInput}>
               <label className={s.label}>
                 <Field
-                  as="select"
-                  name="categoryId"
-                  className={s.input}
-                  value={values.categoryId}
-                  onChange={(e) => setFieldValue("categoryId", e.target.value)}
-                >
-                  <option value="" disabled>
-                    Select Category
-                  </option>
-                  {categories.map((category) => (
-                    <option key={category.id} value={category.id}>
-                      {category.name}
-                    </option>
-                  ))}
-                </Field>
+                  type="number"
+                  name="amount"
+                  min="1"
+                  placeholder="0.00"
+                  className={s.numInput}
+                />
                 <ErrorMessage
-                  name="categoryId"
+                  name="amount"
                   component="span"
                   className={s.message}
                 />
               </label>
-            )}
 
-            <label className={s.label}>
-              <Field
-                type="number"
-                name="amount"
-                min="1"
-                placeholder="0.00"
-                className={s.input}
-              />
-              <ErrorMessage
-                name="amount"
-                component="span"
-                className={s.message}
-              />
-            </label>
-
-            <div className={s.datePicker}>
+              {/* <div className={s.datePicker}> */}
               <DatePicker
                 selected={startDate}
+                customInput={<CustomIconForCalendar />}
                 onChange={(date) => setStartDate(date)}
                 calendarStartDay={1}
                 dateFormat="dd.MM.yyyy"
                 maxDate={new Date()}
+                className={s.dateInput}
+                name="transactionDate"
               />
-              <Icons name={"calendar"} />
+              {/* <Icons
+                  className={s.calendarIcon}
+                  name={"calendar"}
+                  width={24}
+                  height={24}
+                /> */}
+              {/* </div> */}
             </div>
 
             <label className={s.label}>
               <Field
                 type="text"
                 name="comment"
-                placeholder="comment"
-                className={s.input}
+                placeholder="Comment"
+                className={s.textInput}
               />
               <ErrorMessage
                 name="comment"
@@ -154,22 +154,20 @@ const EditTransactionForm = () => {
               />
             </label>
 
-            {backendError && <div className={s.error}>{backendError}</div>}
-
-            <button type="submit" className={s.button} disabled={isSubmitting}>
+            <button type="submit" className={`${s.button} ${s.saveButton}`}>
               Save
             </button>
             <button
               type="button"
-              className={s.button}
+              className={`${s.button} ${s.cancelButton}`}
               onClick={handleClickButton}
             >
               Cancel
             </button>
           </Form>
-        )}
-      </Formik>
-    </div>
+        </Formik>
+      </div>
+    </>
   );
 };
 
@@ -179,19 +177,16 @@ export default EditTransactionForm;
 // import DatePicker from "react-datepicker";
 // import s from "./EditTransactionForm.module.css";
 // import { useDispatch, useSelector } from "react-redux";
-// import {
-//   getTransactionsCategories,
-//   updateTransaction,
-// } from "../../redux/transaction/operations";
+// import { updateTransaction } from "../../redux/transaction/operations";
 // import {
 //   selectCategories,
 //   selectCurrentTransaction,
 // } from "../../redux/transaction/selectors";
 // import { closeModal } from "../../redux/modal/slice";
-// // import { setCurrentTransaction } from "../../redux/transaction/slice";
 // import { useState } from "react";
 // import { editValidationSchema } from "../../helpers/editValidationSchema";
 // import { Icons } from "../Icons/Icons";
+// import Loader from "../Loader/Loader";
 
 // const validationSchema = editValidationSchema;
 
@@ -202,96 +197,235 @@ export default EditTransactionForm;
 //   const [startDate, setStartDate] = useState(
 //     new Date(transaction.transactionDate)
 //   );
+//   const [isIncome, setIsIncome] = useState(transaction.type === "INCOME");
+//   const [selectedCategoryId, setSelectedCategoryId] = useState(
+//     transaction.categoryId
+//   );
+//   console.log(selectedCategoryId);
 
 //   const initialValues = {
+//     type: transaction.type,
 //     amount: Math.abs(transaction.amount),
 //     comment: transaction.comment,
-//     categoryId: getTransactionsCategories(transaction.categoryId, categories),
+//     categoryId: selectedCategoryId,
+//   };
+//   const handleSubmit = (values, options) => {
+//     const fetchData = {
+//       transactionDate: startDate.toISOString(),
+//       comment: values.comment,
+//       amount: isIncome ? parseFloat(values.amount) : -parseFloat(values.amount),
+//       type: isIncome ? "INCOME" : "EXPENSE",
+//       categoryId: isIncome ? "" : selectedCategoryId,
+//       id: transaction.id,
+//     };
+
+//     dispatch(updateTransaction(fetchData))
+//       .then(() => {
+//         options.resetForm();
+//         dispatch(closeModal());
+//       })
+//       .catch((error) => {
+//         console.error("Error updating transaction:", error);
+//       });
 //   };
 
-//   const handleSubmit = (values, options) => {
-//     dispatch(
-//       updateTransaction({
-//         transactionDate: startDate.toISOString(),
-//         comment: values.comment,
-//         amount: values.amount,
-//         id: transaction.id,
-//       })
-//     );
-//     options.resetForm();
-//     dispatch(closeModal());
-//   };
+//   // const handleSubmit = async (values, options) => {
+//   //   const fetchData = {
+//   //     transactionDate: startDate.toISOString(),
+//   //     comment: values.comment,
+//   //     amount: isIncome ? parseFloat(values.amount) : -parseFloat(values.amount),
+//   //     type: isIncome ? "INCOME" : "EXPENSE",
+//   //     categoryId: isIncome ? "" : selectedCategoryId, // Ensure the categoryId is sent
+//   //     id: transaction.id,
+//   //   };
+
+//   //   try {
+//   //     await dispatch(updateTransaction(fetchData)).unwrap();
+//   //     options.resetForm();
+//   //     dispatch(closeModal());
+//   //   } catch (error) {
+//   //     console.error("Error updating transaction:", error);
+//   //   }
+//   // };
 
 //   const handleClickButton = () => {
 //     dispatch(closeModal());
-//     // dispatch(setCurrentTransaction(null));
+//   };
+
+//   const handleCategoryChange = (event) => {
+//     setSelectedCategoryId(event.target.value);
 //   };
 
 //   return (
-//     <div>
-//       <p> Edit transaction</p>
-//       <p>
-//         <span>Income</span>/ <span>Expense</span>
-//       </p>
-
-//       <Formik
-//         initialValues={initialValues}
-//         onSubmit={handleSubmit}
-//         validationSchema={validationSchema}
-//       >
-//         <Form className={s.form}>
-//           <label className={s.label}>
-//             <Field
-//               type="number"
-//               name="amount"
-//               min="1"
-//               placeholder="0.00"
-//               className={s.input}
-//             />
-//             <ErrorMessage
-//               name="amount"
-//               component="span"
-//               className={s.message}
-//             />
-//           </label>
-//           <div>
-//             <DatePicker
-//               selected={startDate}
-//               onChange={(date) => setStartDate(date)}
-//               calendarStartDay={1}
-//               dateFormat="dd.MM.yyyy"
-//               maxDate={new Date()}
-//             />
-//             <Icons name={"calendar"}></Icons>
+//     <Loader /> && (
+//       <>
+//         <div className={s.backdrop} onClick={handleClickButton}></div>
+//         <div className={s.modal}>
+//           <div className={s.header}>
+//             <p>Edit transaction</p>
 //           </div>
 
-//           <label className={s.label}>
-//             <Field
-//               type="text"
-//               name="comment"
-//               placeholder="comment"
-//               className={s.input}
-//             />
-//             <ErrorMessage
-//               name="comment"
-//               component="span"
-//               className={s.message}
-//             />
-//           </label>
+//           <p>
+//             <span
+//               style={{ color: isIncome ? "#f39c12" : "#000" }}
+//               onClick={() => setIsIncome(true)}
+//             >
+//               Income
+//             </span>{" "}
+//             /{" "}
+//             <span
+//               style={{ color: !isIncome ? "#f39c12" : "#000" }}
+//               onClick={() => setIsIncome(false)}
+//             >
+//               Expense
+//             </span>
+//           </p>
+//           {isIncome ? (
+//             <Formik
+//               initialValues={initialValues}
+//               onSubmit={handleSubmit}
+//               validationSchema={validationSchema}
+//             >
+//               <Form className={s.form}>
+//                 <label className={s.label}>
+//                   <Field
+//                     type="number"
+//                     name="amount"
+//                     min="1"
+//                     placeholder="0.00"
+//                     className={s.input}
+//                   />
+//                   <ErrorMessage
+//                     name="amount"
+//                     component="span"
+//                     className={s.message}
+//                   />
+//                 </label>
+//                 <div className={s.datePicker}>
+//                   <DatePicker
+//                     selected={startDate}
+//                     onChange={(date) => setStartDate(date)}
+//                     calendarStartDay={1}
+//                     dateFormat="dd.MM.yyyy"
+//                     maxDate={new Date()}
+//                     className={s.input}
+//                   />
+//                   <Icons name={"calendar"} />
+//                 </div>
 
-//           <button type="submit" className={s.button}>
-//             Save
-//           </button>
-//           <button
-//             type="button"
-//             className={s.button}
-//             onClick={handleClickButton}
-//           >
-//             Cancel
-//           </button>
-//         </Form>
-//       </Formik>
-//     </div>
+//                 <label className={s.label}>
+//                   <Field
+//                     type="text"
+//                     name="comment"
+//                     placeholder="Comment"
+//                     className={s.input}
+//                   />
+//                   <ErrorMessage
+//                     name="comment"
+//                     component="span"
+//                     className={s.message}
+//                   />
+//                 </label>
+
+//                 <button type="submit" className={`${s.button} ${s.saveButton}`}>
+//                   Save
+//                 </button>
+//                 <button
+//                   type="button"
+//                   className={`${s.button} ${s.cancelButton}`}
+//                   onClick={handleClickButton}
+//                 >
+//                   Cancel
+//                 </button>
+//               </Form>
+//             </Formik>
+//           ) : (
+//             <Formik
+//               initialValues={initialValues}
+//               onSubmit={handleSubmit}
+//               validationSchema={validationSchema}
+//             >
+//               <Form className={s.form}>
+//                 <label className={s.label}>
+//                   <Field
+//                     as="select"
+//                     name="categoryId"
+//                     className={s.input}
+//                     value={selectedCategoryId}
+//                     onChange={handleCategoryChange}
+//                   >
+//                     <option value="" disabled>
+//                       Select Category
+//                     </option>
+//                     {categories.map((category) => (
+//                       <option key={category.id} value={category.id}>
+//                         {category.name}
+//                       </option>
+//                     ))}
+//                   </Field>
+//                   <ErrorMessage
+//                     name="categoryId"
+//                     component="span"
+//                     className={s.message}
+//                   />
+//                 </label>
+
+//                 <label className={s.label}>
+//                   <Field
+//                     type="number"
+//                     name="amount"
+//                     min="1"
+//                     placeholder="0.00"
+//                     className={s.input}
+//                   />
+//                   <ErrorMessage
+//                     name="amount"
+//                     component="span"
+//                     className={s.message}
+//                   />
+//                 </label>
+//                 <div className={s.datePicker}>
+//                   <DatePicker
+//                     selected={startDate}
+//                     onChange={(date) => setStartDate(date)}
+//                     calendarStartDay={1}
+//                     dateFormat="dd.MM.yyyy"
+//                     maxDate={new Date()}
+//                     className={s.input}
+//                   />
+//                   <Icons name={"calendar"} />
+//                 </div>
+
+//                 <label className={s.label}>
+//                   <Field
+//                     type="text"
+//                     name="comment"
+//                     placeholder="Comment"
+//                     className={s.input}
+//                   />
+//                   <ErrorMessage
+//                     name="comment"
+//                     component="span"
+//                     className={s.message}
+//                   />
+//                 </label>
+
+//                 <button type="submit" className={`${s.button} ${s.saveButton}`}>
+//                   Save
+//                 </button>
+//                 <button
+//                   type="button"
+//                   className={`${s.button} ${s.cancelButton}`}
+//                   onClick={handleClickButton}
+//                 >
+//                   Cancel
+//                 </button>
+//               </Form>
+//             </Formik>
+//           )}
+//         </div>
+//       </>
+//     )
 //   );
 // };
 

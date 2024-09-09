@@ -7,7 +7,7 @@ export const getTransactions = createAsyncThunk(
   async (_, thunkAPI) => {
     try {
       const { data } = await axios.get("/api/transactions");
-      console.log(data);
+      // console.log(data);
 
       return data;
     } catch (error) {
@@ -51,6 +51,26 @@ export const deleteTransaction = createAsyncThunk(
   }
 );
 
+// export const updateTransaction = createAsyncThunk(
+//   "transactions/updateTransaction",
+//   async ({ transactionDate, comment, amount, categoryId, id }, thunkAPI) => {
+//     try {
+//       // Ensure the categoryId is included in the payload
+//       const { data } = await axios.patch(`/api/transactions/${id}`, {
+//         transactionDate,
+//         comment,
+//         amount,
+//         categoryId, // Add categoryId to the payload
+//       });
+//       thunkAPI.dispatch(getBalanceThunk());
+//       thunkAPI.dispatch(getTransactions());
+//       return data;
+//     } catch (error) {
+//       return thunkAPI.rejectWithValue(error.message);
+//     }
+//   }
+// );
+
 export const updateTransaction = createAsyncThunk(
   "transactions/updateTransaction",
   async ({ transactionDate, comment, amount, id }, thunkAPI) => {
@@ -59,6 +79,7 @@ export const updateTransaction = createAsyncThunk(
         transactionDate,
         comment,
         amount,
+        // categoryId,
       });
       thunkAPI.dispatch(getBalanceThunk());
       thunkAPI.dispatch(getTransactions());
@@ -93,7 +114,7 @@ export const getTransactionsCategories = createAsyncThunk(
   async (_, thunkAPI) => {
     try {
       const { data } = await axios.get("/api/transaction-categories");
-      console.log(data);
+      // console.log(data);
 
       return data;
     } catch (error) {
