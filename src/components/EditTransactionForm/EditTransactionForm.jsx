@@ -105,7 +105,7 @@ const EditTransactionForm = () => {
         >
           <Form className={s.form}>
             <div className={s.twoInput}>
-              <label className={s.label}>
+              <div>
                 <Field
                   type="number"
                   name="amount"
@@ -118,9 +118,8 @@ const EditTransactionForm = () => {
                   component="span"
                   className={s.message}
                 />
-              </label>
+              </div>
 
-              {/* <div className={s.datePicker}> */}
               <DatePicker
                 selected={startDate}
                 customInput={<CustomIconForCalendar />}
@@ -131,13 +130,6 @@ const EditTransactionForm = () => {
                 className={s.dateInput}
                 name="transactionDate"
               />
-              {/* <Icons
-                  className={s.calendarIcon}
-                  name={"calendar"}
-                  width={24}
-                  height={24}
-                /> */}
-              {/* </div> */}
             </div>
 
             <label className={s.label}>
@@ -153,17 +145,18 @@ const EditTransactionForm = () => {
                 className={s.message}
               />
             </label>
-
-            <button type="submit" className={`${s.button} ${s.saveButton}`}>
-              Save
-            </button>
-            <button
-              type="button"
-              className={`${s.button} ${s.cancelButton}`}
-              onClick={handleClickButton}
-            >
-              Cancel
-            </button>
+            <div className={s.buttonsWrapper}>
+              <button type="submit" className={`${s.button} ${s.saveButton}`}>
+                Save
+              </button>
+              <button
+                type="button"
+                className={`${s.button} ${s.cancelButton}`}
+                onClick={handleClickButton}
+              >
+                Cancel
+              </button>
+            </div>
           </Form>
         </Formik>
       </div>

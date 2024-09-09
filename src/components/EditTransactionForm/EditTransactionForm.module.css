@@ -6,6 +6,10 @@
   gap: 20px;
 }
 
+.form {
+  max-width: 394px;
+}
+
 .toggle {
   text-align: right;
   font-family: Poppins;
@@ -52,49 +56,15 @@
   text-align: left;
 }
 
-.numInput {
+.numInput,
+.dateInput,
+.textInput {
   background-color: transparent;
   border: none;
   border-bottom: solid 2px var(--white-40);
   color: var(--white);
-  width: 181px;
-  padding: 8px;
-  margin-bottom: 15px;
-  outline: none;
-  font-family: Poppins;
-  font-size: 18px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
-}
-.dateInput {
-  background-color: transparent;
-  border: none;
-  border-bottom: solid 2px var(--white-40);
-  color: var(--white);
-  width: 181px;
-  /* padding: 8px; */
-  margin-bottom: 15px;
-  outline: none;
-  font-family: Poppins;
-  font-size: 18px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
-}
-.twoInput {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 30px;
-}
-.dateInput {
-  background-color: transparent;
-  border: none;
-  border-bottom: solid 2px var(--white-40);
-  color: var(--white);
-  /* width: 100%; */
-  padding: 8px;
+  width: 280px;
+  padding: 0 20px 5px;
   margin-bottom: 15px;
   outline: none;
   font-family: Poppins;
@@ -104,23 +74,15 @@
   line-height: normal;
 }
 
+.twoInput {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
 .datePicker {
   display: flex;
-}
-.textInput {
-  background-color: transparent;
-  border: none;
-  border-bottom: solid 2px var(--white-40);
-  color: var(--white);
-  width: 100%;
-  padding: 8px;
-  margin-bottom: 15px;
-  outline: none;
-  font-family: Poppins;
-  font-size: 18px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
 }
 
 @media only screen and (min-width: 768px) {
@@ -212,7 +174,9 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: row;
     gap: 30px;
+    max-width: 394px;
   }
   .dateInput {
     background-color: transparent;
@@ -230,7 +194,8 @@
     line-height: normal;
   }
 
-  .calendarIcon {
+  .form {
+    max-width: 394px;
   }
 
   .datePicker {
@@ -252,7 +217,48 @@
     line-height: normal;
   }
 }
+
+.buttonsWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.saveButton,
+.cancelButton {
+  width: 280px;
+  padding: 12px 0;
+  border-radius: 20px;
+  border: none;
+  font-size: 18px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-align: center;
+  box-shadow: 1px 9px 15px 0 rgba(0, 0, 0, 0.2);
+  background-position: left center;
+  transition: var(--transition);
+  &:hover,
+  &:focus {
+    background-size: 200%;
+    background-position: right center;
+    transform: var(--scale);
+    outline: none;
+  }
+}
+
 .saveButton {
+  background: var(--button-gradient);
+  color: var(--white);
+}
+
+.cancelButton {
+  background: var(--white);
+  color: var(--text-button);
+}
+
+/* .saveButton {
   font-family: var(--second-family);
   font-weight: 400;
   font-size: 18px;
@@ -299,7 +305,7 @@
 .saveButton:focus {
   background-position: right center;
   transform: var(--scale);
-}
+} */
 
 .message {
   color: red;
