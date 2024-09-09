@@ -56,4 +56,15 @@ body {
   font-weight: 400;
   color: var(--white);
   background-color: #101010;
+
+  ::-webkit-scrollbar-thumb {
+    background-color: #ff868d;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: #ff868d;
+  }
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: #ff868d transparent;
+  }
 }
