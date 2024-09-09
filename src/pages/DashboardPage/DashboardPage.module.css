@@ -1,6 +1,5 @@
 .container {
   width: 100%;
-  padding: 0 20px;
   margin: 0 auto;
 }
 
@@ -22,6 +21,9 @@
   .navItem {
     display: flex;
     justify-content: space-between;
+    width: 100%;
+    gap: 32px;
+    padding-bottom: 20px;
   }
 }
 
@@ -38,7 +40,10 @@
   .navItem {
     display: flex;
     flex-direction: column;
+    justify-content: start;
+    padding-bottom: 0;
     position: relative;
+    width: 480px;
   }
 
   .navItem::after {

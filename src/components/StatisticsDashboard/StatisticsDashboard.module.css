@@ -48,7 +48,6 @@
 
 .select :global(.react-select__menu) {
   z-index: 2;
-  max-height: 157px;
   background: linear-gradient(
     360deg,
     rgba(83, 61, 186) 0%,
@@ -60,9 +59,6 @@
   border-radius: 8px;
   margin-top: 0px;
   overflow: hidden;
-
-  scrollbar-width: thin;
-  scrollbar-color: #ff868d #ff868d;
 }
 
 .select :global(.react-select__option) {
@@ -75,9 +71,4 @@
 
 .select :global(.react-select__dropdown-indicator) {
   color: var(--white);
-}
-
-&::-webkit-scrollbar {
-  width: 8px;
-  background-color: #51338a;
 }
