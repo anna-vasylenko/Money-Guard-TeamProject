@@ -1,4 +1,3 @@
-// import { ScaleLoader } from "react-spinners";
 import s from "./Loader.module.css";
 
 const DollarSpinner = () => {
@@ -18,6 +17,12 @@ const Loader = () => {
   return (
     <div>
       <DollarSpinner />
+      <div className={s.ellipse16}></div>
+      <div className={s.ellipse18}></div>
+      <div className={s.ellipse14}></div>
+      <div className={s.ellipse17}></div>
+      <div className={s.ellipse15}></div>
+      <div className={s.ellipse19}></div>
     </div>
   );
 };

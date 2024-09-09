@@ -26,7 +26,7 @@ const ModalWrapper = ({ children, isOpenModal }) => {
       >
         <Icons name={"close"} width={18} height={18} />
       </button>
-      {children}
+      <div className={s.modalContent}>{children}</div>
     </Modal>
   );
 };
