@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux';
 import { loginThunk } from '../../redux/auth/operations';
 import { validationSchemaLogin } from '../../helpers/loginSchema';
 import s from './LoginForm.module.css';
+import { Icons } from '../Icons/Icons';
 
 const LoginForm = () => {
   const dispatch = useDispatch();
@@ -23,28 +24,54 @@ const LoginForm = () => {
     >
       {({ isSubmitting }) => (
         <Form className={s.form}>
-          <p className={s.title}>Money Guard</p>
-          <label className={s.label}>
-            {/*  div <Icons name={"logo"} width={17} height={ */}
-            <Field
-              className={s.input}
-              type="email"
-              name="email"
-              placeholder="E-mail"
+          <div className={s.modalEllipse}></div>
+          <div className={s.loginLogo}>
+            <Icons
+              name={'logo'}
+              width={27}
+              height={26}
+              className={s.iconLogo}
             />
-            <ErrorMessage name="email" component="div" />
-          </label>
-
+            <p className={s.loginTitle}>Money Guard</p>
+          </div>
           <label className={s.label}>
-            <Field
-              className={s.input}
-              type="password"
-              name="password"
-              placeholder="Password"
-            />
-            <ErrorMessage name="password" component="div" />
+            <div className="inputContainerLogo">
+              <Icons
+                name={'email'}
+                width={20}
+                height={16}
+                className={s.iconName}
+              />
+              <Field
+                className={s.loginInput}
+                type="email"
+                name="email"
+                placeholder="E-mail"
+              />
+              <ErrorMessage name="email" component="div" className={s.error} />
+            </div>
           </label>
-
+          <label className={s.label}>
+            <div className="inputContainerLogo">
+              <Icons
+                name={'password'}
+                width={17}
+                height={17}
+                className={s.iconName}
+              />
+              <Field
+                className={s.loginInput}
+                type="password"
+                name="password"
+                placeholder="Password"
+              />
+              <ErrorMessage
+                name="password"
+                component="div"
+                className={s.error}
+              />
+            </div>
+          </label>
           <button className={s.but} disabled={isSubmitting} type="submit">
             Login
           </button>
