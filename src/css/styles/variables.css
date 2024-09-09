@@ -19,4 +19,7 @@
 
   --font-family: "Poppins", sans-serif;
   --second-family: "Circe", sans-serif;
+  --transition:  all 0.3s ease;
+  --scale: scale(1.1);
+
 }
