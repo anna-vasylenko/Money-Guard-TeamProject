@@ -6,6 +6,11 @@
   border: 0;
   display: flex;
   justify-content: flex-end;
+  transition: transform 0.3s ease, fill 0.3s ease;
+  &:hover,
+  &:focus {
+    transform: scale(1.1);
+  }
 }
 
 .modalEllipse {
@@ -24,4 +29,48 @@
   justify-content: center;
   align-items: center;
   height: 100%;
+}
+
+.modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  right: auto;
+  bottom: auto;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+  padding: 20px;
+  width: 100vw;
+  height: 100vh;
+  border: none;
+  border-radius: 8px;
+  background-color: rgba(255, 255, 255, 0.139);
+  box-shadow: 0px 4px 60px 0px rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(50px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 700;
+}
+
+.overlay {
+  background-color: rgb(34, 13, 91);
+  backdrop-filter: blur(3.5px);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+@media screen and (min-width: 768px) {
+  .modal {
+    width: 540px;
+    height: 589px;
+    padding: 40px 73px;
+    background-color: rgba(255, 255, 255, 0.196);
+  }
+  .overlay {
+    background-color: rgba(34, 13, 91, 0.396);
+  }
 }
