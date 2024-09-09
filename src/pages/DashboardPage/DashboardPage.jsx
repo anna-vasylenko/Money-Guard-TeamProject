@@ -1,7 +1,6 @@
 import { Suspense, useEffect } from "react";
 import { Outlet } from "react-router-dom";
 import { useMedia } from "../../hooks/useMedia";
-import Loader from "../../components/Loader/Loader";
 import Navigation from "../../components/Navigation/Navigation";
 import Header from "../../components/Header/Header";
 import ModalLogOut from "../../components/ModalLogOut/ModalLogOut";
@@ -10,8 +9,13 @@ import ModalAddTransaction from "../../components/ModalAddTransaction/ModalAddTr
 import s from "./DashboardPage.module.css";
 import Balance from "../../components/Balance/Balance";
 import Currency from "../../components/Currency/Currency";
-import { getTransactions } from "../../redux/transaction/operations";
+import {
+  getTransactions,
+  getTransactionsCategories,
+} from "../../redux/transaction/operations";
 import { useDispatch } from "react-redux";
+import LoaderDashboard from "../../components/LoaderDashboard/LoaderDashboard";
+import { Toaster } from "react-hot-toast";
 
 const DashboardPage = () => {
   const dispatch = useDispatch();
@@ -19,6 +23,10 @@ const DashboardPage = () => {
 
   useEffect(() => {
     dispatch(getTransactions());
+  }, [dispatch]);
+
+  useEffect(() => {
+    dispatch(getTransactionsCategories());
   }, [dispatch]);
 
   return (
@@ -29,13 +37,13 @@ const DashboardPage = () => {
           <div className={s.navItem}>
             <div className={s.wrapper}>
               <Navigation />
-              <Balance />
+              {!isMobile && <Balance />}
             </div>
             {!isMobile && <Currency />}
           </div>
 
           <div>
-            <Suspense fallback={<Loader />}>
+            <Suspense fallback={<LoaderDashboard />}>
               <Outlet />
             </Suspense>
           </div>
@@ -49,6 +57,7 @@ const DashboardPage = () => {
         <ModalLogOut />
         <ModalEditTransaction />
         <ModalAddTransaction />
+        <Toaster />
       </div>
     </div>
   );

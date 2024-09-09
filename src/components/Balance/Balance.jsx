@@ -1,14 +1,14 @@
 import { useSelector } from "react-redux";
-import { selectBalance } from "../../redux/auth/selectors";
+import { selectUser } from "../../redux/auth/selectors";
 import s from "./Balance.module.css";
 
 const Balance = () => {
-  const userBalance = useSelector(selectBalance);
+  const { balance } = useSelector(selectUser);
   const formattedBalance = new Intl.NumberFormat("uk-UA", {
     style: "decimal",
     minimumFractionDigits: 2,
   })
-    .format(userBalance)
+    .format(balance)
     .replace(",", ".");
 
   return (
