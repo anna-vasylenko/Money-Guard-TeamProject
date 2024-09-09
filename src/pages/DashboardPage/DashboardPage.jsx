@@ -12,6 +12,7 @@ import Currency from "../../components/Currency/Currency";
 import { getTransactions } from "../../redux/transaction/operations";
 import { useDispatch } from "react-redux";
 import LoaderDashboard from "../../components/LoaderDashboard/LoaderDashboard";
+import { Toaster } from "react-hot-toast";
 
 const DashboardPage = () => {
   const dispatch = useDispatch();
@@ -49,6 +50,7 @@ const DashboardPage = () => {
         <ModalLogOut />
         <ModalEditTransaction />
         <ModalAddTransaction />
+        <Toaster />
       </div>
     </div>
   );
