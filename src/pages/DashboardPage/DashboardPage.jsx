@@ -1,7 +1,6 @@
 import { Suspense, useEffect } from "react";
 import { Outlet } from "react-router-dom";
 import { useMedia } from "../../hooks/useMedia";
-import Loader from "../../components/Loader/Loader";
 import Navigation from "../../components/Navigation/Navigation";
 import Header from "../../components/Header/Header";
 import ModalLogOut from "../../components/ModalLogOut/ModalLogOut";
@@ -12,6 +11,7 @@ import Balance from "../../components/Balance/Balance";
 import Currency from "../../components/Currency/Currency";
 import { getTransactions } from "../../redux/transaction/operations";
 import { useDispatch } from "react-redux";
+import LoaderDashboard from "../../components/LoaderDashboard/LoaderDashboard";
 
 const DashboardPage = () => {
   const dispatch = useDispatch();
@@ -29,13 +29,13 @@ const DashboardPage = () => {
           <div className={s.navItem}>
             <div className={s.wrapper}>
               <Navigation />
-              <Balance />
+              {!isMobile && <Balance />}
             </div>
             {!isMobile && <Currency />}
           </div>
 
           <div>
-            <Suspense fallback={<Loader />}>
+            <Suspense fallback={<LoaderDashboard />}>
               <Outlet />
             </Suspense>
           </div>
