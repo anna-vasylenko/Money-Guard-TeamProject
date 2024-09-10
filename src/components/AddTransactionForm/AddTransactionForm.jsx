@@ -1,9 +1,9 @@
-import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
-import Select from "react-select";
 import { ErrorMessage, Field, Form, Formik } from "formik";
+import { useDispatch, useSelector } from "react-redux";
+import { useState } from "react";
+import Select from "react-select";
+import DatePicker from "react-datepicker";
+
 import { addTransaction } from "../../redux/transaction/operations";
 import { selectCategories } from "../../redux/transaction/selectors";
 import { closeModal } from "../../redux/modal/slice";
@@ -11,16 +11,18 @@ import { validationSchema } from "../../helpers/addTransactionSchema";
 import { getTransactionCategoryID } from "../../helpers/transactionCategory";
 import ToggleModal from "../ToggleModal/ToggleModal";
 import CustomIconForCalendar from "./CustomIconForCalendar";
+
 import s from "./AddTransactionForm.module.css";
+import "react-datepicker/dist/react-datepicker.css";
 
 const AddTransactionForm = () => {
   const [startDate, setStartDate] = useState(new Date());
   const [isIncome, setIsIncome] = useState(false);
-  const data = useSelector(selectCategories);
+  const categoriesData = useSelector(selectCategories);
   const [selectCategory, setSelectCategory] = useState(null);
   const dispatch = useDispatch();
 
-  const categories = data
+  const categories = categoriesData
     .filter((category) => category.type !== "INCOME")
     .map((category) => ({
       value: category.id,
@@ -71,15 +73,15 @@ const AddTransactionForm = () => {
         onSubmit={handleSubmit}
         validationSchema={validationSchema}
       >
-        <Form className={s.wrapperForm}>
+        <Form className={s.formWrapper}>
           {!isIncome && (
             <Select
               name="select"
-              className={s.select}
+              className={s.selectInput}
               placeholder="Select a category"
               options={categories}
               required
-              autoFocus
+              // autoFocus
               onChange={handleCategoryName}
               classNamePrefix="react-select"
             />
@@ -112,6 +114,7 @@ const AddTransactionForm = () => {
           <div>
             <Field
               as="textarea"
+              rows="2"
               name="comment"
               placeholder="Comment"
               className={s.commentInput}
