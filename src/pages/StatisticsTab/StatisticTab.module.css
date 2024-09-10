@@ -2,32 +2,31 @@
   font-weight: 400;
   font-size: 30px;
   text-align: left;
-  color: #fbfbfb;
-  font-family: "Poppins", sans-serif;
-  padding: 8px;
+  color: var(--white);
+  font-family: var(--font-family);
+  padding: 8px 0 20px;
+}
+.statisticsWrapper {
+  padding-top: 20px;
 }
 
 @media only screen and (min-width: 768px) {
   .statisticsWrapper {
     display: flex;
     justify-content: center;
-    padding-top: 20px;
     margin: 0;
-  }
-  .header {
-    padding-bottom: 20px;
   }
 }
 
 @media only screen and (min-width: 1280px) {
   .header {
     padding-left: 15px;
-    margin-bottom: 20px;
   }
 
   .doughnutWrapper {
     max-width: 400px;
     padding-left: 60px;
+    padding-right: 32px;
   }
   .tableWrapper {
     padding-top: 69px;

@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
+import clsx from "clsx";
 
-import { getCurrencyRates } from "../../helpers/currencyMono";
 import CurrencyChart from "./CurrencyChart";
 
-import clsx from "clsx";
+import { getCurrencyRates } from "../../helpers/currencyMono";
 import s from "./Currency.module.css";
 
 const Currency = () => {
