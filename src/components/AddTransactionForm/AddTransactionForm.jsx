@@ -85,21 +85,19 @@ const AddTransactionForm = () => {
             />
           )}
           <div className={s.amountDateInputWrapper}>
-            <div>
-              <Field
-                className={s.amountInput}
-                name="amount"
-                type="number"
-                placeholder="0.00"
-                required
-                autoComplete="off"
-              />
-              <ErrorMessage
-                name="amount"
-                component="div"
-                className={s.errorForAmount}
-              />
-            </div>
+            <Field
+              className={s.amountInput}
+              name="amount"
+              type="number"
+              placeholder="0.00"
+              required
+              autoComplete="off"
+            />
+            <ErrorMessage
+              name="amount"
+              component="div"
+              className={s.errorForAmount}
+            />
             <DatePicker
               selected={startDate}
               onChange={(date) => setStartDate(date)}
