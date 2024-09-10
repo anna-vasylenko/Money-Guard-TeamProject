@@ -8,6 +8,7 @@ import {
   hoverBackgroundColor,
   options,
 } from "../../helpers/statisticsColors";
+import statisticsNoTransactions from "../../images/noTransactions/statisticsNoTransactions.webp";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -19,7 +20,19 @@ const Chart = () => {
     (category) => category.type === "EXPENSE"
   );
   if (categoriesNames.length === 0) {
-    return <p className={s.notice}>Sorry, No transactions for that period</p>;
+    return (
+      <div className={s.noTransactionsContainer}>
+        {/* Render image */}
+        <img
+          src={statisticsNoTransactions}
+          alt="No Transactions Yet"
+          className={s.noTransactionsImage}
+        />
+        {/* Render informative text */}
+        {/* <p className={s.notice}></p>
+        <p className={s.notice}></p> */}
+      </div>
+    );
   }
 
   const data = {
