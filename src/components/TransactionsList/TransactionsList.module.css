@@ -37,14 +37,13 @@
 
 .financeTable td {
   border-bottom: 1px solid rgba(255, 255, 255, 0.41);
-  font-weight: 400;
   font-size: 14px;
 }
 
 .headTab {
   position: sticky;
   top: 0;
-  background: rgba(82, 59, 126, 0.6);
+  background: rgba(82, 59, 126, 1);
   box-shadow: 0px 4px 60px 0px rgba(0, 0, 0, 0.25);
   backdrop-filter: blur(50px);
   font-family: Poppins;
@@ -119,9 +118,11 @@
 
   .financeTable td {
     font-size: 16px;
+    font-weight: 400;
     text-align: right;
-    padding-left: 50%;
     position: relative;
+    display: flex;
+    align-items: center;
   }
 
   .financeTable td:last-child {
