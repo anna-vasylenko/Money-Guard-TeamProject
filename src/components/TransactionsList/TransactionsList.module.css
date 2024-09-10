@@ -1,7 +1,7 @@
 .financeTableContainer {
   display: flex;
   width: 715px;
-  max-height: calc(100vh - 100px);
+  max-height: calc(100vh - 110px);
   overflow-y: auto;
   border-radius: 10px;
   padding: 10px;
@@ -17,7 +17,6 @@
   width: 100%;
   height: auto;
   display: flex;
-  /* margin: 0 0 0 50px; */
 }
 
 .noTransactionsImage {
