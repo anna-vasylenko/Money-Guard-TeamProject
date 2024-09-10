@@ -22,15 +22,11 @@ const Chart = () => {
   if (categoriesNames.length === 0) {
     return (
       <div className={s.noTransactionsContainer}>
-        {/* Render image */}
         <img
           src={statisticsNoTransactions}
           alt="No Transactions Yet"
           className={s.noTransactionsImage}
         />
-        {/* Render informative text */}
-        {/* <p className={s.notice}></p>
-        <p className={s.notice}></p> */}
       </div>
     );
   }

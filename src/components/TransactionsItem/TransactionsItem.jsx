@@ -37,18 +37,20 @@ const TransactionsItem = ({ transaction }) => {
         {formSum}
       </td>
       <td className={s.actionBtn}>
-        <button type="submit" onClick={handleClick} className={s.editBtn}>
-          <Icons className={s.editIcon} name="pencil" />
-          <p className={s.textEdit}>Edit</p>
-        </button>
-        <button
-          className={s.deleteBtn}
-          onClick={() => {
-            dispatch(deleteTransaction(transaction.id));
-          }}
-        >
-          Delete
-        </button>
+        <div className={s.buttonContainer}>
+          <button type="submit" onClick={handleClick} className={s.editBtn}>
+            <Icons className={s.editIcon} name="pencil" />
+            <p className={s.textEdit}>Edit</p>
+          </button>
+          <button
+            className={s.deleteBtn}
+            onClick={() => {
+              dispatch(deleteTransaction(transaction.id));
+            }}
+          >
+            Delete
+          </button>
+        </div>
       </td>
     </tr>
   ) : (
@@ -71,7 +73,7 @@ const TransactionsItem = ({ transaction }) => {
       </td>
       <td className={s.comment}>
         <span className={s.spanComment}>Comment</span>
-        {transaction.comment}
+        <p>{transaction.comment}</p>
       </td>
       <td className={transaction.type === "INCOME" ? s.income : s.expense}>
         <span className={s.spanSum}>Sum</span>
