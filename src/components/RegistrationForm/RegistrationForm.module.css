@@ -120,6 +120,12 @@
   box-sizing: border-box;
   padding-bottom: 8px;
   font-size: 18px;
+  transition: var(--transition);
+}
+
+.regInput:hover,
+.regInput:focus {
+  border-bottom: 1px solid var(--white);
 }
 
 .boxLabel {
