@@ -1,5 +1,4 @@
 import { lazy, Suspense, useEffect } from "react";
-import "./App.css";
 import { useDispatch, useSelector } from "react-redux";
 import { Navigate, Route, Routes } from "react-router-dom";
 import Loader from "../Loader/Loader";
@@ -9,7 +8,6 @@ import RestrictedRoute from "../../routes/RestrictedRoute";
 import { selectIsRefreshing } from "../../redux/auth/selectors";
 import { refreshUserThunk } from "../../redux/auth/operations";
 import { useMedia } from "../../hooks/useMedia";
-import { getTransactionsCategories } from "../../redux/transaction/operations";
 
 const DashboardPage = lazy(() =>
   import("../../pages/DashboardPage/DashboardPage")
@@ -31,10 +29,6 @@ function App() {
 
   useEffect(() => {
     dispatch(refreshUserThunk());
-  }, [dispatch]);
-
-  useEffect(() => {
-    dispatch(getTransactionsCategories());
   }, [dispatch]);
 
   return isRefresh ? (

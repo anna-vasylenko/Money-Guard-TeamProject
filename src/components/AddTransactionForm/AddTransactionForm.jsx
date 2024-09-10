@@ -1,39 +1,47 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { ErrorMessage, Field, Form, Formik } from "formik";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import Select from "react-select";
+import { ErrorMessage, Field, Form, Formik } from "formik";
 import { addTransaction } from "../../redux/transaction/operations";
-import CustomIconForCalendar from "./CustomIconForCalendar";
+import { selectCategories } from "../../redux/transaction/selectors";
 import { closeModal } from "../../redux/modal/slice";
 import { validationSchema } from "../../helpers/addTransactionSchema";
-import s from "./AddTransactionForm.module.css";
-import { selectCategories } from "../../redux/transaction/selectors";
-import ToggleModal from "../ToggleModal/ToggleModal";
 import { getTransactionCategoryID } from "../../helpers/transactionCategory";
+import ToggleModal from "../ToggleModal/ToggleModal";
+import CustomIconForCalendar from "./CustomIconForCalendar";
+import s from "./AddTransactionForm.module.css";
 
 const AddTransactionForm = () => {
   const [startDate, setStartDate] = useState(new Date());
   const [isIncome, setIsIncome] = useState(false);
   const data = useSelector(selectCategories);
   const [selectCategory, setSelectCategory] = useState(null);
-
-  // console.log(selectCategory);
-
-  // console.log(getTransactionCategoryID(isIncome, selectCategory));
-
   const dispatch = useDispatch();
+
+  const categories = data
+    .filter((category) => category.type !== "INCOME")
+    .map((category) => ({
+      value: category.id,
+      label: category.name,
+    }));
+
+  const handleCategoryName = (selectedCategory) => {
+    setSelectCategory(selectedCategory.value);
+  };
+
+  const handleClickCancel = () => {
+    dispatch(closeModal());
+  };
 
   const initialValues = {
     transactionDate: new Date(),
     comment: "",
     amount: "",
     categoryId: "",
-    type: "",
+    type: isIncome ? "INCOME" : "EXPENSE",
   };
-
-  // console.log(isIncome ? "INCOME" : "EXPENSE");
 
   const handleSubmit = (values, options) => {
     const newTransaction = {
@@ -43,22 +51,15 @@ const AddTransactionForm = () => {
       amount: isIncome ? parseFloat(values.amount) : -parseFloat(values.amount),
       categoryId: getTransactionCategoryID(isIncome, selectCategory),
     };
-    dispatch(addTransaction(newTransaction));
-    options.resetForm();
-    handleClickCancel();
-  };
-
-  const categories = data.map((category) => ({
-    value: category.id,
-    label: category.name,
-  }));
-
-  const handleCategoryName = (selectedCategory) => {
-    setSelectCategory(selectedCategory.value);
-  };
-
-  const handleClickCancel = () => {
-    dispatch(closeModal());
+    dispatch(addTransaction(newTransaction))
+      .unwrap()
+      .then(() => {
+        options.resetForm();
+        handleClickCancel();
+      })
+      .catch((error) => {
+        console.error("Error adding transaction:", error);
+      });
   };
 
   return (
@@ -70,28 +71,33 @@ const AddTransactionForm = () => {
         onSubmit={handleSubmit}
         validationSchema={validationSchema}
       >
-        <Form className={s.wrapper}>
+        <Form className={s.wrapperForm}>
           {!isIncome && (
             <Select
+              name="select"
               className={s.select}
               placeholder="Select a category"
               options={categories}
+              required
+              autoFocus
               onChange={handleCategoryName}
               classNamePrefix="react-select"
             />
           )}
           <div className={s.amountDateInputWrapper}>
-            <div>
-              <Field
-                className={s.amountInput}
-                name="amount"
-                type="number"
-                placeholder="0.00"
-                required
-                autoComplete="off"
-              />
-              <ErrorMessage name="amount" component="div" />
-            </div>
+            <Field
+              className={s.amountInput}
+              name="amount"
+              type="number"
+              placeholder="0.00"
+              required
+              autoComplete="off"
+            />
+            <ErrorMessage
+              name="amount"
+              component="div"
+              className={s.errorForAmount}
+            />
             <DatePicker
               selected={startDate}
               onChange={(date) => setStartDate(date)}
@@ -108,7 +114,11 @@ const AddTransactionForm = () => {
               placeholder="Comment"
               className={s.commentInput}
             />
-            <ErrorMessage name="comment" component="span" className={s.error} />
+            <ErrorMessage
+              name="comment"
+              component="div"
+              className={s.errorForComment}
+            />
           </div>
           <div className={s.buttonsWrapper}>
             <button className={s.btnAdd} type="submit">

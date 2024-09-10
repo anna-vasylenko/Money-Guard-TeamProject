@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { getCurrencyRates } from "../../helpers/currencyMono";
 import CurrencyChart from "./CurrencyChart";
 import s from "./Currency.module.css";
+import clsx from "clsx";
 
 const Currency = () => {
   const [usdRate, setUsdRate] = useState({ rateBuy: 0, rateSell: 0 });
@@ -25,7 +26,7 @@ const Currency = () => {
   const data = [
     { name: "start", currency: 8, label: "" },
     { name: "USD", currency: usdRate.rateBuy, label: usdRate.rateBuy },
-    { name: "midle", currency: 10, label: "" },
+    { name: "middle", currency: 10, label: "" },
     { name: "EURO", currency: euroRate.rateBuy, label: euroRate.rateBuy },
     { name: "end", currency: 25, label: "" },
   ];
@@ -34,7 +35,7 @@ const Currency = () => {
     <div className={s.wrapper}>
       <table className={s.tab}>
         <thead>
-          <tr className={(s.tr, s.header)}>
+          <tr className={clsx(s.tr, s.header)}>
             <th className={s.item}>Currency</th>
             <th className={s.item}>Purchase</th>
             <th className={s.item}>Sale</th>
