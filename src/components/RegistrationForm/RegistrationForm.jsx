@@ -116,7 +116,11 @@ const RegistrationForm = () => {
                   className={s.regInput}
                 />
 
-                <PasswordStrengthBar password={values.password} />
+                <PasswordStrengthBar
+                  className={s.bar}
+                  scoreWordClassName={s.infoBar}
+                  password={values.password}
+                />
                 <ErrorMessage
                   name="confirmPassword"
                   component="div"

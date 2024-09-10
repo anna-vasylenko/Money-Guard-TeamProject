@@ -77,12 +77,10 @@
   width: 280px;
   height: 50px;
   box-shadow: 1px 9px 15px 0 rgba(0, 0, 0, 0.2);
-  background: linear-gradient(
-    167deg,
-    #ffc727 0%,
-    #9e40ba 61.46%,
-    #7000ff 90.54%
-  );
+  background: linear-gradient(167deg,
+      #ffc727 0%,
+      #9e40ba 61.46%,
+      #7000ff 90.54%);
   color: white;
   border: none;
   text-transform: uppercase;
@@ -145,6 +143,15 @@
 
 .success {
   color: rgb(255, 255, 255);
+}
+
+.bar div {
+  transition: all .2s ease;
+  flex-basis: content;
+}
+
+.infoBar {
+  display: none;
 }
 
 @media screen and (min-width: 768px) {
