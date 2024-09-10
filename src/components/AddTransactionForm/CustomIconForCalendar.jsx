@@ -1,6 +1,8 @@
 import { forwardRef } from "react";
-import s from "./CustomIconForCalendar.module.css";
+
 import { Icons } from "../Icons/Icons";
+
+import s from "./CustomIconForCalendar.module.css";
 
 const CustomIconForCalendar = forwardRef(({ value, onClick }, ref) => {
   return (

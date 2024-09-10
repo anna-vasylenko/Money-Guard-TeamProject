@@ -1,24 +1,14 @@
 .modalContainer {
-  padding: 20px 0;
   display: flex;
   flex-direction: column;
   gap: 40px;
+  padding: 20px 0;
 }
 
 @media only screen and (min-width: 768px) {
   .modalContainer {
     padding: 20px 53px;
   }
-}
-
-input[type="number"]::-webkit-outer-spin-button,
-input[type="number"]::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-
-input[type="number"] {
-  -moz-appearance: textfield;
 }
 
 .title {
@@ -34,49 +24,59 @@ input[type="number"] {
   }
 }
 
-.select {
+.selectInput {
   width: 280px;
   margin: 0 auto;
 }
 
 @media only screen and (min-width: 768px) {
-  .select {
+  .selectInput {
     width: 394px;
   }
 }
 
-.select :global(.react-select__control) {
-  background-color: transparent;
+.selectInput :global(.react-select__control) {
+  padding: 0 20px 8px;
   border-radius: 0px;
   border: none;
-  padding: 0 20px 8px;
   border-bottom: 2px solid var(--white-40);
   transition: var(--transition);
+  background-color: transparent;
 }
 
 @media only screen and (min-width: 768px) {
-  .select :global(.react-select__control) {
-    padding: 0 8px 8px;
+  .selectInput :global(.react-select__control) {
+    padding: 0 20px 8px;
   }
 }
 
-.select :global(.react-select__control--is-focused) {
+.selectInput :global(.react-select__control--is-focused) {
+  border-bottom: 2px solid var(--yellow);
   box-shadow: none;
-  border-bottom: 2px solid var(--white-40);
 }
 
-.select :global(.react-select__placeholder) {
-  color: var(--white-60);
+.selectInput :global(.react-select__control:hover) {
+  border-bottom: 2px solid var(--yellow);
+  box-shadow: none;
+}
+
+.selectInput :global(.react-select__value-container) {
+  padding: 0;
+}
+
+.selectInput :global(.react-select__placeholder) {
   font-size: 18px;
   transition: var(--transition);
+  color: var(--white-60);
 }
 
-.select :global(.react-select__single-value) {
-  color: var(--white);
+.selectInput :global(.react-select__single-value) {
   font-weight: 400;
+  color: var(--white);
 }
 
-.select :global(.react-select__menu) {
+.selectInput :global(.react-select__menu) {
+  margin-top: 0px;
   z-index: 2;
   background: linear-gradient(
     360deg,
@@ -86,73 +86,80 @@ input[type="number"] {
     rgba(133, 93, 175) 100%
   );
   box-shadow: 0 4px 60px 0 rgba(0, 0, 0, 0.25);
-  /* border-radius: 8px; */
-  margin-top: 0px;
   overflow: hidden;
-
   scrollbar-width: 2px;
   scrollbar-color: #bfb4dd #bfb4dd;
 }
 
-.select :global(.react-select__option) {
+.selectInput :global(.react-select__option) {
   background-color: var(--form-color);
 }
 
-.select :global(.react-select__option:hover) {
+.selectInput :global(.react-select__option:hover) {
   color: var(--dashboard-text);
 }
 
-.select :global(.react-select__dropdown-indicator) {
+.selectInput :global(.react-select__dropdown-indicator) {
   border: none;
   color: var(--white);
 }
 
-.select :global(.react-select__indicator-separator) {
+.selectInput :global(.react-select__dropdown-indicator:hover) {
+  border: none;
+  color: var(--dashboard-text);
+}
+
+.selectInput :global(.react-select__indicator-separator) {
   display: none;
 }
 
-.wrapperForm {
+.formWrapper {
   display: flex;
   flex-direction: column;
   gap: 40px;
 }
 
 .amountDateInputWrapper {
-  width: 100%;
-  max-height: 99px;
   display: flex;
   flex-direction: column;
   gap: 40px;
+  width: 100%;
+  max-height: 99px;
 }
 
 @media only screen and (min-width: 768px) {
   .amountDateInputWrapper {
-    max-width: 394px;
     flex-direction: row;
     align-items: end;
     gap: 32px;
+    max-width: 394px;
+  }
+}
+
+.amountInput,
+.commentInput {
+  width: 280px;
+  margin: 0 auto;
+  font-weight: 600;
+  border: none;
+  border-bottom: 2px solid var(--white-40);
+  overflow: hidden;
+  transition: var(--transition);
+  color: var(--white-60);
+  background-color: transparent;
+  &:focus,
+  &:hover {
+    outline: none;
+    border-bottom: 2px solid var(--yellow);
   }
 }
 
 .amountInput {
-  width: 280px;
   padding: 0 20px 8px;
-  margin: 0 auto;
-  background-color: transparent;
-  border: none;
-  color: var(--white-60);
-  font-weight: 600;
-  border-bottom: 2px solid var(--white-40);
-  transition: var(--transition);
   &::placeholder {
     font-weight: 600;
     font-size: 18px;
     color: var(--white-60);
-  }
-  &:focus,
-  &:hover {
-    outline: none;
-    border-bottom: 2px solid var(--white-60);
   }
 }
 
@@ -162,50 +169,30 @@ input[type="number"] {
   }
 }
 
-.errorForAmount {
-  position: fixed;
-  margin-top: 3px;
-}
-
 .commentInput {
-  width: 280px;
   padding: 0 20px 32px;
-  display: flex;
-  justify-content: center;
-  margin: 0 auto;
   resize: none;
-  background-color: transparent;
-  border: none;
-  color: var(--white-60);
-  font-weight: 600;
-  border-bottom: 2px solid var(--white-40);
-  overflow: hidden;
-  transition: var(--transition);
-  &:focus,
-  &:hover {
-    outline: none;
-    border-bottom: 2px solid var(--white-60);
-  }
   &::placeholder {
-    width: 92px;
-    height: 27px;
     font-weight: 400;
     font-size: 18px;
-    color: var(--white-60);
     padding: 0;
+    color: var(--white-60);
   }
 }
 
 @media only screen and (min-width: 768px) {
   .commentInput {
     width: 394px;
-    padding: 0 8px 0px;
+    padding: 0 20px 0px;
   }
 }
 
+.errorForAmount,
 .errorForComment {
   position: fixed;
   margin-top: 3px;
+  font-size: 12px;
+  color: var(--yellow);
 }
 
 .buttonsWrapper {
@@ -220,12 +207,12 @@ input[type="number"] {
 .btnCancel {
   width: 280px;
   padding: 12px 0;
-  border-radius: 20px;
-  border: none;
+  text-align: center;
   font-size: 18px;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  text-align: center;
+  border-radius: 20px;
+  border: none;
   box-shadow: 1px 9px 15px 0 rgba(0, 0, 0, 0.2);
   background-position: left center;
   transition: var(--transition);
@@ -253,4 +240,14 @@ input[type="number"] {
   .btnCancel {
     width: 300px;
   }
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
 }
