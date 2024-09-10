@@ -9,14 +9,14 @@ body {
   background-color: #101010;
 
   ::-webkit-scrollbar-thumb {
-    background-color: #ff868d;
+    background-color: #ff868c;
   }
   ::-webkit-scrollbar-thumb:hover {
     background-color: #ff868d;
   }
   * {
     scrollbar-width: thin;
-    scrollbar-color: #ff868d transparent;
+    scrollbar-color: #ff868c3d transparent;
   }
 }
 

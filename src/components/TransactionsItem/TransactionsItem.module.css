@@ -27,6 +27,7 @@ td.expense {
   font-weight: 400;
   padding-top: 16px;
   padding-bottom: 16px;
+  word-wrap: break-word;
 }
 
 .date {
@@ -44,10 +45,11 @@ td.expense {
   text-align: left;
   padding-left: 16px;
 }
-
+.buttonContainer {
+  display: flex;
+}
 .actionBtn {
   padding: 16px;
-  display: flex;
   align-items: center;
   gap: 0.5rem;
 }
@@ -181,9 +183,13 @@ td.expense {
 
   .comment {
     justify-content: space-between;
-
+    gap: 5px;
     text-align: left;
     padding-left: 16px;
+  }
+  .comment p {
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   .income,

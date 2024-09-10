@@ -2,17 +2,28 @@
   display: flex;
   width: 715px;
   max-height: calc(100vh - 110px);
-  overflow-y: auto;
   border-radius: 10px;
   padding: 10px;
   font-family: var(--font-family);
 }
-& .table {
+
+.financeTable tbody {
+  display: block;
   width: 100%;
-  border-collapse: collapse;
-  color: white;
+  max-height: calc(100vh - 170px);
+  overflow-y: auto;
 }
 
+.financeTable thead,
+.financeTable tbody tr {
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+}
+
+.financeTable thead {
+  border-radius: 8px;
+}
 .noTransactionsImg {
   width: 100%;
   height: auto;
@@ -72,28 +83,24 @@
   padding: 16px;
 }
 
-.date {
-  border-radius: 8px 0 0 8px;
-}
-.actions {
-  border-radius: 0 8px 8px 0;
-}
-
-.nonActions {
-  border-radius: 0 8px 8px 0;
-}
-
 .invisAction {
   display: none;
 }
 
-@media screen and (max-width: 768px) {
+@media only screen and (max-width: 1280px) {
+  .financeTable tbody {
+    max-height: calc(100vh - 385px);
+  }
+}
+
+@media only screen and (max-width: 768px) {
   .financeTableContainer {
     margin: 0 auto;
     width: 280px;
     padding: 0;
     max-height: 60vh;
     overflow-y: scroll;
+    scrollbar-width: none;
   }
 
   .financeTable,
@@ -101,6 +108,10 @@
   .financeTable tr,
   .financeTable td {
     display: block;
+  }
+
+  .financeTable tbody {
+    max-height: none;
   }
 
   .financeTable thead {
