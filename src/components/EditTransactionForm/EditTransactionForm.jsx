@@ -1,6 +1,6 @@
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css"; // Import datepicker CSS
+import "react-datepicker/dist/react-datepicker.css";
 import s from "./EditTransactionForm.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { updateTransaction } from "../../redux/transaction/operations";
@@ -11,7 +11,6 @@ import {
 import { closeModal } from "../../redux/modal/slice";
 import { useState } from "react";
 import { editValidationSchema } from "../../helpers/editValidationSchema";
-import { Icons } from "../Icons/Icons";
 import Loader from "../Loader/Loader";
 import CustomIconForCalendar from "../AddTransactionForm/CustomIconForCalendar";
 
@@ -59,7 +58,6 @@ const EditTransactionForm = () => {
     dispatch(closeModal());
   };
 
-  // Get the current category name for display
   const currentCategory = categories.find(
     (category) => category.id === transaction.categoryId
   )?.name;
@@ -72,31 +70,35 @@ const EditTransactionForm = () => {
       <div className={s.modal}>
         <div className={s.header}>
           <h2 className={s.title}>Edit transaction</h2>
-          <p>
+          <p className={s.toggleRow}>
             <span
-              className={s.toggle}
-              style={{
-                color:
-                  transaction.type === "INCOME" ? "var(--yellow)" : "#E0E0E0",
-              }}
+              className={`${s.toggle} ${
+                transaction.type === "INCOME"
+                  ? s.activeToggle
+                  : s.inactiveToggle
+              }`}
             >
               Income
             </span>
             /
             <span
-              className={s.toggle}
-              style={{
-                color:
-                  transaction.type === "EXPENSE" ? "var(--yellow)" : "#E0E0E0",
-              }}
+              className={`${s.toggle} ${
+                transaction.type === "EXPENSE"
+                  ? s.activeToggle
+                  : s.inactiveToggle
+              }`}
             >
               Expense
             </span>
           </p>
         </div>
-        <p className={s.categoryLabel}>
-          {transaction.type === "EXPENSE" ? currentCategory : ""}
-        </p>
+        {transaction.type === "EXPENSE" && (
+          <p
+            className={currentCategory ? s.categoryLabel : s.categoryLabelEmpty}
+          >
+            {currentCategory}
+          </p>
+        )}
         {backendError && <div className={s.error}>{backendError}</div>}
         <Formik
           initialValues={initialValues}
@@ -106,6 +108,11 @@ const EditTransactionForm = () => {
           <Form className={s.form}>
             <div className={s.twoInput}>
               <div>
+                <ErrorMessage
+                  name="amount"
+                  component="span"
+                  className={s.message}
+                />
                 <Field
                   type="number"
                   name="amount"
@@ -113,38 +120,31 @@ const EditTransactionForm = () => {
                   placeholder="0.00"
                   className={s.numInput}
                 />
-                <ErrorMessage
-                  name="amount"
-                  component="span"
-                  className={s.message}
+              </div>
+              <div className={s.dateInput}>
+                <DatePicker
+                  selected={startDate}
+                  customInput={<CustomIconForCalendar />}
+                  onChange={(date) => setStartDate(date)}
+                  calendarStartDay={1}
+                  dateFormat="dd.MM.yyyy"
+                  maxDate={new Date()}
+                  name="transactionDate"
                 />
               </div>
-
-              <DatePicker
-                selected={startDate}
-                customInput={<CustomIconForCalendar />}
-                onChange={(date) => setStartDate(date)}
-                calendarStartDay={1}
-                dateFormat="dd.MM.yyyy"
-                maxDate={new Date()}
-                className={s.dateInput}
-                name="transactionDate"
-              />
             </div>
+            <ErrorMessage
+              name="comment"
+              component="span"
+              className={s.message}
+            />
+            <Field
+              type="text"
+              name="comment"
+              placeholder="Comment"
+              className={s.textInput}
+            />
 
-            <label className={s.label}>
-              <Field
-                type="text"
-                name="comment"
-                placeholder="Comment"
-                className={s.textInput}
-              />
-              <ErrorMessage
-                name="comment"
-                component="span"
-                className={s.message}
-              />
-            </label>
             <div className={s.buttonsWrapper}>
               <button type="submit" className={`${s.button} ${s.saveButton}`}>
                 Save
