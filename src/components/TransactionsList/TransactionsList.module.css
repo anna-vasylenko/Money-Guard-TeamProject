@@ -1,7 +1,7 @@
 .financeTableContainer {
   display: flex;
   width: 715px;
-  max-height: 500px;
+  max-height: calc(100vh - 100px);
   overflow-y: auto;
   border-radius: 10px;
   padding: 10px;
