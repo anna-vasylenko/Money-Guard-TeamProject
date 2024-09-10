@@ -13,6 +13,19 @@
   color: white;
 }
 
+.noTransactionsImg {
+  width: 100%;
+  height: auto;
+  display: flex;
+  /* margin: 0 0 0 50px; */
+}
+
+.noTransactionsImage {
+  display: flex;
+  margin: 0 auto;
+  padding: 0;
+}
+
 .financeTable {
   color: var(--white, #fbfbfb);
   font-family: Poppins;
