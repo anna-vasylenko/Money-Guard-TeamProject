@@ -20,7 +20,7 @@
   &:hover,
   &:focus {
     outline: none;
-    border-bottom: 2px solid var(--white-60);
+    border-bottom: 2px solid var(--yellow);
   }
 }
 
@@ -39,7 +39,7 @@
     #6a46a5 100%
   );
   border: none;
-  border: 2px solid var(--dashboard-text);
+  border: 1px solid var(--dashboard-text);
 }
 
 :global .react-datepicker__header {
