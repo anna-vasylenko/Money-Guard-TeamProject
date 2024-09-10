@@ -9,11 +9,9 @@ const CURRENCY_CACHE_KEY = "currencyRates";
 const fetchCurrencyData = async () => {
   try {
     const response = await instance.get("bank/currency");
-    console.log("Fetched data from API:", response.data);
     return response.data;
   } catch (error) {
-    console.error("Failed to fetch currency data:", error.message);
-    throw new Error("Failed to fetch currency data");
+    throw new Error(error.message);
   }
 };
 
@@ -44,7 +42,6 @@ const cacheCurrencyData = (data) => {
       : null,
   };
 
-  console.log("Caching new data:", currencyData);
   localStorage.setItem(CURRENCY_CACHE_KEY, JSON.stringify(currencyData));
   return currencyData;
 };
@@ -64,7 +61,6 @@ export const getCurrencyRates = async () => {
     }
   } catch (error) {
     console.error("Error fetching data from API. Retrying...", error.message);
-
     const data = await fetchCurrencyData();
     currencyData = cacheCurrencyData(data);
   }

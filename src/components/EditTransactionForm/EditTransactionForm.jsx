@@ -48,7 +48,6 @@ const EditTransactionForm = () => {
       options.resetForm();
       dispatch(closeModal());
     } catch (error) {
-      console.error("Error updating transaction:", error);
       setBackendError(error.message);
     } finally {
       setIsLoading(false);
