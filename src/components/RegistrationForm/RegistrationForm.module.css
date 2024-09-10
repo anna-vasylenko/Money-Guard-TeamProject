@@ -109,7 +109,7 @@
 
 .regInput {
   position: relative;
-  width: 100%;
+  width: 280px;
   height: 100%;
   border: none;
   outline: none;
@@ -120,6 +120,12 @@
   box-sizing: border-box;
   padding-bottom: 8px;
   font-size: 18px;
+  transition: var(--transition);
+}
+
+.regInput:hover,
+.regInput:focus {
+  border-bottom: 1px solid var(--yellow);
 }
 
 .boxLabel {

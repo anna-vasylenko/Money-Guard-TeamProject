@@ -86,7 +86,7 @@ const TransactionsItem = ({ transaction }) => {
           Delete
         </button>
         <button type="submit" onClick={handleClick} className={s.editBtn}>
-          <Icons className={s.editIcon} name="pencil" />
+          <Icons className={s.editIcon} name="pencil" width={14} height={14} />
           <span className={s.textEdit}>Edit</span>
         </button>
       </td>
