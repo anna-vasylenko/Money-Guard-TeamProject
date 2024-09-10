@@ -13,13 +13,18 @@ const modalSlice = createSlice({
   reducers: {
     openLogOutModal(state) {
       state.isLogOutModalOpen = true;
-      console.log(state);
+      state.isAddModalOpen = false;
+      state.isEditModalOpen = false;
     },
     openEditModal(state) {
       state.isEditModalOpen = true;
+      state.isLogOutModalOpen = false;
+      state.isAddModalOpen = false;
     },
     openAddModal(state) {
       state.isAddModalOpen = true;
+      state.isLogOutModalOpen = false;
+      state.isEditModalOpen = false;
     },
     closeModal() {
       return initialState;

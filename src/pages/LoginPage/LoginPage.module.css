@@ -5,7 +5,7 @@
     align-items: center;
     width: 100vw;
     height: 100vh;
-    background-image: url("../../images/backgroundLogin/backgroundLogin_tab_@1x.webp");
+    background-image: url("../../images/backgroundLogin/loginbg_tabl_@1x.webp");
     background-repeat: no-repeat;
     background-size: cover;
   }
@@ -13,19 +13,19 @@
 
 @media only screen and (min-width: 768px) and (min-resolution: 192dpi) {
   .loginPage {
-    background-image: url("../../images/backgroundLogin/backgroundLogin_tab_@2x.webp");
+    background-image: url("../../images/backgroundLogin/loginbg_tabl_@2x.webp");
   }
 }
 
 @media only screen and (min-width: 1280px) {
   .loginPage {
-    background-image: url("../../images/backgroundLogin/backgroundLogin_desctop_1x.webp");
+    background-image: url("../../images/backgroundLogin/loginbg_desk_@1x.webp");
   }
 }
 
 @media only screen and (min-width: 1280px) and (min-resolution: 192dpi) {
   .loginPage {
-    background-image: url("../../images/backgroundLogin/backgroundLogin_desctop_2x.webp");
+    background-image: url("../../images/backgroundLogin/lodinbg_desk_@2x.webp");
   }
 }
 

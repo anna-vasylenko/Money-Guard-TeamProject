@@ -1,55 +1,6 @@
 @import url("./css/styles/variables.css");
+@import url("./css/styles/reset.css");
 @import url("./css/styles/fonts.css");
-
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
-
-body {
-  margin: 0;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p {
-  margin: 0;
-}
-
-ol,
-ul {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-a {
-  font-family: inherit;
-  color: currentColor;
-  text-decoration: none;
-  margin: 0;
-}
-
-address {
-  font-style: normal;
-}
-
-button {
-  font-family: inherit;
-  cursor: pointer;
-}
-
-img {
-  display: block;
-  max-width: 100%;
-  width: 100%;
-  height: auto;
-}
 
 body {
   font-family: var(--font-family);
@@ -67,4 +18,19 @@ body {
     scrollbar-width: thin;
     scrollbar-color: #ff868d transparent;
   }
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-text-fill-color: rgba(255, 255, 255, 0.6);
+  transition: background-color 5000s;
+  background-color: transparent !important;
+}
+input::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 27px;
 }
