@@ -1,7 +1,6 @@
 .financeTableContainer {
   display: flex;
   width: 715px;
-  /* max-height: 500px; */
   max-height: calc(100vh - 110px);
   overflow-y: auto;
   border-radius: 10px;
@@ -12,6 +11,18 @@
   width: 100%;
   border-collapse: collapse;
   color: white;
+}
+
+.noTransactionsImg {
+  width: 100%;
+  height: auto;
+  display: flex;
+}
+
+.noTransactionsImage {
+  display: flex;
+  margin: 0 auto;
+  padding: 0;
 }
 
 .financeTable {

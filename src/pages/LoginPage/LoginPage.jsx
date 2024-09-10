@@ -1,4 +1,5 @@
 import { Toaster } from "react-hot-toast";
+
 import LoginForm from "../../components/LoginForm/LoginForm";
 import s from "./LoginPage.module.css";
 

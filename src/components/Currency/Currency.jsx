@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
-import { getCurrencyRates } from "../../helpers/currencyMono";
-import CurrencyChart from "./CurrencyChart";
-import s from "./Currency.module.css";
 import clsx from "clsx";
+
+import CurrencyChart from "./CurrencyChart";
+
+import { getCurrencyRates } from "../../helpers/currencyMono";
+import s from "./Currency.module.css";
 
 const Currency = () => {
   const [usdRate, setUsdRate] = useState({ rateBuy: 0, rateSell: 0 });

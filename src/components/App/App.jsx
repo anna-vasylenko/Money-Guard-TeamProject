@@ -1,10 +1,11 @@
 import { lazy, Suspense, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Navigate, Route, Routes } from "react-router-dom";
-import Loader from "../Loader/Loader";
 
 import PrivateRoute from "../../routes/PrivateRoute";
 import RestrictedRoute from "../../routes/RestrictedRoute";
+import Loader from "../Loader/Loader";
+
 import { selectIsRefreshing } from "../../redux/auth/selectors";
 import { refreshUserThunk } from "../../redux/auth/operations";
 import { useMedia } from "../../hooks/useMedia";
@@ -43,7 +44,10 @@ function App() {
           <Route index element={<HomeTab />} />
 
           <Route path="statistics" element={<StatisticsTab />} />
-          <Route path="currency" element={isMobile && <CurrencyTab />} />
+          <Route
+            path="currency"
+            element={isMobile ? <CurrencyTab /> : <Navigate to="/" />}
+          />
         </Route>
         <Route
           path="/register"

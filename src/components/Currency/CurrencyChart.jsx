@@ -27,7 +27,9 @@ const CurrencyChart = ({ data }) => {
 
   const renderDot = (props) => {
     const { cx, cy, index } = props;
-    if (data[index].name === "USD" || data[index].name === "EURO") {
+    const currencyName = data[index].name;
+
+    if (currencyName === "USD" || currencyName === "EURO") {
       return (
         <circle
           key={`dot-${index}`}
@@ -43,6 +45,32 @@ const CurrencyChart = ({ data }) => {
     return null;
   };
 
+  const renderActiveDot = (props) => {
+    const { cx, cy, index } = props;
+    const currencyName = data[index].name;
+
+    if (currencyName === "USD" || currencyName === "EURO") {
+      return (
+        <circle
+          cx={cx}
+          cy={cy}
+          r={5}
+          fill="#ff6f61"
+          stroke="#fff"
+          strokeWidth={2}
+        />
+      );
+    }
+    return null;
+  };
+
+  const CustomTooltip = ({ active, payload }) => {
+    if (active && payload && payload.length) {
+      return null;
+    }
+    return null;
+  };
+
   return (
     <div className={s.graph}>
       <ResponsiveContainer width="100%" height="100%">
@@ -50,7 +78,6 @@ const CurrencyChart = ({ data }) => {
           <defs>
             <linearGradient id="colorGradient" x1="0" y1="0" x2="0" y2="1">
               <stop offset="0%" stopColor="#ffffff" stopOpacity={0.3} />
-
               <stop offset="100%" stopColor="#ffffff" stopOpacity={0} />
             </linearGradient>
           </defs>
@@ -61,6 +88,8 @@ const CurrencyChart = ({ data }) => {
             fill="url(#colorGradient)"
             fillOpacity={1}
             transform="translate(0, 10)"
+            activeDot={false}
+            dot={false}
           />
 
           <Area
@@ -69,7 +98,7 @@ const CurrencyChart = ({ data }) => {
             stroke="#ff6f61"
             strokeWidth={2}
             fill="none"
-            activeDot={{ r: 4, fill: "#ff6f61" }}
+            activeDot={renderActiveDot}
             dot={renderDot}
           >
             <LabelList
@@ -81,7 +110,12 @@ const CurrencyChart = ({ data }) => {
               fontSize={12}
             />
           </Area>
-          <Tooltip />
+
+          <Tooltip
+            content={<CustomTooltip />}
+            cursor={{ stroke: "none" }}
+            allowEscapeViewBox={{ x: true, y: true }}
+          />
         </AreaChart>
       </ResponsiveContainer>
     </div>

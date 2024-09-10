@@ -21,10 +21,18 @@ export const registerThunk = createAsyncThunk(
       setAuthHeader(data.token);
       return data;
     } catch (error) {
-      toast.error(
-        "This email is already registered. Please use a different email or log in!",
-        toasterCustomStyles
-      );
+      if (error.status === 409) {
+        toast.error(
+          "This email is already registered. Please use a different email or log in!",
+          toasterCustomStyles
+        );
+      } else {
+        toast.error(
+          "Something went wrong. Server is dead!",
+          toasterCustomStyles
+        );
+      }
+
       return thunkAPI.rejectWithValue(error.message);
     }
   }
