@@ -8,7 +8,6 @@
   margin: 0 auto;
   width: 100vw;
   height: 100vh;
-  flex-shrink: 0;
   background: var(--Form-color, rgba(255, 255, 255, 0.1));
   backdrop-filter: blur(100px);
   box-shadow: 0 4px 60px 0 rgba(0, 0, 0, 0.25);
@@ -23,8 +22,12 @@
 }
 
 .label {
-  margin-bottom: 40px;
   width: 280px;
+  margin: 0 auto;
+  margin-bottom: 40px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 }
 
 .link {
@@ -34,7 +37,7 @@
   align-content: space-around;
   margin-top: 20px;
   border-radius: 20px;
-  width: 300px;
+  width: 280px;
   height: 50px;
   box-shadow: 1px 9px 15px 0 rgba(0, 0, 0, 0.2);
   color: #623f8b;
@@ -58,7 +61,7 @@
 
 .but {
   border-radius: 20px;
-  width: 300px;
+  width: 280px;
   height: 50px;
   box-shadow: 1px 9px 15px 0 rgba(0, 0, 0, 0.2);
   background: linear-gradient(
@@ -93,7 +96,7 @@
 
 .loginInput {
   position: relative;
-  width: 100%;
+  width: 280px;
   height: 100%;
   border: none;
   outline: none;
@@ -109,7 +112,7 @@
 
 .loginInput:hover,
 .loginInput:focus {
-  border-bottom: 1px solid var(--white);
+  border-bottom: 1px solid var(--yellow);
 }
 
 .inputContainerLogo {
@@ -133,14 +136,14 @@
 }
 
 .error {
-  position: absolute;
+  position: fixed;
   color: #ffc727;
   font-size: 12px;
-  margin-top: 5px;
+  margin-top: 3px;
 }
 
 .success {
-  position: absolute;
+  position: fixed;
   color: rgb(255, 255, 255);
   font-size: 12px;
 }
@@ -152,16 +155,13 @@
     height: 570px;
   }
 
-  .loginLogo {
-  }
-
   .loginTitle {
     font-size: 26px;
     white-space: nowrap;
   }
 
   .loginInput {
-    width: 100%;
+    width: 409px;
   }
 
   .modalEllipse {
