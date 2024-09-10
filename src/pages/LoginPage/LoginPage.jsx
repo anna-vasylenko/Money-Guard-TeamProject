@@ -1,27 +1,18 @@
+import { Toaster } from "react-hot-toast";
 import LoginForm from "../../components/LoginForm/LoginForm";
-import { loginThunk } from "../../redux/auth/operations";
 import s from "./LoginPage.module.css";
-import { useDispatch } from "react-redux";
 
 const LoginPage = () => {
-  const dispatch = useDispatch();
-
-  const handleSubmit = async (values) => {
-    try {
-      await dispatch(loginThunk(values)).unwrap();
-    } catch (error) {
-      console.error("Error", error);
-    }
-  };
-
-  const initialValues = {
-    password: "",
-    email: "",
-  };
-
   return (
     <div className={s.loginPage}>
-      <LoginForm onSubmit={handleSubmit} initialValues={initialValues} />
+      <LoginForm />
+      <Toaster />
+      <div className={s.ellipse16}></div>
+      <div className={s.ellipse18}></div>
+      <div className={s.ellipse14}></div>
+      <div className={s.ellipse17}></div>
+      <div className={s.ellipse15}></div>
+      <div className={s.ellipse19}></div>
     </div>
   );
 };

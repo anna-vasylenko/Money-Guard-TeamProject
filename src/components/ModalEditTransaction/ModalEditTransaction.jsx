@@ -11,5 +11,4 @@ const ModalEditTransaction = () => {
     </ModalWrapper>
   );
 };
-
 export default ModalEditTransaction;
