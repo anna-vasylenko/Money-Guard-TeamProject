@@ -43,7 +43,10 @@ function App() {
           <Route index element={<HomeTab />} />
 
           <Route path="statistics" element={<StatisticsTab />} />
-          <Route path="currency" element={isMobile && <CurrencyTab />} />
+          <Route
+            path="currency"
+            element={isMobile ? <CurrencyTab /> : <Navigate to="/" />}
+          />
         </Route>
         <Route
           path="/register"

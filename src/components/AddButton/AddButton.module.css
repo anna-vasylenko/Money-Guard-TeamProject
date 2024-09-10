@@ -1,9 +1,9 @@
 .addBtn {
   position: fixed;
-  bottom: 44px;
-  right: 44px;
-  width: 60px;
-  height: 60px;
+  bottom: 40px;
+  right: 40px;
+  width: 44px;
+  height: 44px;
   border-radius: 44px;
   background: var(--button-gradient);
   color: white;
@@ -21,8 +21,6 @@
   .addBtn {
     bottom: 20px;
     right: 20px;
-    width: 60px;
-    height: 60px;
   }
 }
 
