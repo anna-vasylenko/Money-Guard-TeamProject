@@ -2,12 +2,24 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  max-height: calc(100vh - 260px);
+  overflow-y: auto;
+  position: relative;
+}
+.tableHead {
+  position: sticky;
+  top: 0;
+}
+.table_body {
+  overflow-y: auto;
+  max-height: calc(100vh - 260px);
+  padding: 0;
 }
 
 .table {
   width: 280px;
   border-collapse: collapse;
-  color: white;
+  color: var(--white);
 }
 .tableHeadRow {
   display: flex;
@@ -48,7 +60,7 @@
   flex-direction: row;
   font-weight: 600;
   font-size: 16px;
-  color: #fbfbfb;
+  color: var(--white);
   font-family: "Poppins", sans-serif;
   text-align: left;
 }
@@ -57,7 +69,7 @@
   background-color: transparent;
 }
 .table_data {
-  font-family: Poppins;
+  font-family: var(--font-family);
   padding: 16px;
   display: flex;
   align-items: center;
@@ -92,7 +104,7 @@
   padding: 0 16px;
   margin-bottom: 19px;
   color: var(--white);
-  font-family: Poppins;
+  font-family: var(--font-family);
   font-size: 14px;
   font-style: normal;
   font-weight: 600;

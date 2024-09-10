@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
-import s from "./StatisticsTable.module.css";
 import { selectPeriodTransactions } from "../../redux/transaction/selectors";
 import { backgroundColor } from "../../helpers/statisticsColors";
+import s from "./StatisticsTable.module.css";
 
 const StatisticsTable = () => {
   const {

@@ -16,7 +16,7 @@
   font-weight: 600;
   font-size: 18px;
   text-align: center;
-  color: #fbfbfb;
+  color: var(--white);
   text-align: center;
 }
 
@@ -57,7 +57,6 @@
   }
   .noTransactionsContainer {
     max-width: 100%;
-    /* padding: px; */
     height: auto;
   }
 }
