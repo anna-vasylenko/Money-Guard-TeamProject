@@ -15,6 +15,7 @@ td.expense {
 .tableSection {
   margin: 0 auto;
 }
+
 .tableSectionExp {
   margin: 0 auto;
 }
@@ -23,8 +24,10 @@ td.expense {
 .type,
 .category,
 .comment {
+  font-weight: 400;
   padding-top: 16px;
   padding-bottom: 16px;
+  word-wrap: break-word;
 }
 
 .date {
@@ -42,10 +45,11 @@ td.expense {
   text-align: left;
   padding-left: 16px;
 }
-
+.buttonContainer {
+  display: flex;
+}
 .actionBtn {
   padding: 16px;
-  display: flex;
   align-items: center;
   gap: 0.5rem;
 }
@@ -63,6 +67,7 @@ td.expense {
 .textEdit {
   display: none;
 }
+
 .editBtn {
   color: #9ca3af;
   background: none;
@@ -178,9 +183,13 @@ td.expense {
 
   .comment {
     justify-content: space-between;
-
+    gap: 5px;
     text-align: left;
     padding-left: 16px;
+  }
+  .comment p {
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   .income,
