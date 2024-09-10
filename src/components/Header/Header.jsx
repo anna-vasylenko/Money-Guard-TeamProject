@@ -1,8 +1,10 @@
 import { NavLink } from "react-router-dom";
-import s from "../Header/Header.module.css";
-import { useMedia } from "../../hooks/useMedia";
-import { Icons } from "../Icons/Icons";
 import { useDispatch, useSelector } from "react-redux";
+import clsx from "clsx";
+
+import { Icons } from "../Icons/Icons";
+
+import { useMedia } from "../../hooks/useMedia";
 import { selectUser } from "../../redux/auth/selectors";
 import { openLogOutModal } from "../../redux/modal/slice";
 import {
@@ -10,7 +12,7 @@ import {
   selectIsEditModalOpen,
   selectIsLogOutModalOpen,
 } from "../../redux/modal/selectors";
-import clsx from "clsx";
+import s from "../Header/Header.module.css";
 
 const Header = () => {
   const { isTablet, isMobile } = useMedia();

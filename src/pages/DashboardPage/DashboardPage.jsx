@@ -1,21 +1,23 @@
 import { Suspense, useEffect } from "react";
 import { Outlet } from "react-router-dom";
-import { useMedia } from "../../hooks/useMedia";
+import { useDispatch } from "react-redux";
+import { Toaster } from "react-hot-toast";
+
 import Navigation from "../../components/Navigation/Navigation";
 import Header from "../../components/Header/Header";
 import ModalLogOut from "../../components/ModalLogOut/ModalLogOut";
 import ModalEditTransaction from "../../components/ModalEditTransaction/ModalEditTransaction";
 import ModalAddTransaction from "../../components/ModalAddTransaction/ModalAddTransaction";
-import s from "./DashboardPage.module.css";
 import Balance from "../../components/Balance/Balance";
 import Currency from "../../components/Currency/Currency";
+import LoaderDashboard from "../../components/LoaderDashboard/LoaderDashboard";
+
 import {
   getTransactions,
   getTransactionsCategories,
 } from "../../redux/transaction/operations";
-import { useDispatch } from "react-redux";
-import LoaderDashboard from "../../components/LoaderDashboard/LoaderDashboard";
-import { Toaster } from "react-hot-toast";
+import { useMedia } from "../../hooks/useMedia";
+import s from "./DashboardPage.module.css";
 
 const DashboardPage = () => {
   const dispatch = useDispatch();

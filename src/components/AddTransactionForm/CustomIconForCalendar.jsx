@@ -10,7 +10,6 @@ const CustomIconForCalendar = forwardRef(({ value, onClick }, ref) => {
         ref={ref}
         value={value}
         onClick={onClick}
-        //   readOnly
         className={s.dateIconInput}
       >
         {value}

@@ -42,23 +42,10 @@ const transactionsSlice = createSlice({
         state.items = state.items.filter((item) => item.id !== action.payload);
         state.currentTransaction = null;
       })
-      //       .addCase(updateTransaction.fulfilled, (state, action) => {
-      //   // Update the transaction in the items array
-      //   state.items = state.items.map((item) =>
-      //     item.id === action.payload.id ? action.payload : item
-      //   );
-
-      //   // Update currentTransaction if it's the same transaction being edited
-      //   if (state.currentTransaction && state.currentTransaction.id === action.payload.id) {
-      //     state.currentTransaction = action.payload;
-      //   }
-      // })
-
       .addCase(updateTransaction.fulfilled, (state, action) => {
         state.items = state.items.map((item) =>
           item.id === state.currentTransaction.id ? action.meta.arg : item
         );
-        // state.currentTransaction = null;
       })
       .addCase(getPeriodTransactions.fulfilled, (state, action) => {
         state.periodTransactions = action.payload;
