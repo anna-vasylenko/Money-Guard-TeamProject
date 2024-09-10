@@ -1,6 +1,5 @@
 .container {
   width: 100%;
-  padding: 0 20px;
   margin: 0 auto;
 }
 
@@ -21,6 +20,10 @@
   }
   .navItem {
     display: flex;
+    justify-content: space-between;
+    width: 100%;
+    gap: 32px;
+    padding-bottom: 20px;
   }
 }
 
@@ -31,14 +34,18 @@
   }
   .main {
     flex-direction: row;
+    justify-content: space-between;
+    padding-right: 16px;
   }
   .navItem {
     display: flex;
     flex-direction: column;
-  }
-  .navItem {
+    justify-content: start;
+    padding-bottom: 0;
     position: relative;
+    width: 480px;
   }
+
   .navItem::after {
     content: "";
     position: absolute;

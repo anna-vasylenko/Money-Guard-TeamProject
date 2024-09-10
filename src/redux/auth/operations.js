@@ -1,5 +1,7 @@
 import axios from "axios";
 import { createAsyncThunk } from "@reduxjs/toolkit";
+import toast from "react-hot-toast";
+import { toasterCustomStyles } from "../../helpers/toasterCustomStyles";
 
 axios.defaults.baseURL = "https://wallet.b.goit.study";
 
@@ -19,6 +21,10 @@ export const registerThunk = createAsyncThunk(
       setAuthHeader(data.token);
       return data;
     } catch (error) {
+      toast.error(
+        "This email is already registered. Please use a different email or log in!",
+        toasterCustomStyles
+      );
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -32,6 +38,10 @@ export const loginThunk = createAsyncThunk(
       setAuthHeader(data.token);
       return data;
     } catch (error) {
+      toast.error(
+        "Incorrect username or password. Please check your credentials and try again!",
+        toasterCustomStyles
+      );
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -74,7 +84,7 @@ export const getBalanceThunk = createAsyncThunk(
   async (_, thunkAPI) => {
     try {
       const { data } = await axios.get("/api/users/current");
-      return data;
+      return data.balance;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }

@@ -1,83 +1,190 @@
 .form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-    border-radius: 5px;
-    margin: 0 auto;
-    width: 320px;
-    height: 568px;
-    flex-shrink: 0;
-    margin-top: 20px;
-    flex-shrink: 0;
-    background: var(--Form-color, rgba(255, 255, 255, 0.1));
-
-    backdrop-filter: blur(100px);
-    box-shadow: 0 4px 60px 0 rgba(0, 0, 0, 0.25);
-    background: rgba(255, 255, 255, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  border-radius: 5px;
+  margin: 0 auto;
+  width: 100vw;
+  height: 100vh;
+  flex-shrink: 0;
+  background: var(--Form-color, rgba(255, 255, 255, 0.1));
+  backdrop-filter: blur(100px);
+  box-shadow: 0 4px 60px 0 rgba(0, 0, 0, 0.25);
 }
 
-.title {
-    padding-bottom: 52px;
+.loginTitle {
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-size: 19px;
+  color: var(--white, #fbfbfb);
+  padding-bottom: 52px;
 }
 
 .label {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 10px;
-    width: 100%;
+  margin-bottom: 40px;
+  width: 280px;
 }
 
 .link {
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-    align-content: space-around;
-    margin-top: 10px;
-    border-radius: 20px;
-    width: 300px;
-    height: 50px;
-    box-shadow: 1px 9px 15px 0 rgba(0, 0, 0, 0.2);
-    color: #623f8b;
-    border: 1px solid #4a56e2;
-    background: #fcfcfc;
-    text-transform: uppercase;
-    text-align: center;
-    font-weight: 400;
-    font-size: 18px;
-    letter-spacing: 0.1em;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  align-content: space-around;
+  margin-top: 20px;
+  border-radius: 20px;
+  width: 300px;
+  height: 50px;
+  box-shadow: 1px 9px 15px 0 rgba(0, 0, 0, 0.2);
+  color: #623f8b;
+  border: 1px solid #4a56e2;
+  background: #fcfcfc;
+  text-transform: uppercase;
+  text-align: center;
+  font-weight: 400;
+  font-size: 18px;
+  letter-spacing: 0.1em;
+  background-position: left center;
+  transition: var(--transition);
+  background-size: 200%;
+}
+
+.link:hover,
+.link:focus {
+  background-position: right center;
+  transform: var(--scale);
 }
 
 .but {
-    border-radius: 20px;
-    width: 300px;
-    height: 50px;
-    box-shadow: 1px 9px 15px 0 rgba(0, 0, 0, 0.2);
-    background: linear-gradient(167deg, #ffc727 0%, #9e40ba 61.46%, #7000ff 90.54%);
-    color: white;
-    border: none;
-    text-transform: uppercase;
+  border-radius: 20px;
+  width: 300px;
+  height: 50px;
+  box-shadow: 1px 9px 15px 0 rgba(0, 0, 0, 0.2);
+  background: linear-gradient(167deg,
+      #ffc727 0%,
+      #9e40ba 61.46%,
+      #7000ff 90.54%);
+  color: white;
+  border: none;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  background-position: left center;
+  transition: var(--transition);
+  background-size: 200%;
 }
+
+.but:hover,
+.but:focus {
+  background-position: right center;
+  transform: var(--scale);
+}
+
 
 .button_log {
-    border-radius: 20px;
-    width: 300px;
-    height: 50px;
-    box-shadow: 1px 9px 15px 0 rgba(0, 0, 0, 0.2);
-    background: #fcfcfc;
-    border: none;
+  border-radius: 20px;
+  width: 300px;
+  height: 50px;
+  box-shadow: 1px 9px 15px 0 rgba(0, 0, 0, 0.2);
+  background: #fcfcfc;
+  border: none;
 }
 
-.input {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 75px;
+.loginInput {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  border-bottom: 1px solid #ccc;
+  color: rgba(255, 255, 255, 0.4);
+  padding-left: 30px;
+  box-sizing: border-box;
+  padding-bottom: 8px;
+  font-size: 18px;
 
-    border: none;
-    outline: none;
-    background-color: transparent;
-    border-bottom: 1px solid #ccc;
-    color: rgba(255, 255, 255, 0.4);
-    padding-left: 50px;
+
+}
+
+.inputContainerLogo {
+  width: 300px;
+  height: 50px;
+  position: relative;
+
+}
+
+
+
+.loginLogo {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+
+}
+
+.iconName {
+  fill: var(--white-40);
+  position: absolute;
+  stroke: none;
+  margin-top: 4px;
+}
+
+.error {
+  position: absolute;
+  color: #FFC727;
+  font-size: 12px;
+  margin-top: 5px;
+}
+
+
+.success {
+  position: absolute;
+  color: rgb(255, 255, 255);
+  font-size: 12px;
+}
+
+
+
+
+@media screen and (min-width: 768px) {
+
+  .form {
+    border-radius: 8px;
+    width: 533px;
+    height: 570px;
+  }
+
+  .loginLogo {}
+
+
+
+  .loginTitle {
+    font-size: 26px;
+    white-space: nowrap;
+  }
+
+
+
+  .loginInput {
+    width: 100%;
+  }
+
+  .modalEllipse {
+    position: absolute;
+    z-index: -1;
+    border-radius: 454px;
+    background-color: rgba(47, 21, 176, 0.7);
+    filter: blur(100px);
+    width: 454px;
+    height: 454px;
+  }
+
+}
+
+@media screen and (min-width: 1280px) {
+  .but {
+    margin-top: 12px;
+  }
 }

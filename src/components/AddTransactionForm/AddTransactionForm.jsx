@@ -1,108 +1,139 @@
 import { useState } from "react";
-import { useDispatch } from "react-redux";
-import * as Yup from "yup";
-
-import { ErrorMessage, Field, Form, Formik } from "formik";
-import s from "./AddTransactionForm.module.css";
+import { useDispatch, useSelector } from "react-redux";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import Select from "react-select";
+import { ErrorMessage, Field, Form, Formik } from "formik";
 import { addTransaction } from "../../redux/transaction/operations";
-import CustomInputForCalendar from "./CustomInputForCalendar";
+import { selectCategories } from "../../redux/transaction/selectors";
 import { closeModal } from "../../redux/modal/slice";
+import { validationSchema } from "../../helpers/addTransactionSchema";
+import { getTransactionCategoryID } from "../../helpers/transactionCategory";
+import ToggleModal from "../ToggleModal/ToggleModal";
+import CustomIconForCalendar from "./CustomIconForCalendar";
+import s from "./AddTransactionForm.module.css";
 
 const AddTransactionForm = () => {
   const [startDate, setStartDate] = useState(new Date());
-
+  const [isIncome, setIsIncome] = useState(false);
+  const data = useSelector(selectCategories);
+  const [selectCategory, setSelectCategory] = useState(null);
   const dispatch = useDispatch();
 
-  // useEffect(() => {
-  //   dispatch(addTransaction());
-  // }, [dispatch]);
+  const categories = data
+    .filter((category) => category.type !== "INCOME")
+    .map((category) => ({
+      value: category.id,
+      label: category.name,
+    }));
 
-  const initialValues = {
-    transactionDate: "",
-    type: "INCOME",
-    categoryId: "063f1132-ba5d-42b4-951d-44011ca46262",
-    comment: "",
-    amount: "",
-  };
-
-  const validationSchema = Yup.object().shape({
-    type: Yup.string().required("Transaction type is required"),
-    comment: Yup.string().required("Comment is required"),
-    amount: Yup.number()
-      .required("Amount is required")
-      .positive("Amount must be positive"),
-  });
-
-  const handleSubmit = (values, options) => {
-    // const isoDate = startDate.toISOString();
-    // console.log(isoDate);
-    console.log(values);
-
-    const newTransaction = {
-      ...values,
-      transactionDate: startDate.toISOString(),
-    };
-    dispatch(addTransaction(newTransaction));
-    options.resetForm();
-    handleClickCancel();
+  const handleCategoryName = (selectedCategory) => {
+    setSelectCategory(selectedCategory.value);
   };
 
   const handleClickCancel = () => {
     dispatch(closeModal());
   };
 
-  return (
-    <div className={s.wrapper}>
-      <h2>Add transaction</h2>
-      <span>Income</span>
-      <span>Expense</span>
+  const initialValues = {
+    transactionDate: new Date(),
+    comment: "",
+    amount: "",
+    categoryId: "",
+    type: isIncome ? "INCOME" : "EXPENSE",
+  };
 
+  const handleSubmit = (values, options) => {
+    const newTransaction = {
+      type: isIncome ? "INCOME" : "EXPENSE",
+      transactionDate: startDate.toISOString(),
+      comment: values.comment,
+      amount: isIncome ? parseFloat(values.amount) : -parseFloat(values.amount),
+      categoryId: getTransactionCategoryID(isIncome, selectCategory),
+    };
+    dispatch(addTransaction(newTransaction))
+      .unwrap()
+      .then(() => {
+        options.resetForm();
+        handleClickCancel();
+      })
+      .catch((error) => {
+        console.error("Error adding transaction:", error);
+      });
+  };
+
+  return (
+    <div className={s.modalContainer}>
+      <h2 className={s.title}>Add transaction</h2>
+      <ToggleModal onChange={setIsIncome} defaultActive={false} />
       <Formik
         initialValues={initialValues}
         onSubmit={handleSubmit}
         validationSchema={validationSchema}
       >
-        <Form className={s.wrapper}>
-          <div>
-            <Field
-              className={s.input}
-              name="amount"
-              type="number"
-              placeholder="0.00"
+        <Form className={s.wrapperForm}>
+          {!isIncome && (
+            <Select
+              name="select"
+              className={s.select}
+              placeholder="Select a category"
+              options={categories}
               required
-              // autoComplete="off"
+              autoFocus
+              onChange={handleCategoryName}
+              classNamePrefix="react-select"
             />
-            <ErrorMessage name="amount" component="span" />
+          )}
+          <div className={s.amountDateInputWrapper}>
             <div>
-              <DatePicker
-                selected={startDate}
-                onChange={(date) => setStartDate(date)}
-                calendarStartDay={1}
-                dateFormat="dd.MM.yyyy"
-                maxDate={new Date()}
-                customInput={<CustomInputForCalendar />}
-              />
               <Field
-                type="text"
-                name="comment"
-                placeholder="Comment"
-                className={s.commentInput}
+                className={s.amountInput}
+                name="amount"
+                type="number"
+                placeholder="0.00"
+                required
+                autoComplete="off"
               />
               <ErrorMessage
-                name="comment"
-                component="span"
-                className={s.error}
+                name="amount"
+                component="div"
+                className={s.errorForAmount}
               />
             </div>
+            <DatePicker
+              selected={startDate}
+              onChange={(date) => setStartDate(date)}
+              calendarStartDay={1}
+              dateFormat="dd.MM.yyyy"
+              maxDate={new Date()}
+              customInput={<CustomIconForCalendar />}
+            />
           </div>
-          <button className={s.btn} type="submit">
-            Add
-          </button>
-          <button className={s.btn} type="button" onClick={handleClickCancel}>
-            Cancel
-          </button>
+          <div>
+            <Field
+              as="textarea"
+              name="comment"
+              placeholder="Comment"
+              className={s.commentInput}
+            />
+            <ErrorMessage
+              name="comment"
+              component="div"
+              className={s.errorForComment}
+            />
+          </div>
+          <div className={s.buttonsWrapper}>
+            <button className={s.btnAdd} type="submit">
+              Add
+            </button>
+            <button
+              className={s.btnCancel}
+              type="button"
+              onClick={handleClickCancel}
+            >
+              Cancel
+            </button>
+          </div>
         </Form>
       </Formik>
     </div>

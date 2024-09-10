@@ -1,5 +1,4 @@
 import { lazy, Suspense, useEffect } from "react";
-import "./App.css";
 import { useDispatch, useSelector } from "react-redux";
 import { Navigate, Route, Routes } from "react-router-dom";
 import Loader from "../Loader/Loader";
@@ -9,7 +8,6 @@ import RestrictedRoute from "../../routes/RestrictedRoute";
 import { selectIsRefreshing } from "../../redux/auth/selectors";
 import { refreshUserThunk } from "../../redux/auth/operations";
 import { useMedia } from "../../hooks/useMedia";
-import { getTransactionsCategories } from "../../redux/transaction/operations";
 
 const DashboardPage = lazy(() =>
   import("../../pages/DashboardPage/DashboardPage")
@@ -26,15 +24,11 @@ const StatisticsTab = lazy(() =>
 
 function App() {
   const dispatch = useDispatch();
-
+  const { isMobile } = useMedia();
   const isRefresh = useSelector(selectIsRefreshing);
+
   useEffect(() => {
     dispatch(refreshUserThunk());
-  }, [dispatch]);
-  const { isMobile } = useMedia();
-
-  useEffect(() => {
-    dispatch(getTransactionsCategories());
   }, [dispatch]);
 
   return isRefresh ? (
@@ -44,34 +38,21 @@ function App() {
       <Routes>
         <Route
           path="/"
-          element={
-            <PrivateRoute>
-              <DashboardPage />
-            </PrivateRoute>
-          }
+          element={<PrivateRoute component={<DashboardPage />} />}
         >
           <Route index element={<HomeTab />} />
-          {isMobile && <Route path="/currency" element={<CurrencyTab />} />}
 
-          <Route path="/statistics" element={<StatisticsTab />} />
+          <Route path="statistics" element={<StatisticsTab />} />
+          <Route path="currency" element={isMobile && <CurrencyTab />} />
         </Route>
-
         <Route
-          path="register"
-          element={
-            <RestrictedRoute>
-              <RegistrationPage />
-            </RestrictedRoute>
-          }
+          path="/register"
+          element={<RestrictedRoute component={<RegistrationPage />} />}
         />
 
         <Route
-          path="login"
-          element={
-            <RestrictedRoute>
-              <LoginPage />
-            </RestrictedRoute>
-          }
+          path="/login"
+          element={<RestrictedRoute component={<LoginPage />} />}
         />
 
         <Route path="*" element={<Navigate to="/" />} />

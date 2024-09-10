@@ -1,41 +1,212 @@
-.income {
+td.income {
   color: #fbbf24;
+  font-weight: 600;
+  text-align: right;
+  padding-right: 15px;
 }
 
-.expense {
+td.expense {
   color: #f87171;
+  font-weight: 600;
+  text-align: right;
+  padding-right: 15px;
+}
+
+.tableSection {
+  margin: 0 auto;
+}
+.tableSectionExp {
+  margin: 0 auto;
+}
+
+.date,
+.type,
+.category,
+.comment {
+  padding-top: 16px;
+  padding-bottom: 16px;
+}
+
+.date {
+  text-align: left;
+  padding-left: 20px;
+}
+
+.type {
+  text-align: left;
+  padding-left: 32px;
+}
+
+.category,
+.comment {
+  text-align: left;
+  padding-left: 16px;
+}
+
+.actionBtn {
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.comment:first-letter {
+  text-transform: capitalize;
 }
 
 .editIcon {
-  color: rgba(255, 255, 255, 0.6);
+  transition: var(--transition);
+  fill: transparent;
+  stroke: rgba(255, 255, 255, 0.6);
 }
 
+.textEdit {
+  display: none;
+}
 .editBtn {
   color: #9ca3af;
   background: none;
   border: none;
   cursor: pointer;
+  transition: var(--transition);
 }
 
-.editBtn:hover {
-  color: white;
+.editIcon:hover,
+.editIcon:focus {
+  scale: 1.5;
+  stroke: var(--white);
 }
 
 .deleteBtn {
-  background-color: #f97316;
-  color: white;
-  padding: 0.25rem 0.75rem;
-  border-radius: 0.25rem;
+  width: 69px;
+  height: 29px;
+  border-radius: 20px;
+  background-position: left center;
+  background: var(--button-gradient);
+  color: var(--white);
+  padding: 4px 12px;
   border: none;
   cursor: pointer;
+  font-size: 14px;
+  box-shadow: var(--button-shadow);
+  transition: var(--transition);
+  background-size: 200%;
 }
 
-.deleteBtn:hover {
-  background-color: #ea580c;
+.deleteBtn:hover,
+.deleteBtn:focus {
+  background-position: right center;
+  transform: var(--scale);
 }
 
-.actionBtn {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
+@media screen and (max-width: 768px) {
+  .textEdit {
+    display: contents;
+    font-size: 16px;
+  }
+  .textEdit:hover {
+    transform: var(--scale);
+    color: var(--white);
+  }
+
+  .editIcon:hover,
+  .editIcon:focus {
+    scale: 1;
+    stroke: rgba(255, 255, 255, 0.6);
+  }
+
+  .editBtn:hover,
+  .editBtn:focus {
+    transform: var(--scale);
+    color: var(--white);
+  }
+
+  .deleteBtn:hover {
+    background-position: right center;
+    transform: var(--scale);
+  }
+
+  .tableSection::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 10;
+    width: 5px;
+    height: 100%;
+    background-color: #fbbf24;
+    border-radius: 10px 0 0 10px;
+  }
+
+  .tableSectionExp::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 10;
+    width: 5px;
+    height: 100%;
+    background-color: #ff6a3d;
+    border-radius: 10px 0 0 10px;
+  }
+
+  .tableSection td {
+    padding: 12px 20px;
+    display: flex;
+  }
+
+  .tableSectionExp td {
+    padding: 12px 20px;
+    display: flex;
+  }
+
+  .date {
+    justify-content: space-between;
+  }
+
+  .type {
+    justify-content: space-between;
+
+    text-align: left;
+    padding-left: 32px;
+  }
+
+  .category {
+    justify-content: space-between;
+
+    text-align: left;
+    padding-left: 16px;
+  }
+
+  .comment {
+    justify-content: space-between;
+
+    text-align: left;
+    padding-left: 16px;
+  }
+
+  .income,
+  .expense {
+    justify-content: space-between;
+  }
+
+  .actionBtn {
+    justify-content: space-between;
+    display: flex;
+  }
+
+  .editBtn {
+    align-items: center;
+    display: flex;
+    gap: 5px;
+  }
+
+  .spanDate,
+  .spanType,
+  .spanType,
+  .spanCategory,
+  .spanComment {
+    font-weight: 600;
+  }
+  .spanSum {
+    color: white;
+  }
 }

@@ -1,7 +1,7 @@
 .list {
   display: flex;
   justify-content: center;
-  padding: 12px 0;
+  padding: 12px 0 20px 0;
   gap: 32px;
 }
 .linkActive > .wrapper {
@@ -26,7 +26,7 @@
 }
 
 .icon {
-  fill: #734aef;
+  fill: #3c2580;
   stroke: transparent;
 }
 
@@ -37,7 +37,9 @@
   }
   .list {
     flex-direction: column;
-    padding: 40px 243px 28px 32px;
+    padding-top: 40px;
+    padding-bottom: 28px;
+    gap: 12px;
   }
   .item {
     display: flex;
@@ -77,6 +79,6 @@
 
 @media screen and (min-width: 1280px) {
   .list {
-    padding: 40px 339px 28px 16px;
+    padding-left: 16px;
   }
 }
