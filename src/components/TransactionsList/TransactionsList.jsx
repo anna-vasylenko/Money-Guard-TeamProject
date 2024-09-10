@@ -50,14 +50,6 @@ const TransactionsList = () => {
                 />
               ))}
             </tbody>
-            <tbody className={s.th}>
-              {sortedTransactions.map((transaction) => (
-                <TransactionsItem
-                  key={transaction.id}
-                  transaction={transaction}
-                />
-              ))}
-            </tbody>
           </table>
         </div>
       )}
