@@ -1,10 +1,12 @@
 import { useDispatch } from "react-redux";
-import TransactionsList from "../../components/TransactionsList/TransactionsList";
 import { useEffect } from "react";
-import { getTransactions } from "../../redux/transaction/operations";
+
 import AddButton from "../../components/AddButton/AddButton";
-import { useMedia } from "../../hooks/useMedia";
 import Balance from "../../components/Balance/Balance";
+import TransactionsList from "../../components/TransactionsList/TransactionsList";
+
+import { getTransactions } from "../../redux/transaction/operations";
+import { useMedia } from "../../hooks/useMedia";
 
 const HomeTab = () => {
   const { isMobile } = useMedia();

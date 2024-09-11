@@ -1,10 +1,12 @@
-import { Formik, Field, Form, ErrorMessage } from 'formik';
-import { Link } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-import { loginThunk } from '../../redux/auth/operations';
-import { validationSchemaLogin } from '../../helpers/loginSchema';
-import s from './LoginForm.module.css';
-import { Icons } from '../Icons/Icons';
+import { Formik, Field, Form, ErrorMessage } from "formik";
+import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+
+import { Icons } from "../Icons/Icons";
+
+import { loginThunk } from "../../redux/auth/operations";
+import { validationSchemaLogin } from "../../helpers/loginSchema";
+import s from "./LoginForm.module.css";
 
 const LoginForm = () => {
   const dispatch = useDispatch();
@@ -16,8 +18,8 @@ const LoginForm = () => {
   return (
     <Formik
       initialValues={{
-        email: '',
-        password: '',
+        email: "",
+        password: "",
       }}
       validationSchema={validationSchemaLogin}
       onSubmit={onSubmit}
@@ -27,7 +29,7 @@ const LoginForm = () => {
           <div className={s.modalEllipse}></div>
           <div className={s.loginLogo}>
             <Icons
-              name={'logo'}
+              name={"logo"}
               width={27}
               height={26}
               className={s.iconLogo}
@@ -37,7 +39,7 @@ const LoginForm = () => {
           <label className={s.label}>
             <div className="inputContainerLogo">
               <Icons
-                name={'email'}
+                name={"email"}
                 width={20}
                 height={16}
                 className={s.iconName}
@@ -54,7 +56,7 @@ const LoginForm = () => {
           <label className={s.label}>
             <div className="inputContainerLogo">
               <Icons
-                name={'password'}
+                name={"password"}
                 width={17}
                 height={17}
                 className={s.iconName}

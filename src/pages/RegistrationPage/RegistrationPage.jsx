@@ -1,6 +1,7 @@
+import { Toaster } from "react-hot-toast";
+
 import RegistrationForm from "../../components/RegistrationForm/RegistrationForm.jsx";
 import s from "./RegistrationPage.module.css";
-import { Toaster } from "react-hot-toast";
 
 const RegistrationPage = () => {
   return (

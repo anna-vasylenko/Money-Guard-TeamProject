@@ -60,7 +60,7 @@ const AddTransactionForm = () => {
         handleClickCancel();
       })
       .catch((error) => {
-        console.error("Error adding transaction:", error);
+        throw new Error(error.message);
       });
   };
 

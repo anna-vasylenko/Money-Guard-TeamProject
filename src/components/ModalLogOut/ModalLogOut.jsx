@@ -1,11 +1,13 @@
 import { useDispatch, useSelector } from "react-redux";
-import { logoutThunk } from "../../redux/auth/operations";
+
 import ModalWrapper from "../ModalWrapper/ModalWrapper";
-import { closeModal } from "../../redux/modal/slice";
-import { selectIsLogOutModalOpen } from "../../redux/modal/selectors";
-import s from "./ModalLogOut.module.css";
 import { Icons } from "../Icons/Icons";
+
+import { closeModal } from "../../redux/modal/slice";
+import { logoutThunk } from "../../redux/auth/operations";
+import { selectIsLogOutModalOpen } from "../../redux/modal/selectors";
 import { useMedia } from "../../hooks/useMedia";
+import s from "./ModalLogOut.module.css";
 
 const ModalLogOut = () => {
   const { isMobile } = useMedia();

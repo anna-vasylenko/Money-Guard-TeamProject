@@ -1,12 +1,13 @@
 import { useDispatch, useSelector } from "react-redux";
+
 import { Icons } from "../Icons/Icons";
-import s from "./TransactionsItem.module.css";
 import { openEditModal } from "../../redux/modal/slice";
 import { setCurrentTransaction } from "../../redux/transaction/slice";
 import { deleteTransaction } from "../../redux/transaction/operations";
-import { getTransactionCategory } from "../../helpers/transactionCategory";
 import { selectCategories } from "../../redux/transaction/selectors";
+import { getTransactionCategory } from "../../helpers/transactionCategory";
 import { useMedia } from "../../hooks/useMedia";
+import s from "./TransactionsItem.module.css";
 
 const formatDate = (dateString) => {
   const options = { day: "2-digit", month: "2-digit", year: "2-digit" };
@@ -36,18 +37,20 @@ const TransactionsItem = ({ transaction }) => {
         {formSum}
       </td>
       <td className={s.actionBtn}>
-        <button type="submit" onClick={handleClick} className={s.editBtn}>
-          <Icons className={s.editIcon} name="pencil" />
-          <p className={s.textEdit}>Edit</p>
-        </button>
-        <button
-          className={s.deleteBtn}
-          onClick={() => {
-            dispatch(deleteTransaction(transaction.id));
-          }}
-        >
-          Delete
-        </button>
+        <div className={s.buttonContainer}>
+          <button type="submit" onClick={handleClick} className={s.editBtn}>
+            <Icons className={s.editIcon} name="pencil" />
+            <p className={s.textEdit}>Edit</p>
+          </button>
+          <button
+            className={s.deleteBtn}
+            onClick={() => {
+              dispatch(deleteTransaction(transaction.id));
+            }}
+          >
+            Delete
+          </button>
+        </div>
       </td>
     </tr>
   ) : (
@@ -70,7 +73,7 @@ const TransactionsItem = ({ transaction }) => {
       </td>
       <td className={s.comment}>
         <span className={s.spanComment}>Comment</span>
-        {transaction.comment}
+        <p>{transaction.comment}</p>
       </td>
       <td className={transaction.type === "INCOME" ? s.income : s.expense}>
         <span className={s.spanSum}>Sum</span>

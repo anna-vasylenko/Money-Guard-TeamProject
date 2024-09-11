@@ -1,11 +1,12 @@
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import { Link } from "react-router-dom";
-import s from "./RegistrationForm.module.css";
 import { useDispatch } from "react-redux";
+import PasswordStrengthBar from "react-password-strength-bar";
+
+import { Icons } from "../Icons/Icons";
 import { registerThunk } from "../../redux/auth/operations";
 import { validationSchemaRegister } from "../../helpers/registrationSchema";
-import PasswordStrengthBar from "react-password-strength-bar";
-import { Icons } from "../Icons/Icons";
+import s from "./RegistrationForm.module.css";
 
 const RegistrationForm = () => {
   const dispatch = useDispatch();
@@ -116,11 +117,15 @@ const RegistrationForm = () => {
                   className={s.regInput}
                 />
 
-                <PasswordStrengthBar password={values.password} />
+                <PasswordStrengthBar
+                  className={s.bar}
+                  scoreWordClassName={s.infoBar}
+                  password={values.password}
+                />
                 <ErrorMessage
                   name="confirmPassword"
                   component="div"
-                  className={s.error}
+                  className={s.lastError}
                 />
               </div>
             </label>

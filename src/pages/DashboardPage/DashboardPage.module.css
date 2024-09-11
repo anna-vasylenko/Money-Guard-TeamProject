@@ -40,10 +40,11 @@
   .navItem {
     display: flex;
     flex-direction: column;
-    justify-content: start;
+    justify-content: space-between;
     padding-bottom: 0;
     position: relative;
     width: 480px;
+    max-height: calc(100vh - 110px);
   }
 
   .navItem::after {

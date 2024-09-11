@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
+import clsx from "clsx";
 
-import { getCurrencyRates } from "../../helpers/currencyMono";
 import CurrencyChart from "./CurrencyChart";
 
-import clsx from "clsx";
+import { getCurrencyRates } from "../../helpers/currencyMono";
 import s from "./Currency.module.css";
 
 const Currency = () => {
@@ -18,7 +18,7 @@ const Currency = () => {
         if (currencyData.usdRate) setUsdRate(currencyData.usdRate);
         if (currencyData.euroRate) setEuroRate(currencyData.euroRate);
       } catch (error) {
-        console.error("Error fetching currency data:", error.message);
+        throw new Error(error.message);
       }
     };
 

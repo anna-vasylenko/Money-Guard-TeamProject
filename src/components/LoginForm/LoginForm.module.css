@@ -9,15 +9,15 @@
   width: 100vw;
   height: 100vh;
   background: var(--Form-color, rgba(255, 255, 255, 0.1));
-  backdrop-filter: blur(100px);
+  backdrop-filter: blur(50px);
   box-shadow: 0 4px 60px 0 rgba(0, 0, 0, 0.25);
 }
 
 .loginTitle {
-  font-family: "Poppins", sans-serif;
+  font-family: var(--font-family);
   font-weight: 400;
   font-size: 19px;
-  color: var(--white, #fbfbfb);
+  color: var(--white);
   padding-bottom: 52px;
 }
 
@@ -39,8 +39,8 @@
   border-radius: 20px;
   width: 280px;
   height: 50px;
-  box-shadow: 1px 9px 15px 0 rgba(0, 0, 0, 0.2);
-  color: #623f8b;
+  box-shadow: var(--button-shadow);
+  color: var(--text-button);
   border: 1px solid #4a56e2;
   background: #fcfcfc;
   text-transform: uppercase;
@@ -64,13 +64,8 @@
   width: 280px;
   height: 50px;
   box-shadow: 1px 9px 15px 0 rgba(0, 0, 0, 0.2);
-  background: linear-gradient(
-    167deg,
-    #ffc727 0%,
-    #9e40ba 61.46%,
-    #7000ff 90.54%
-  );
-  color: white;
+  background: var(--button-gradient);
+  color: var(--white);
   border: none;
   text-transform: uppercase;
   letter-spacing: 0.1em;
@@ -89,8 +84,8 @@
   border-radius: 20px;
   width: 300px;
   height: 50px;
-  box-shadow: 1px 9px 15px 0 rgba(0, 0, 0, 0.2);
-  background: #fcfcfc;
+  box-shadow: var(--button-shadow);
+  background: var(--white);
   border: none;
 }
 
@@ -102,7 +97,7 @@
   outline: none;
   background-color: transparent;
   border-bottom: 1px solid #ccc;
-  color: rgba(255, 255, 255, 0.4);
+  color: var(--white-60);
   padding-left: 30px;
   box-sizing: border-box;
   padding-bottom: 8px;
@@ -137,14 +132,14 @@
 
 .error {
   position: fixed;
-  color: #ffc727;
+  color: var(--yellow);
   font-size: 12px;
   margin-top: 3px;
 }
 
 .success {
   position: fixed;
-  color: rgb(255, 255, 255);
+  color: var(--white);
   font-size: 12px;
 }
 

@@ -1,8 +1,10 @@
-import s from "./TransactionsList.module.css";
-import TransactionsItem from "../TransactionsItem/TransactionsItem";
 import { useSelector } from "react-redux";
+
+import TransactionsItem from "../TransactionsItem/TransactionsItem";
+
 import { selectTransactions } from "../../redux/transaction/selectors";
 import { useMedia } from "../../hooks/useMedia";
+import s from "./TransactionsList.module.css";
 import noTransactionImage from "../../images/noTransactions/noTransactionImage.webp";
 
 const TransactionsList = () => {
