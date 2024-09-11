@@ -18,8 +18,8 @@ const CustomIconForCalendar = forwardRef(({ value, onClick }, ref) => {
         <Icons
           className={s.dateIcon}
           name={"calendar"}
-          width={18}
-          height={20}
+          width={24}
+          height={24}
         />
       </button>
     </div>
