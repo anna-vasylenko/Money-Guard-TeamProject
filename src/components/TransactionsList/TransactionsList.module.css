@@ -69,18 +69,24 @@
 
 .date {
   text-align: left;
-  padding: 16px;
+  padding: 16px 0;
   padding-left: 20px;
 }
-.type,
+
+.type {
+  text-align: left;
+  width: auto;
+}
 .category,
 .comment {
+  width: 120px;
   text-align: left;
-  padding: 16px;
+  /* padding-left: 10px; */
 }
 .sum {
   text-align: right;
   padding: 16px;
+  padding-right: 8px;
 }
 
 .invisAction {
@@ -93,7 +99,7 @@
   }
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 767px) {
   .financeTableContainer {
     margin: 0 auto;
     width: 280px;
