@@ -1,13 +1,13 @@
 td.income {
   color: #fbbf24;
-  font-weight: 600;
+  font-weight: 600 !important;
   text-align: right;
   padding-right: 15px;
 }
 
 td.expense {
   color: #f87171;
-  font-weight: 600;
+  font-weight: 600 !important;
   text-align: right;
   padding-right: 15px;
 }
