@@ -112,6 +112,7 @@ const EditTransactionForm = () => {
                   type="number"
                   name="amount"
                   min="1"
+                  step="0.01"
                   placeholder="0.00"
                   className={s.numInput}
                 />
