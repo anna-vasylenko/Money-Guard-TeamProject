@@ -42,9 +42,7 @@ td.expense {
 
 .category,
 .comment {
-  width: 120px;
   text-align: left;
-  /* padding-left: 16px; */
 }
 
 .buttonContainer {

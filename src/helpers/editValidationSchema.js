@@ -1,6 +1,6 @@
 import * as yup from "yup";
 
-export const editValidationSchema = (type) => {
+export const editValidationSchema = () => {
   return yup.object().shape({
     amount: yup
       .number()
