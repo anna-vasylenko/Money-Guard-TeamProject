@@ -18,7 +18,7 @@ const Currency = () => {
         if (currencyData.usdRate) setUsdRate(currencyData.usdRate);
         if (currencyData.euroRate) setEuroRate(currencyData.euroRate);
       } catch (error) {
-        console.error("Error fetching currency data:", error.message);
+        throw new Error(error.message);
       }
     };
 

@@ -8,8 +8,8 @@
   margin: 0 auto;
   width: 100vw;
   height: 100vh;
-  background: var(--Form-color);
-  backdrop-filter: blur(100px);
+  background: var(--Form-color, rgba(255, 255, 255, 0.1));
+  backdrop-filter: blur(50px);
   box-shadow: 0 4px 60px 0 rgba(0, 0, 0, 0.25);
 }
 
@@ -104,7 +104,6 @@
   font-size: 18px;
   transition: var(--transition);
 }
-
 
 .loginInput:hover,
 .loginInput:focus {
