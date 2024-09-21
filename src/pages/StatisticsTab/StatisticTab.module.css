@@ -5,6 +5,7 @@
   color: var(--white);
   font-family: var(--font-family);
   padding: 8px 0 20px;
+  padding-left: 20px;
 }
 .statisticsWrapper {
   padding-top: 20px;
