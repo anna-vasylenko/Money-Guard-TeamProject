@@ -4,7 +4,7 @@
 
 ## ![alt](./src/images/screen_mg.png "dashboard-page-screen")
 
-**Money-Guard** is a personal accounting application that helps users manage their income and expenses. With secure authorization, real-time currency exchange rates, and detailed statistics, the app provides a seamless and user-friendly way to track finances across multiple devices.
+**Money Guard** is a personal accounting application that helps users manage their income and expenses. With secure authorization, real-time currency exchange rates, and detailed statistics, the app provides a seamless and user-friendly way to track finances across multiple devices.
 
 ---
 
